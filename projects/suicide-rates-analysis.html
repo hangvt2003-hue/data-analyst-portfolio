@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suicide Rates of Countries — Hang Nguyen</title>
+<meta name="description" content="A 35-year cross-country analysis of suicide rates with K-Means clustering and cultural-economic dimension analysis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Python · Machine Learning · EDA</div>
+    <h1 class="cs-title">Suicide Rates <em>Across Countries</em></h1>
+    <p class="cs-subtitle">A 35+ year cross-country dataset analyzed with K-Means clustering. Looking at the patterns where economic conditions, cultural dimensions, and demographic structure intersect with national mental health outcomes.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Academic project · NEU</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2024</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Lead Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Python · pandas · scikit-learn</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — A note on the topic</div>
+      <h2 class="cs-section-title">Difficult subject matter, treated carefully.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>This is a sensitive topic, and the analysis is approached as a public-health and social-science exercise — not a casual data exploration. The goal is to understand the macroscale structure of national suicide rates and how they correlate with broader social, economic, and cultural variables — work that supports public-health policy discussion, not individual judgments.</p>
+      <div class="cs-notice">
+        <strong>If you or someone you know is struggling —</strong> please reach out to local support resources. In Vietnam, contact the National Mental Health Hotline. International readers: see <a href="https://findahelpline.com" target="_blank">findahelpline.com</a> for region-specific support.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">From cleaning to clustering.</h2>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Data integration</div>
+          <div class="cs-step-body">Combined WHO suicide-rate data with World Bank economic indicators and Hofstede's cultural-dimension scores. The merge required careful country-name normalization and handling of countries that don't appear in all sources.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Exploratory analysis</div>
+          <div class="cs-step-body">Time-series patterns across decades, age-and-sex-stratified rates, regional clustering, and the relationship between economic shocks (recessions, currency crises) and short-term rate changes.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">K-Means clustering</div>
+          <div class="cs-step-body">Clustered countries based on a feature vector combining mean rate, age-distribution shape, sex ratio, and cultural dimensions. Used the elbow method and silhouette score to choose k. The resulting clusters had clear interpretations — high-developed-country cluster, post-Soviet cluster, etc.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Interpretation and reporting</div>
+          <div class="cs-step-body">Wrote up findings with the awareness that statistical correlation in this domain has policy implications — careful framing of what the data does and does not tell us.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-pills">
+      <span class="cs-pill accent">Python</span>
+      <span class="cs-pill accent">pandas</span>
+      <span class="cs-pill teal">scikit-learn</span>
+      <span class="cs-pill teal">K-Means</span>
+      <span class="cs-pill green">Time-series Analysis</span>
+      <span class="cs-pill amber">Multi-source Data Integration</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — The notebook</div>
+      <h2 class="cs-section-title">View on Google Colab.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The full analysis lives in a Google Colab notebook — runnable, reproducible, with all charts inline. Click below to open.</p>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-placeholder" style="background: linear-gradient(135deg, var(--indigo-pale), var(--teal-pale)); padding: 64px 32px;">
+        <div class="cs-embed-placeholder-icon" style="background: white;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <h4>Google Colab Notebook</h4>
+        <p>The full analysis — data loading, EDA, clustering, and interpretation — is hosted as a Google Colab notebook. <strong>Replace the link below</strong> with your published Colab URL (File → Share → Anyone with link).</p>
+        <!-- REPLACE THE HREF BELOW WITH YOUR ACTUAL COLAB URL -->
+        <a href="https://colab.research.google.com/drive/1PoPScORECGLZDR0ywpzn5qvC5dD282Y5?usp=sharing" target="_blank" class="cs-embed-cta">
+          Open in Google Colab
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="cs-notice" style="margin-top: 24px;">
+      <strong>To enable the link —</strong> open your Colab notebook, click <em>Share</em>, set access to <em>Anyone with the link</em>, copy the URL, and paste it as the <code>href</code> in this file (search for <code>REPLACE_WITH_COLAB_URL</code>).
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Python ML stack</div>
+        <h4>End-to-end in scikit-learn</h4>
+        <p>Data prep with pandas, feature scaling, K-Means with proper k selection (elbow + silhouette), and cluster interpretation — the full unsupervised-learning pipeline.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Multi-source integration</div>
+        <h4>WHO + World Bank + Hofstede</h4>
+        <p>Different data sources have different country lists, time ranges, and identifiers. Successful integration is unglamorous but essential.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Domain sensitivity</div>
+        <h4>Careful framing on a sensitive topic</h4>
+        <p>Statistical correlation in a public-health domain requires careful interpretation — distinguishing what the data shows from what would be a policy claim.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Reproducibility</div>
+        <h4>Hosted on Colab</h4>
+        <p>The notebook is openly runnable. Reviewers don't have to install anything — they click and execute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

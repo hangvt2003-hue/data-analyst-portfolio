@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Metrics Framework — Hang Nguyen</title>
+<meta name="description" content="A practitioner's reference on F2P mobile game KPIs — DAU, ARPU, eCPM, LTV, ROAS — and how they connect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Framework · Reference Doc</div>
+    <h1 class="cs-title">Game Metrics Framework — <em>From DAU to LTV</em></h1>
+    <p class="cs-subtitle">A practitioner's reference on the metrics that drive F2P mobile games — and how they connect into a single system from user acquisition to revenue.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Mobile Gaming Studio · Internal training</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Author · Game Data Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Format</div><div class="cs-meta-value">Standalone HTML brief</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — Why this exists</div>
+      <h2 class="cs-section-title">Most analytics confusion isn't about the math.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>It's about which metric to point at. New analysts and game designers walk into a dashboard with twenty KPIs and no map of how they connect. <strong>"Is engagement up?"</strong> is the wrong question if engagement and monetization can move in opposite directions on the same day.</p>
+      <p>I wrote this brief during my training period as a way to <strong>compress two months of internal learning into one referenceable document</strong>. New team members now use it to onboard themselves without re-asking the same questions about ROAS decomposition, eCPM decay, or why engagement metrics segment by user type.</p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">In one line</div>
+        <p>Every F2P mobile game lives or dies by <strong>ROAS</strong>. ROAS = Revenue ÷ Ad Spend. Everything else is just a more useful way to look at one of those two numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">Building the metric tree, top-down.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Rather than listing definitions alphabetically, the document is structured as a <strong>causal tree</strong> rooted at ROAS — every leaf is a metric a stakeholder might ask about, and every internal node is the relationship that ties leaves together.</p>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">General metrics tree</div>
+          <div class="cs-step-body">ROAS at the root, branching into Revenue (LTV → engagement, retention, ARPU) and Ad Spend (CPI → installs, conversion, ASO/creative quality).</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Monetization deep-dive</div>
+          <div class="cs-step-body">How mediation, ad networks, and waterfall logic actually work — and which metrics surface real problems vs. cosmetic noise. Includes the <strong>eCPM decay</strong> mental model.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">User segmentation</div>
+          <div class="cs-step-body">Why looking at "average user" hides almost everything. Segments by engagement level, ad-watch behavior, and IAP propensity — each with its own monetization profile.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Action handles</div>
+          <div class="cs-step-body">For every metric, the document explicitly answers: <em>can the team move it directly, or is it a downstream symptom?</em> This separates "monitor" from "intervene."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — Read the full brief</div>
+      <h2 class="cs-section-title">The complete framework, embedded.</h2>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-head">
+        <div class="dot"><span></span><span></span><span></span></div>
+        <div>game-metrics-framework.html · standalone document</div>
+      </div>
+      <iframe class="cs-embed-iframe" src="../Game_Metrics_Brief.html" title="Game Metrics Framework Document"></iframe>
+      <div class="cs-embed-link">
+        <span style="color: var(--ink-soft);">Open in a new tab for the full reading experience</span>
+        <a href="../Game_Metrics_Brief.html" target="_blank">Open standalone →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated in this piece.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Domain knowledge</div>
+        <h4>F2P mobile game economics</h4>
+        <p>Understanding the full revenue stack — ads (mediation, networks, eCPM) and IAP (whales, conversion, pricing) — and how each lever propagates upward.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Systems thinking</div>
+        <h4>Causal trees over flat lists</h4>
+        <p>Metrics organized by how they affect each other, not by alphabet. Stakeholders learn the structure, not just the words.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Communication</div>
+        <h4>Technical writing for non-technical readers</h4>
+        <p>Game designers and project owners — not analysts — are the primary audience. Tone, examples, and visual design reflect that.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Self-directed work</div>
+        <h4>Knowledge consolidation</h4>
+        <p>Wrote this without being asked, as a way to convert learning into a re-usable artifact for the team. New analysts use it during onboarding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

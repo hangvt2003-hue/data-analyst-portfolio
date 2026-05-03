@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing the Optimal Daily Force-Ad Cap — Hang Nguyen</title>
+<meta name="description" content="Two methodologies — percentile-based and LTV-curve — for choosing the optimal daily forced-ad limit in a free-to-play mobile game.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Optimization · Monetization</div>
+    <h1 class="cs-title">Choosing the Optimal Daily <em>Force-Ad Cap</em></h1>
+    <p class="cs-subtitle">When does an extra forced ad start hurting more than it helps? Two complementary methodologies — a behavioral-percentile approach and an LTV-curve approach — converge on the same answer from very different angles.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Mobile Gaming Studio · Multiple titles</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Research · Recommendation</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">SQL · Python · Statistics</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — The problem</div>
+      <h2 class="cs-section-title">Forced ads are a sharp knife.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>In F2P mobile games, <strong>forced ads</strong> — interstitials and AOA (App Open Ads) — are the involuntary monetization layer. Unlike rewarded video, the user can't opt out. Show too few, and you leave money on the table. Show too many, and you erode session quality, increase early-day churn, and corrode the lifetime value (LTV) curve.</p>
+      <p>The Project Owner asked a deceptively simple question: <em>what is the optimal daily cap?</em> The naive answer — "test a bunch of caps via A/B and pick the highest revenue one" — fails because LTV manifests over weeks, not days, and most A/B tests are run on day-7 metrics.</p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">The reframe</div>
+        <p>Instead of asking <strong>"what's the optimal cap?"</strong>, I split the question into two: <em>(a) what's the natural distribution of ad-tolerance across users?</em> and <em>(b) at what cap does each additional ad start destroying more LTV than it earns?</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Two methodologies, side by side</div>
+      <h2 class="cs-section-title">Behavioral percentile vs. LTV-curve.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>I researched two methodologies and ran both. They start from completely different premises but produced caps within 1–2 ads of each other for every game studied — which is the kind of cross-validation that makes a recommendation robust.</p>
+    </div>
+
+    <div class="cs-method-pair">
+      <div class="cs-method">
+        <div class="cs-method-head">
+          <div class="cs-method-num">Method 1</div>
+          <div class="cs-method-title">Behavioral Percentile</div>
+        </div>
+        <div class="cs-method-body">
+          <p><strong>Premise:</strong> the existing user base is itself the experiment. Look at the distribution of forced ads served per active day, then pick a percentile that balances revenue capture vs. user discomfort.</p>
+          <ul>
+            <li>Compute distribution of <code>force_ads_served_per_active_day</code> across the active user base over the trailing 30 days.</li>
+            <li>Identify the <strong>P75–P85 region</strong> as the natural soft ceiling — the cap above which only the highest-tolerance users sit.</li>
+            <li>Validate the candidate cap doesn't truncate any healthy retention cohort by cross-tabbing with D7/D30 retention.</li>
+          </ul>
+          <p><strong>Strengths:</strong> easy to communicate, fast, no causal modeling needed. <strong>Limits:</strong> doesn't directly measure LTV impact — only reveals the natural shape.</p>
+        </div>
+      </div>
+
+      <div class="cs-method">
+        <div class="cs-method-head">
+          <div class="cs-method-num">Method 2</div>
+          <div class="cs-method-title">LTV-Curve Marginal Analysis</div>
+        </div>
+        <div class="cs-method-body">
+          <p><strong>Premise:</strong> the right cap is where the marginal revenue from one more forced ad equals the marginal LTV destruction.</p>
+          <ul>
+            <li>Bucket users by their actual <code>avg_force_ads_per_day</code> in the first 7 days.</li>
+            <li>Plot D30 LTV (IAP + ad revenue) for each bucket. The curve typically rises and then plateaus or inverts.</li>
+            <li>Use the inflection point — where marginal LTV gain ≤ 0 — as the upper-bound recommendation.</li>
+            <li>Critically, <strong>control for self-selection</strong> — high-tolerance users naturally see more ads, so adjust by retention-matched cohort.</li>
+          </ul>
+          <p><strong>Strengths:</strong> directly answers the LTV question. <strong>Limits:</strong> requires several weeks of data and careful causal hygiene.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-prose">
+      <h3>Convergence as validation</h3>
+      <p>The two methods don't share assumptions, so when they agree it's a strong signal. For the games I studied, the percentile method's recommendation sat within ±1 ad of the LTV-curve inflection point. That convergence let me ship a recommendation with high confidence — and a clear story for skeptics on either methodological side.</p>
+    </div>
+
+    <div class="cs-pills">
+      <span class="cs-pill accent">Statistical Modeling</span>
+      <span class="cs-pill accent">Distribution Analysis</span>
+      <span class="cs-pill teal">Causal Reasoning</span>
+      <span class="cs-pill green">LTV Modeling</span>
+      <span class="cs-pill amber">Cohort Analysis</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — The recommendation</div>
+      <h2 class="cs-section-title">A cap that's both empirical and defensible.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The final recommendation was delivered as a one-page memo to the Project Owner with three components:</p>
+      <ol>
+        <li><strong>Headline number</strong> — the recommended daily cap, with a tight confidence range.</li>
+        <li><strong>Both methodologies, briefly</strong> — so the recommendation is reproducible and challengeable.</li>
+        <li><strong>Monitoring plan</strong> — which downstream metrics (D7 retention, ARPDAU, ad opt-in) to watch in the first two weeks after the change, and what would trigger a rollback.</li>
+      </ol>
+      <div class="cs-callout">
+        <div class="cs-callout-label">Why this matters</div>
+        <p>A single-method answer to a high-stakes monetization question is fragile. Two methods that agree are a strong signal. Two methods that disagree are an even more useful signal — they surface where the assumptions are doing the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Methodological rigor</div>
+        <h4>Cross-validation by design</h4>
+        <p>Running two independent methodologies isn't redundancy — it's how you separate "the answer" from "what one method happens to say."</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Causal thinking</div>
+        <h4>Self-selection awareness</h4>
+        <p>High ad-tolerance users naturally see more ads. Naive cohort comparison would conflate willingness-to-tolerate with willingness-to-spend. The methodology corrects for this.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Communication</div>
+        <h4>Memo, not deck</h4>
+        <p>Stakeholders read better than they listen. A one-page memo with the answer up top, methods below, and a monitoring plan attached is the format that gets decisions made.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Operational thinking</div>
+        <h4>Built-in rollback criteria</h4>
+        <p>Every recommendation comes with a "what would change my mind" clause — the monitoring plan and the metric thresholds that trigger reconsideration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

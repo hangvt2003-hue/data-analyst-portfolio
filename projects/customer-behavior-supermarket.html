@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Behavior at Supermarket — Hang Nguyen</title>
+<meta name="description" content="Sensor data analysis of supermarket customer behavior — heatmaps, conversion funnels, and demographic segmentation for store layout optimization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">EDA · Behavioral Analytics</div>
+    <h1 class="cs-title">Customer Behavior at <em>Supermarket</em></h1>
+    <p class="cs-subtitle">An exploratory analysis of supermarket sensor data to inform store layout decisions. Foot-traffic heatmaps, shelf-level conversion funnels, demographic segmentation, and the dwell-time–purchase paradox.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Academic project · NEU</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2024</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Lead Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Power BI · Excel · Statistics</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — The brief</div>
+      <h2 class="cs-section-title">Why is the bakery aisle drawing crowds but no purchases?</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The dataset captured anonymized shopper trajectories — entry, dwell time per zone, and final purchases — for a mid-size supermarket over 8 weeks. The store manager wanted to know: <strong>which zones are doing their job, and which are just collecting bodies?</strong></p>
+      <p>"Foot traffic" is an attractive metric because it's easy to visualize, but it's a vanity metric on its own. What matters is foot traffic that converts — and the relationship is far from linear.</p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">The interesting finding upfront</div>
+        <p>Some of the busiest zones had the lowest conversion. The bakery zone, in particular, had 2× the dwell time of the produce zone but ½ the conversion rate. The answer was a layout choice — and it was actionable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">From sensor data to layout recommendations.</h2>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Data cleaning and zone definition</div>
+          <div class="cs-step-body">Cleaned trajectory data — duplicate timestamps, sensor gaps, outlier dwell times — and defined logical zones (produce, bakery, dairy, frozen, checkout, etc.) on the store layout grid.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Heatmaps and traffic patterns</div>
+          <div class="cs-step-body">Built spatial heatmaps showing foot-traffic density by hour of day. Surfaced the predictable patterns (lunch-rush deli queue) and the surprising ones (a dead corner near frozen foods that customers actively avoided).</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">Conversion funnels at the zone level</div>
+          <div class="cs-step-body">For each zone: customers who entered → customers who lingered &gt;30 sec → customers who took an item → customers who paid for an item from that zone. The funnel exposed the bakery paradox (high dwell, low conversion) and the produce success (moderate dwell, high conversion).</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Demographic segmentation</div>
+          <div class="cs-step-body">Cross-tabbed traffic patterns by inferred customer demographic (time of visit, basket composition). Different segments traversed the store in different ways — implying that any layout change has segment-specific impact.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">5</div>
+        <div>
+          <div class="cs-step-title">Layout recommendations with reasoning</div>
+          <div class="cs-step-body">Concrete, prioritized recommendations: relocate the bakery display, add a signed shortcut from frozen to checkout, and rearrange the impulse-purchase rack at checkout based on the actual queue patterns.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-pills">
+      <span class="cs-pill accent">EDA</span>
+      <span class="cs-pill accent">Funnel Analysis</span>
+      <span class="cs-pill teal">Power BI</span>
+      <span class="cs-pill teal">Heatmaps</span>
+      <span class="cs-pill green">Behavioral Segmentation</span>
+      <span class="cs-pill amber">Spatial Analysis</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — Full report</div>
+      <h2 class="cs-section-title">Read the deliverable.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The complete report — including all heatmaps, conversion funnels, and recommended layout changes — is embedded below as PDF.</p>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-head">
+        <div class="dot"><span></span><span></span><span></span></div>
+        <div>customer-behavior-supermarket.pdf</div>
+      </div>
+      <!-- Replace src below with your hosted PDF path or URL -->
+      <iframe
+        class="cs-embed-iframe"
+        src="../assets/customer-behavior-supermarket.pdf"
+        title="Customer Behavior Supermarket Report"
+        style="height: 820px;"
+        onerror="this.parentElement.innerHTML='<div class=&quot;cs-embed-placeholder&quot;><div class=&quot;cs-embed-placeholder-icon&quot;><svg width=&quot;28&quot; height=&quot;28&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;><path d=&quot;M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z&quot;/><polyline points=&quot;14 2 14 8 20 8&quot;/></svg></div><h4>PDF Placeholder</h4><p>Place the report PDF at <code>assets/customer-behavior-supermarket.pdf</code> in the portfolio repo to enable this embed.</p></div>';"
+      ></iframe>
+      <div class="cs-embed-link">
+        <span style="color: var(--ink-soft);">PDF report · 14 pages</span>
+        <a href="../assets/customer-behavior-supermarket.pdf" target="_blank">Open in new tab →</a>
+      </div>
+    </div>
+    <div class="cs-notice" style="margin-top: 24px;">
+      <strong>If the embed doesn't show —</strong> place the PDF file at <code>portfolio/assets/customer-behavior-supermarket.pdf</code> in the repo. GitHub Pages will serve it directly.
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Spatial reasoning</div>
+        <h4>Layout-aware data work</h4>
+        <p>Most retail analytics is purely transactional. Adding the spatial dimension reveals the upstream "why" behind transaction patterns.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Funnel discipline</div>
+        <h4>Beyond traffic counting</h4>
+        <p>Foot-traffic alone is a vanity metric. The right unit of analysis is conversion at each zone — and the funnel structure makes that explicit.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Cross-domain transfer</div>
+        <h4>Same patterns, different domain</h4>
+        <p>The bakery-conversion problem mirrors the "high-dwell low-conversion level" problem in mobile games — same diagnostic logic, different domain.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Actionable output</div>
+        <h4>Recommendations, not just findings</h4>
+        <p>The deliverable ended with concrete layout changes ranked by expected impact and effort — not a list of charts the reader is left to interpret.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

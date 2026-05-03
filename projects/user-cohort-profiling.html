@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Cohort Profiling — Hang Nguyen</title>
+<meta name="description" content="Behavioral segmentation that distinguishes loyal whales, casual churners, and dormant returnees in a live mobile game.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Segmentation · Cohort Analysis</div>
+    <h1 class="cs-title">User <em>Cohort Profiling</em></h1>
+    <p class="cs-subtitle">"Average user" is a fiction. Behavioral segmentation distinguishes the loyal whales whose retention you must protect, from the casual churners who need a different intervention, from the dormant returnees who are already half-saved.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Mobile Gaming Studio · Live title</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Lead Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">SQL · Tableau · Statistics</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — Why the average is misleading</div>
+      <h2 class="cs-section-title">Two games, identical ARPDAU. Completely different futures.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Imagine two games with the same daily ARPDAU. Game A's revenue comes from a long thin tail of casual spenders. Game B's revenue comes from a tiny cluster of high-LTV whales. The same headline metric — but one game's revenue collapses if 10 users churn, while the other can lose hundreds of users without flinching.</p>
+      <p>Without segmentation, the studio reacts to the same KPIs the same way. With segmentation, the studio learns <strong>which users actually drive the headline</strong>, and where intervention is most leveraged.</p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">The goal of this work</div>
+        <p>Build a behavioral cohort profile that the Project Owner and Game Designers could use as <strong>standard segments</strong> across all subsequent analyses — so every retention or monetization conversation immediately includes "in which segment?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">Two-axis segmentation: engagement × monetization.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>I avoided unsupervised clustering for the primary segmentation. Reason: clusters discovered by k-means or DBSCAN are mathematically clean but stakeholder-illegible. A Game Designer can act on "loyal whale" — they can't act on "Cluster 3, the one with high silhouette score on PC2."</p>
+      <p>Instead, I used a <strong>two-axis behavioral grid</strong> with explicit, defensible thresholds, validated against k-means as a sanity check.</p>
+    </div>
+
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Define the two axes</div>
+          <div class="cs-step-body"><strong>Engagement axis:</strong> active days in last 30 days × average session length. <strong>Monetization axis:</strong> 30-day spend (IAP) + 30-day rewarded-ad views (proxy for ad revenue contribution).</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Set thresholds at natural distribution breaks</div>
+          <div class="cs-step-body">Use percentile breaks (P50, P90) on each axis rather than arbitrary numbers. Each segment then has a clear definition: "top 10% by engagement and top 10% by monetization" = whales.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">Profile each segment behaviorally</div>
+          <div class="cs-step-body">For each segment, compute D30 retention, content reach (max level reached), feature usage (events fired), and most-frequent churn-precursor signals.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Validate against unsupervised k-means</div>
+          <div class="cs-step-body">Run k-means on the same feature set as a sanity check. Confirm the rule-based segments and the algorithmic clusters substantially overlap — gives confidence the boundaries reflect real behavioral structure.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-pills">
+      <span class="cs-pill accent">Behavioral Segmentation</span>
+      <span class="cs-pill accent">SQL</span>
+      <span class="cs-pill teal">K-Means</span>
+      <span class="cs-pill teal">Cohort Profiling</span>
+      <span class="cs-pill green">Tableau</span>
+      <span class="cs-pill amber">RFM-style Modeling</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — The output</div>
+      <h2 class="cs-section-title">A segment dictionary the team actually uses.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The deliverable was a Tableau dashboard plus a written segment dictionary. Each segment got:</p>
+      <ul>
+        <li><strong>A named identity</strong> — Loyal Whales, Casual Churners, Dormant Returnees, Steady Mids, etc.</li>
+        <li><strong>A one-sentence behavioral profile</strong> — what they do, what they don't.</li>
+        <li><strong>Their share of DAU and revenue</strong> — so it's immediately clear which segments deserve outsized attention.</li>
+        <li><strong>Common precursor signals</strong> — what changes about their behavior 7 days before they churn.</li>
+        <li><strong>Suggested interventions</strong> — content, pricing, or notification strategies that fit the segment's behavior.</li>
+      </ul>
+      <div class="cs-callout">
+        <div class="cs-callout-label">Outcome</div>
+        <p>The segments became the default lens for subsequent conversations. New analyses now arrive pre-segmented. Game Designers reference them in feature briefs. The "average user" framing has measurably retreated from team meetings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Methodological choice</div>
+        <h4>Rules over clusters — when stakeholders matter</h4>
+        <p>Choosing rule-based segmentation over unsupervised clustering was a deliberate design decision: stakeholder legibility &gt; mathematical elegance.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Validation discipline</div>
+        <h4>Cross-checking with k-means</h4>
+        <p>Even when not using clustering as the primary tool, I used it as a sanity check — making sure rule-based boundaries weren't completely orthogonal to the actual data structure.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Stakeholder craft</div>
+        <h4>Naming matters</h4>
+        <p>"Loyal Whales" vs. "Segment 4" is the difference between a framework people internalize and one they ignore. Naming was a deliberate part of the deliverable.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Domain understanding</div>
+        <h4>F2P revenue concentration</h4>
+        <p>Knowing that mobile game revenue is heavily skewed toward small high-LTV cohorts shaped the choice of monetization-axis weighting and the focus on whale retention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

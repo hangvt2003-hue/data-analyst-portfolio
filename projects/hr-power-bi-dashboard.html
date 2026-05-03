@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR Power BI Dashboard — Hang Nguyen</title>
+<meta name="description" content="An end-to-end Power BI workforce dashboard with headcount, turnover, internal mobility, and predictive attrition signals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Power BI · BI Dashboard</div>
+    <h1 class="cs-title">HR Power BI <em>Dashboard</em></h1>
+    <p class="cs-subtitle">An end-to-end workforce analytics dashboard built during my BI internship at KPIM (a Microsoft Partner). Headcount, turnover, tenure, internal mobility, and predictive attrition signals — designed for HR leadership to act on.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">KPIM (Microsoft Partner) · BI Internship</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">End-to-end Builder</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Power BI · DAX · Power Query</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — Why this exists</div>
+      <h2 class="cs-section-title">HR data lives in eight places. Decisions need it in one.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>HR teams typically operate from a payroll system, a recruiting system, a performance system, and several spreadsheets. Each tool answers one question. None of them connects "what's our attrition rate this quarter" with "which roles are we hiring for" with "which teams have stagnant tenure" — the questions HR leadership actually asks.</p>
+      <p>The brief: <strong>build a single Power BI dashboard that consolidates these sources and surfaces the metrics HR leadership needs to make decisions about hiring, retention, and team structure.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">From source data to dashboard.</h2>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Data modeling — star schema</div>
+          <div class="cs-step-body">Designed a star schema centered on a <code>FactEmployment</code> table. Dimension tables for Employee, Department, Role, and Date. The schema supports time-intelligence queries (period-over-period turnover, tenure-by-cohort) without hairy DAX.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Power Query for data wrangling</div>
+          <div class="cs-step-body">Source data was inconsistent — date formats varied across systems, role titles weren't standardized, and historical headcount required reconstructing from event logs. Power Query handled the cleaning pipeline, parameterized for reuse.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">DAX measures — the analytical layer</div>
+          <div class="cs-step-body">Wrote calculated measures for: rolling-12-month attrition, voluntary vs. involuntary turnover split, internal mobility rate, time-to-fill by role family, and a tenure-distribution histogram. Heavy use of <code>CALCULATE</code>, <code>FILTER</code>, and time-intelligence functions.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Visual design for the audience</div>
+          <div class="cs-step-body">HR leadership reads dashboards differently than analysts. Headline KPIs at top. Drill-downs by department on click. Custom org-chart visual using HTML content — see my blog post on this technique. Gantt chart for individual employee history.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-pills">
+      <span class="cs-pill accent">Power BI</span>
+      <span class="cs-pill accent">DAX</span>
+      <span class="cs-pill teal">Power Query</span>
+      <span class="cs-pill teal">Star Schema</span>
+      <span class="cs-pill green">HR Analytics</span>
+      <span class="cs-pill amber">Custom Visuals</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — Live dashboard</div>
+      <h2 class="cs-section-title">Embedded Power BI report.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The published Power BI dashboard is embedded below. Use the slicers to filter by department, time period, and employee category. Click on visuals to cross-filter the rest of the page.</p>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-head">
+        <div class="dot"><span></span><span></span><span></span></div>
+        <div>Power BI · HR Workforce Dashboard</div>
+      </div>
+      <!-- Replace the iframe src below with your published Power BI URL -->
+      <!-- Pattern: https://app.powerbi.com/view?r=YOUR_REPORT_ID -->
+      <iframe
+        class="cs-embed-iframe"
+        src="https://app.powerbi.com/view?r=eyJrIjoiMGY5NTYyMGEtMGMwMS00NmM1LWFkODctMTU1YWFjNWFmMmRkIiwidCI6IjQxYWI0MmE5LTM4MWItNDhjZi04YTg1LTcyMDQ2NDkyMjk3NiIsImMiOjEwfQ%3D%3D&pageName=ad7aab28ba0cd1396518&fbclid=IwY2xjawJotxFleHRuA2FlbQIxMAABHrpkDuB3QlqUuXVtz1ipL115Aet8liQm-u-rPleeKvibDX5MaBpVVsHyxuPc_aem_YJVNC-as-uD44uztaavovw"
+        title="HR Power BI Dashboard"
+        style="height: 600px;"
+        ></iframe>
+      <div class="cs-embed-link">
+        <span style="color: var(--ink-soft);">To embed: in Power BI Service, File → Embed report → Publish to web (public)</span>
+        <a href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-publish-to-web" target="_blank">How to publish →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">End-to-end ownership</div>
+        <h4>Source to dashboard, alone</h4>
+        <p>Took the project from raw HR data sources through cleaning, modeling, DAX measures, and visual design — without handoffs.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">DAX fluency</div>
+        <h4>Time-intelligence patterns</h4>
+        <p>Rolling attrition, tenure cohorts, period-over-period comparisons — DAX patterns I use confidently and have written about.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Visual storytelling</div>
+        <h4>HTML content for org charts</h4>
+        <p>Default Power BI visuals don't render org structures well. Used HTML content visuals to design custom org-chart and Gantt views — wrote about this in two blog posts on this site.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Stakeholder design</div>
+        <h4>Built for HR leadership, not analysts</h4>
+        <p>Cognitive load matters. Headline KPIs surface immediately; complexity stays one click deep. The dashboard is browseable, not just queryable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Engagement Drops at Specific Levels — Hang Nguyen</title>
+<meta name="description" content="A diagnostic funnel analysis on a match-3 puzzle game — finding the level-design culprits behind a sudden retention cliff.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Diagnostic Analytics · Mobile Game</div>
+    <h1 class="cs-title">Why Engagement <em>Drops</em> at Specific Levels</h1>
+    <p class="cs-subtitle">A diagnostic funnel investigation on a match-3 puzzle game. Engagement metrics fell off a cliff at certain levels — but daily KPIs alone couldn't tell us which levels, or why. This is how we found the culprits.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Mobile Gaming Studio · Live title</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Lead Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Audience</div><div class="cs-meta-value">Project Owner · Game Designers</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — The problem</div>
+      <h2 class="cs-section-title">Daily metrics moved together. The story didn't.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The puzzle game we'll call <strong>Puzzle Game A</strong> showed declining engagement in its weekly report — sessions, time spent, and progression all trending down. The Project Owner asked the obvious question: <em>where exactly is the player base falling off?</em></p>
+      <p>Looking at retention curves at the cohort level wasn't enough. Players were technically retained — but disengaged. The question wasn't "are they leaving?" but <strong>"are they getting stuck?"</strong> — and if so, at which levels and why.</p>
+      <div class="cs-notice">
+        <strong>Note —</strong> Specific game names, internal account IDs, and absolute revenue numbers have been anonymized. The methodology, structure, and visualizations are preserved; the embed below is the actual deliverable shipped to stakeholders.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">A four-layer diagnostic funnel.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Rather than picking one metric, I built a layered diagnostic that moved from <strong>"is this real?"</strong> to <strong>"why is this happening?"</strong> Each layer answered one question and decided whether to continue digging.</p>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Confirm the symptom — D0–D5 trends</div>
+          <div class="cs-step-body">Average session length, matches/day, and levels-cleared/day across day-since-install. Compared against two sibling games (Puzzle Game B and Puzzle Game C) to rule out studio-wide or seasonal effects.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Localize the drop — per-level baseline win rate</div>
+          <div class="cs-step-body">Computed first-attempt win rate per level (1–50), normalized to remove the natural difficulty curve. The chart isolated several specific levels with abnormally low win rates — the suspect levels.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">Behavior at suspect levels — hint usage & retries</div>
+          <div class="cs-step-body">For each suspect level, looked at hint balance, consecutive-fail rate, and time-on-level distribution. A flat hint balance + high consecutive failure was the signature of "frustration without escape valve."</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Downstream impact — post-failure retention</div>
+          <div class="cs-step-body">Modeled the % of users still playing N levels after exposure to a suspect level. Confirmed the suspect levels weren't just hard — they were causing measurable churn into the next 5–10 levels.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-pills">
+      <span class="cs-pill accent">SQL</span>
+      <span class="cs-pill accent">Funnel Analysis</span>
+      <span class="cs-pill teal">Cohort Comparison</span>
+      <span class="cs-pill teal">Distribution Analysis</span>
+      <span class="cs-pill green">Storytelling with Data</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — The deliverable</div>
+      <h2 class="cs-section-title">Read the full report.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The final deliverable was a <strong>standalone interactive HTML report</strong> with charts, baselines, and pinpointed level recommendations. Embedded below — open in a new tab for the best experience.</p>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-head">
+        <div class="dot"><span></span><span></span><span></span></div>
+        <div>engagement-drop-analysis.html · interactive report</div>
+      </div>
+      <iframe class="cs-embed-iframe" src="../Engagement_Drop_Doc.html" title="Engagement Drop Analysis Report" style="height: 820px;"></iframe>
+      <div class="cs-embed-link">
+        <span style="color: var(--ink-soft);">Charts use Chart.js · best viewed standalone</span>
+        <a href="../Engagement_Drop_Doc.html" target="_blank">Open standalone →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Diagnostic mindset</div>
+        <h4>From symptom to root cause</h4>
+        <p>The investigation didn't stop at "engagement is down." It progressively narrowed: which days, which levels, which behavior, what downstream impact.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Comparative analysis</div>
+        <h4>Sibling-game baselines</h4>
+        <p>Using sister titles as a control isolates game-specific issues from studio-wide or seasonal noise — a small but critical step.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Cross-functional output</div>
+        <h4>Designed for game designers</h4>
+        <p>The report's audience was Game Designers, not analysts. Charts are annotated with thresholds, danger bands, and plain-language conclusions.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Tooling</div>
+        <h4>SQL → HTML pipeline</h4>
+        <p>Custom SQL queries for level-by-level metrics, exported and rendered into a portable, shareable HTML artifact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

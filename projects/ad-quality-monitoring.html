@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Quality Monitoring System — Hang Nguyen</title>
+<meta name="description" content="A monitoring system to detect and block toxic mobile ad creatives at scale — protecting user experience and retention.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">System Design · Mobile Game</div>
+    <h1 class="cs-title">Ad Quality <em>Monitoring</em> System</h1>
+    <p class="cs-subtitle">Toxic ad creatives — broken close buttons, misleading content, audio bombs — are a silent retention killer. I designed a monitoring system that surfaces bad advertisers from millions of impressions before they damage user trust.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Context</div><div class="cs-meta-value">Mobile Gaming Studio · Cross-title</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-value">Designer · Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">SQL · Tableau · Mediation APIs</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — Why this matters</div>
+      <h2 class="cs-section-title">Bad ads cost more than the revenue they generate.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>F2P mobile games rely heavily on rewarded video and interstitial ads. The mediation layer hands off creative selection to ad networks — which means the studio doesn't directly control which creative a player sees. <strong>Most are fine. A small fraction are toxic:</strong> close buttons that don't work, misleading "you won!" claims, audio that blasts at full volume, malware redirects, or simply offensive content.</p>
+      <p>One bad impression doesn't move a daily KPI. But repeated exposure measurably increases churn, decreases ad opt-in, and corrodes the rewarded-ad economy. The challenge: <strong>how do you find the bad advertisers when you have hundreds of thousands of unique creatives a week?</strong></p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">The core insight</div>
+        <p>Toxic ads leave a behavioral fingerprint. Users skip them earlier, close the app immediately after, watch fewer ads in subsequent sessions, or reduce session count overall. The signal exists — it just needs to be aggregated at the advertiser-creative level, not the user level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Approach</div>
+      <h2 class="cs-section-title">From raw mediation logs to a watchlist.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>The system pipeline runs daily and produces a ranked list of <strong>"suspicious advertisers"</strong> for the operations team to review and potentially blocklist via mediation.</p>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Aggregate impressions by advertiser × creative × placement</div>
+          <div class="cs-step-body">Pull raw events from Firebase + mediation platforms. Normalize advertiser identifiers across networks (some report by package, others by creative ID). Filter to advertisers with enough impressions for stable statistics.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Compute behavioral health metrics per advertiser</div>
+          <div class="cs-step-body">Post-impression session continuation rate, time-to-app-close after impression, subsequent ad opt-in rate, and skip-rate distribution. Each metric has a baseline computed from the entire ad universe.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">Score against baseline — z-scores & thresholds</div>
+          <div class="cs-step-body">An advertiser whose post-impression behavior is multiple standard deviations worse than the network average gets flagged. Single-metric outliers are warnings; multi-metric outliers are blocklist candidates.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Surface in a Tableau dashboard with action handles</div>
+          <div class="cs-step-body">Operations team sees a sortable table with risk score, sample creatives (where available), and one-click links to the mediation blocklist for the relevant network.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-pills">
+      <span class="cs-pill accent">SQL</span>
+      <span class="cs-pill accent">ETL</span>
+      <span class="cs-pill teal">Tableau</span>
+      <span class="cs-pill teal">Anomaly Detection</span>
+      <span class="cs-pill green">System Design</span>
+      <span class="cs-pill amber">Mediation APIs</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — The deliverable</div>
+      <h2 class="cs-section-title">Sample report — anonymized.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Below is an anonymized version of the actual ad quality report shipped to the operations team. Specific advertiser names, account IDs, and absolute revenue numbers have been masked or removed.</p>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-head">
+        <div class="dot"><span></span><span></span><span></span></div>
+        <div>ad-quality-report.html · sample weekly output</div>
+      </div>
+      <iframe class="cs-embed-iframe" src="../Ad_Quality_Report.html" title="Ad Quality Report" style="height: 820px;"></iframe>
+      <div class="cs-embed-link">
+        <span style="color: var(--ink-soft);">Charts use Chart.js · best viewed standalone</span>
+        <a href="../Ad_Quality_Report.html" target="_blank">Open standalone →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — What this showcases</div>
+      <h2 class="cs-section-title">Skills demonstrated.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">System design</div>
+        <h4>From ad-hoc to monitoring</h4>
+        <p>Took a problem that previously required manual investigation and built a repeatable, automated pipeline that runs without analyst intervention.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Statistical thinking</div>
+        <h4>Behavioral baselines</h4>
+        <p>Single-impression behavior is too noisy. Aggregating to advertiser-level and comparing against ecosystem baselines surfaces real outliers.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Cross-platform data</div>
+        <h4>Mediation normalization</h4>
+        <p>Different ad networks report identifiers differently. The system normalizes across platforms so an advertiser blocked on one network isn't accidentally allowed on another.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Operational impact</div>
+        <h4>Action over insight</h4>
+        <p>The report doesn't just flag bad actors — it provides a one-click path to the blocklist. Insight without an action handle stays insight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

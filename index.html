@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hang Nguyen — Data Analyst</title>
+<meta name="description" content="Portfolio of Nguyen Ngoc Thanh Hang — Data Analyst working across Mobile Gaming, BI, and Behavioral Analytics.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:        #F4F8FB;
+    --paper-warm:   #FAFBFD;
+    --card:         #FFFFFF;
+    --ink:          #0B1220;
+    --ink-soft:     #475569;
+    --ink-faint:    #94A3B8;
+    --rule:         #DBE3EE;
+    --rule-soft:    #E8EEF5;
+    --accent:       #1E40AF;
+    --accent-bright:#3B82F6;
+    --accent-warm:  #0E7490;
+    --teal:         #14B8A6;
+    --teal-pale:    #CFFAFE;
+    --amber:        #D97706;
+    --amber-pale:   #FEF3C7;
+    --rose:         #BE185D;
+    --rose-pale:    #FCE7F3;
+    --green:        #047857;
+    --green-pale:   #D1FAE5;
+    --indigo:       #4338CA;
+    --indigo-pale:  #E0E7FF;
+    --shadow-sm:    0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+    --shadow:       0 4px 16px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+    --shadow-lg:    0 12px 32px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06);
+    --radius:       12px;
+    --radius-lg:    20px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography */
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
+  .display-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; letter-spacing: -0.015em; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: 'tnum'; }
+  .micro { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+  .micro-accent { color: var(--accent); }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  /* LAYOUT */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 720px) { .container { padding: 0 20px; } }
+
+  section { padding: 88px 0; border-bottom: 1px solid var(--rule-soft); position: relative; }
+  @media (max-width: 720px) { section { padding: 56px 0; } }
+
+  .section-head {
+    display: flex; align-items: baseline; gap: 16px; margin-bottom: 48px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--accent); letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px; font-weight: 600; letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+  .section-rule { flex: 1; height: 1px; background: linear-gradient(to right, var(--rule), transparent); }
+
+  /* ========== NAV ========== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244, 248, 251, 0.85);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px;
+    letter-spacing: -0.01em; color: var(--ink);
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; align-items: center; }
+  .nav-link {
+    padding: 8px 14px; font-size: 14px; color: var(--ink-soft); border-radius: 8px;
+    transition: all 180ms ease;
+  }
+  .nav-link:hover { color: var(--ink); background: rgba(30, 64, 175, 0.06); }
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule);
+    background: var(--card); display: grid; place-items: center;
+    color: var(--ink-soft); transition: all 180ms ease;
+  }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .resume-btn {
+    padding: 9px 18px; border-radius: 8px;
+    background: var(--accent); color: white; font-size: 14px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 180ms ease;
+  }
+  .resume-btn:hover { background: var(--ink); transform: translateY(-1px); box-shadow: var(--shadow); }
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: 64px 0 96px; border-bottom: 1px solid var(--rule-soft);
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center;
+  }
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding: 48px 0 64px; }
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .hero-title {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: clamp(40px, 6.5vw, 78px); letter-spacing: -0.03em;
+    line-height: 1.0; color: var(--ink); margin-bottom: 20px;
+  }
+  .hero-title em {
+    font-style: italic; font-weight: 500;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-desc {
+    font-size: 17px; color: var(--ink-soft); max-width: 520px;
+    line-height: 1.65; margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 14px; margin-bottom: 56px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary {
+    padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 500;
+    transition: all 200ms ease; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn-secondary { background: var(--card); color: var(--ink); border: 1px solid var(--rule); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+  .stat-num {
+    font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600;
+    color: var(--accent); letter-spacing: -0.02em; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-top: 8px;
+  }
+
+  /* hero background grid */
+  .hero-bg-grid {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+    background-image:
+      linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%);
+  }
+
+  /* ========== DASHBOARD WIDGET ========== */
+  .dashboard {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .dashboard::before {
+    content: ''; position: absolute; inset: -1px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(20, 184, 166, 0.08), transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+  .dash-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 16px; border-bottom: 1px solid var(--rule-soft); margin-bottom: 20px;
+  }
+  .dash-title { font-size: 13px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .dash-title-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.18); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.18); }
+    50% { box-shadow: 0 0 0 8px rgba(20, 184, 166, 0.05); }
+  }
+  .dash-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .kpi {
+    padding: 14px; border-radius: 10px; background: var(--paper); border: 1px solid var(--rule-soft);
+    transition: all 200ms ease;
+  }
+  .kpi:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .kpi-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 6px; }
+  .kpi-value { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+  .kpi-delta { font-family: 'JetBrains Mono', monospace; font-size: 10px; margin-top: 4px; }
+  .kpi-delta.up { color: var(--green); }
+  .kpi-delta.down { color: var(--rose); }
+
+  .chart-area { height: 150px; position: relative; margin-bottom: 16px; }
+  .chart-svg { width: 100%; height: 100%; overflow: visible; }
+  .chart-grid line { stroke: var(--rule-soft); stroke-dasharray: 2 4; }
+  .chart-axis text { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: var(--ink-faint); }
+
+  .legend { display: flex; gap: 16px; padding-top: 12px; border-top: 1px solid var(--rule-soft); }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-soft); }
+  .legend-dot { width: 8px; height: 2px; border-radius: 1px; }
+
+  /* ========== ABOUT ========== */
+  .about-grid {
+    display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: start;
+  }
+  @media (max-width: 880px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .about-photo {
+    position: relative; aspect-ratio: 3/4; border-radius: var(--radius-lg);
+    overflow: hidden; background: var(--rule-soft);
+    box-shadow: var(--shadow-lg);
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(11, 18, 32, 0.15));
+    pointer-events: none;
+  }
+  .about-photo-tag {
+    position: absolute; bottom: 16px; left: 16px;
+    background: rgba(255, 255, 255, 0.95); padding: 8px 12px;
+    border-radius: 6px; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em; color: var(--accent);
+    text-transform: uppercase; backdrop-filter: blur(8px);
+  }
+
+  .about-heading {
+    font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600;
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px;
+  }
+  .about-heading em { font-style: italic; color: var(--accent); }
+  .about-bio { font-size: 16px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; }
+  .about-bio strong { color: var(--ink); font-weight: 600; }
+
+  .skills-block { margin-top: 32px; }
+  .skills-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
+  }
+  .skills-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .tag {
+    padding: 5px 11px; border-radius: 6px; font-size: 12.5px; font-weight: 500;
+    transition: all 180ms ease; cursor: default;
+  }
+  .tag:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .tag-blue   { background: var(--indigo-pale); color: var(--indigo); }
+  .tag-teal   { background: var(--teal-pale); color: var(--accent-warm); }
+  .tag-amber  { background: var(--amber-pale); color: var(--amber); }
+  .tag-rose   { background: var(--rose-pale); color: var(--rose); }
+  .tag-green  { background: var(--green-pale); color: var(--green); }
+  .tag-grey   { background: #F1F5F9; color: var(--ink-soft); }
+
+  /* ========== WORK ========== */
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .filter-btn {
+    padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    background: var(--card); border: 1px solid var(--rule); color: var(--ink-soft);
+    transition: all 180ms ease;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
+
+  .work-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 980px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr; } }
+
+  .work-card {
+    background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+    overflow: hidden; transition: all 280ms cubic-bezier(.2,.8,.2,1);
+    cursor: pointer; position: relative; display: block;
+  }
+  .work-card:hover {
+    transform: translateY(-4px); border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+  }
+  .work-thumb {
+    aspect-ratio: 16/10; width: 100%; position: relative; overflow: hidden;
+    background: var(--paper);
+  }
+  .work-thumb svg { width: 100%; height: 100%; display: block; transition: transform 600ms ease; }
+  .work-card:hover .work-thumb svg { transform: scale(1.04); }
+  .work-thumb::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(11, 18, 32, 0.06));
+    pointer-events: none;
+  }
+  .work-tag {
+    position: absolute; top: 14px; left: 14px;
+    padding: 4px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.95); color: var(--ink); font-weight: 500;
+    backdrop-filter: blur(6px);
+  }
+
+  .work-body { padding: 22px; }
+  .work-meta {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
+    color: var(--accent); text-transform: uppercase;
+  }
+  .work-year { color: var(--ink-faint); }
+  .work-title {
+    font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; line-height: 1.3;
+    color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .work-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 14px; }
+  .work-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .work-tags .pill {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em;
+    padding: 3px 8px; border-radius: 4px; background: var(--rule-soft); color: var(--ink-soft);
+  }
+
+  .work-arrow {
+    position: absolute; bottom: 22px; right: 22px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent); color: white;
+    display: grid; place-items: center;
+    opacity: 0; transform: translateX(-8px);
+    transition: all 280ms cubic-bezier(.2,.8,.2,1);
+  }
+  .work-card:hover .work-arrow { opacity: 1; transform: translateX(0); }
+
+  /* ========== EXPERIENCE TIMELINE ========== */
+  .timeline { position: relative; padding-left: 0; }
+  .timeline-item {
+    display: grid; grid-template-columns: 200px 1fr; gap: 32px;
+    padding: 28px 0; border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  @media (max-width: 720px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+  }
+  .timeline-meta { padding-top: 4px; }
+  .timeline-period {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .timeline-company {
+    font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; color: var(--ink);
+    line-height: 1.3;
+  }
+  .timeline-card {
+    background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+    padding: 24px 28px; position: relative;
+    transition: all 320ms cubic-bezier(.2,.8,.2,1);
+  }
+  .timeline-card::before {
+    content: ''; position: absolute; left: -8px; top: 32px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--card); border: 2px solid var(--accent);
+    transition: all 320ms cubic-bezier(.2,.8,.2,1);
+  }
+  @media (max-width: 720px) { .timeline-card::before { display: none; } }
+  .timeline-item:hover .timeline-card {
+    transform: translateX(6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  .timeline-item:hover .timeline-card::before {
+    background: var(--accent); transform: scale(1.4);
+  }
+
+  .role-tag {
+    display: inline-block; padding: 4px 10px; border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 500; margin-bottom: 12px;
+  }
+  .role-tag-blue { background: var(--indigo-pale); color: var(--indigo); }
+  .role-tag-teal { background: var(--teal-pale); color: var(--accent-warm); }
+  .role-tag-amber { background: var(--amber-pale); color: var(--amber); }
+
+  .timeline-role {
+    font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; color: var(--ink);
+    margin-bottom: 6px; letter-spacing: -0.01em;
+  }
+  .timeline-product {
+    font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; font-style: italic;
+  }
+  .timeline-points { list-style: none; padding: 0; }
+  .timeline-points li {
+    font-size: 14.5px; color: var(--ink-soft); line-height: 1.65;
+    padding-left: 18px; position: relative; margin-bottom: 8px;
+  }
+  .timeline-points li::before {
+    content: ''; position: absolute; left: 0; top: 10px;
+    width: 6px; height: 1px; background: var(--accent);
+  }
+  .timeline-points li strong { color: var(--ink); font-weight: 600; }
+  .timeline-stack {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px;
+    padding-top: 16px; border-top: 1px solid var(--rule-soft);
+  }
+  .stack-item {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-soft); padding: 3px 8px; border-radius: 4px;
+    background: var(--paper); border: 1px solid var(--rule-soft);
+  }
+  .timeline-metric {
+    display: inline-flex; gap: 24px; margin-top: 16px; padding: 14px 18px;
+    background: var(--paper); border-radius: 8px; border-left: 3px solid var(--accent);
+  }
+  .metric-num {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600;
+    color: var(--accent); letter-spacing: -0.02em; line-height: 1;
+  }
+  .metric-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
+  }
+
+  /* ========== EDUCATION & CERTS ========== */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .edu-grid { grid-template-columns: 1fr; } }
+  .edu-card {
+    background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+    padding: 28px; transition: all 280ms ease; position: relative;
+  }
+  .edu-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .edu-icon {
+    width: 44px; height: 44px; border-radius: 10px; margin-bottom: 18px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--indigo-pale), var(--teal-pale));
+    color: var(--accent);
+  }
+  .edu-school {
+    font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .edu-degree { font-size: 14px; color: var(--ink-soft); margin-bottom: 16px; }
+  .edu-period {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent);
+    letter-spacing: 0.06em; margin-bottom: 14px;
+  }
+  .edu-list { list-style: none; padding: 0; }
+  .edu-list li {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.65;
+    padding-left: 18px; position: relative; margin-bottom: 6px;
+  }
+  .edu-list li::before {
+    content: '◆'; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 8px;
+    line-height: 1.65; transform: translateY(7px);
+  }
+  .edu-list li strong { color: var(--ink); }
+
+  .cert-list { list-style: none; padding: 0; }
+  .cert-item {
+    padding: 14px 0; border-bottom: 1px solid var(--rule-soft);
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-name {
+    font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600;
+    line-height: 1.4; margin-bottom: 4px;
+  }
+  .cert-name a { color: var(--ink); transition: color 180ms ease; }
+  .cert-name a:hover { color: var(--accent); }
+  .cert-name a::after { content: ' ↗'; font-size: 12px; color: var(--accent); }
+  .cert-issuer { font-size: 13px; color: var(--ink-soft); }
+  .cert-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-faint); white-space: nowrap; padding-top: 4px;
+  }
+
+  /* ========== BLOG ========== */
+  .blog-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .blog-grid { grid-template-columns: 1fr; } }
+  .blog-card {
+    background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+    overflow: hidden; transition: all 280ms cubic-bezier(.2,.8,.2,1);
+    display: block;
+  }
+  .blog-card:hover {
+    transform: translateY(-4px); border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+  }
+  .blog-thumb {
+    aspect-ratio: 16/10; width: 100%; overflow: hidden;
+    background: linear-gradient(135deg, var(--indigo-pale), var(--teal-pale));
+    position: relative;
+  }
+  .blog-thumb svg { width: 100%; height: 100%; display: block; transition: transform 600ms ease; }
+  .blog-card:hover .blog-thumb svg { transform: scale(1.05); }
+
+  .blog-body { padding: 22px 22px 26px; }
+  .blog-cat {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .blog-title {
+    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; line-height: 1.35;
+    color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em;
+  }
+  .blog-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 14px; }
+  .blog-meta {
+    display: flex; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-heading {
+    font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 52px);
+    font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px;
+  }
+  .contact-heading em { font-style: italic; color: var(--accent); }
+  .contact-desc { font-size: 16px; color: var(--ink-soft); max-width: 480px; margin-bottom: 40px; }
+
+  .contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 720px; }
+  @media (max-width: 640px) { .contact-cards { grid-template-columns: 1fr; } }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius);
+    padding: 22px 24px; transition: all 220ms ease; display: block;
+  }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .contact-card-head { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+  .contact-card-icon {
+    width: 36px; height: 36px; border-radius: 8px; background: var(--indigo-pale);
+    color: var(--accent); display: grid; place-items: center;
+  }
+  .contact-card-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+    color: var(--ink-soft); text-transform: uppercase;
+  }
+  .contact-card-value { font-size: 15px; color: var(--ink); font-weight: 500; word-break: break-all; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    border-top: 1px solid var(--rule); padding: 32px 0; background: var(--paper-warm);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-soft);
+  }
+
+  /* fade-in */
+  .fade-up {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 700ms cubic-bezier(.2,.8,.2,1), transform 700ms cubic-bezier(.2,.8,.2,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect, useRef, useMemo } = React;
+
+/* ---------------- DATA ---------------- */
+
+const WORK_PROJECTS = [
+  {
+    id: 'game-metrics',
+    cat: 'Framework',
+    catColor: 'amber',
+    year: '2026',
+    company: 'Mobile Gaming Studio',
+    title: 'Game Metrics Framework',
+    desc: 'A comprehensive guide on F2P mobile game KPIs — from DAU and session quality to LTV, eCPM, and ROAS.',
+    tags: ['Domain', 'Writing', 'Frameworks'],
+    href: 'projects/game-metrics-framework.html',
+    thumb: 'metrics',
+  },
+  {
+    id: 'engagement-drop',
+    cat: 'Mobile Game',
+    catColor: 'indigo',
+    year: '2025',
+    company: 'Mobile Gaming Studio',
+    title: 'Why Engagement Drops at Specific Levels',
+    desc: 'Diagnostic funnel analysis on a match-3 puzzle game — finding the level-design culprits behind a sudden retention cliff.',
+    tags: ['Diagnostic', 'Funnel', 'SQL'],
+    href: 'projects/engagement-drop-analysis.html',
+    thumb: 'funnel',
+  },
+  {
+    id: 'ad-quality',
+    cat: 'Mobile Game',
+    catColor: 'indigo',
+    year: '2026',
+    company: 'Mobile Gaming Studio',
+    title: 'Ad Quality Monitoring System',
+    desc: 'Designed a system to detect and block toxic advertisers at scale — protecting user experience and retention.',
+    tags: ['System Design', 'Monitoring', 'SQL'],
+    href: 'projects/ad-quality-monitoring.html',
+    thumb: 'shield',
+  },
+  {
+    id: 'max-force-ad',
+    cat: 'Mobile Game',
+    catColor: 'indigo',
+    year: '2026',
+    company: 'Mobile Gaming Studio',
+    title: 'Choosing the Optimal Daily Force-Ad Cap',
+    desc: 'Two methodologies — a percentile-based approach and an LTV-curve approach — to balance revenue vs retention.',
+    tags: ['Optimization', 'Statistics', 'Monetization'],
+    href: 'projects/max-force-ad-daily.html',
+    thumb: 'capping',
+  },
+  {
+    id: 'cohort',
+    cat: 'Mobile Game',
+    catColor: 'indigo',
+    year: '2026',
+    company: 'Mobile Gaming Studio',
+    title: 'User Cohort Profiling',
+    desc: 'Behavioral segmentation that distinguishes loyal whales, churning casuals, and dormant returnees.',
+    tags: ['Segmentation', 'Cohort', 'Tableau'],
+    href: 'projects/user-cohort-profiling.html',
+    thumb: 'cohort',
+  },
+  {
+    id: 'iap-localization',
+    cat: 'Mobile Game',
+    catColor: 'indigo',
+    year: '2026',
+    company: 'Mobile Gaming Studio',
+    title: 'IAP Price Localization',
+    desc: 'Region-aware IAP pricing strategy combining purchasing power parity, competitor benchmarks, and historical conversion.',
+    tags: ['Pricing', 'PPP', 'Strategy'],
+    href: 'projects/iap-price-localization.html',
+    thumb: 'pricing',
+  },
+  {
+    id: 'hr-bi',
+    cat: 'BI Dashboard',
+    catColor: 'teal',
+    year: '2025',
+    company: 'KPIM (Microsoft Partner)',
+    title: 'HR Power BI Dashboard',
+    desc: 'End-to-end Power BI workforce dashboard with headcount, turnover, internal mobility, and predictive attrition signals.',
+    tags: ['Power BI', 'DAX', 'HR Analytics'],
+    href: 'projects/hr-power-bi-dashboard.html',
+    thumb: 'hrdash',
+  },
+  {
+    id: 'supermarket',
+    cat: 'EDA',
+    catColor: 'green',
+    year: '2024',
+    company: 'Academic Project',
+    title: 'Customer Behavior at Supermarket',
+    desc: 'Sensor data → store layout optimization. Heatmaps, conversion funnels at the shelf level, and demographic segmentation.',
+    tags: ['EDA', 'Funnel', 'Power BI'],
+    href: 'projects/customer-behavior-supermarket.html',
+    thumb: 'heatmap',
+  },
+  {
+    id: 'suicide',
+    cat: 'EDA',
+    catColor: 'green',
+    year: '2024',
+    company: 'Academic Project',
+    title: 'Suicide Rates of Countries',
+    desc: '35+ years × 100 countries × K-Means clustering. Cultural dimensions and economic conditions vs national mental health.',
+    tags: ['Python', 'ML', 'K-Means'],
+    href: 'projects/suicide-rates-analysis.html',
+    thumb: 'globe',
+  },
+];
+
+const FILTERS = ['All', 'Mobile Game', 'BI Dashboard', 'EDA', 'Framework'];
+
+const EXPERIENCE = [
+  {
+    period: '09/2025 — Present',
+    company: 'Mobile Gaming Studio',
+    location: 'Vietnam',
+    roleTagColor: 'blue',
+    roleTag: 'Game Data Analyst',
+    title: 'Game Data Analyst',
+    product: 'Multiple live mobile titles · F2P puzzle & idle genres',
+    points: [
+      <><strong>End-to-end data flow</strong> from Firebase, Adjust, mediation platforms, and Play Store — including ETL maintenance, ETL job design, and Tableau-ready custom SQL.</>,
+      <>Drive the analytics pipeline: <strong>Descriptive → Diagnostic → Prescriptive</strong>, with ad-hoc deep dives for Project Owners and Game Designers.</>,
+      <><strong>Event tracking and ETL setup</strong> for new game launches, scaffolded from existing game templates.</>,
+      <>Weekly KPI monitoring with anomaly reporting across all live titles.</>,
+    ],
+    stack: ['Tableau', 'SQL', 'Firebase', 'Adjust', 'ETL', 'Python', 'A/B Testing'],
+    metric: { num: '10+', label: 'Analyses shipped' },
+  },
+  {
+    period: '03/2025 — 06/2025',
+    company: 'KPIM (Microsoft Partner)',
+    location: 'Hanoi',
+    roleTagColor: 'teal',
+    roleTag: 'BI Intern',
+    title: 'Business Intelligence Intern',
+    product: 'HR Analytics & enterprise reporting',
+    points: [
+      <>Built and shipped an <strong>end-to-end HRM Power BI dashboard</strong> covering headcount, turnover, tenure, and attrition signals.</>,
+      <>Executed data pipeline tasks for a major reporting project for <strong>PetroVietnam Insurance (PVI)</strong>.</>,
+      <>Authored 3 technical blog posts on Power BI best practices for the company knowledge base.</>,
+      <>Served as <strong>Teaching Assistant</strong> for an internal Power BI course (30+ learners).</>,
+    ],
+    stack: ['Power BI', 'DAX', 'Power Query', 'Excel'],
+    metric: { num: '~10h/mo', label: 'Manual reporting saved' },
+  },
+  {
+    period: '11/2024 — 02/2025',
+    company: 'VNPT IT (VNPT AI)',
+    location: 'Hanoi',
+    roleTagColor: 'amber',
+    roleTag: 'DA Intern',
+    title: 'Data Analyst Intern',
+    product: 'Recommendation system for the National Public Service Portal',
+    points: [
+      <>Lead the data analysis phase of an innovation project building a <strong>recommendation engine</strong> for public services.</>,
+      <>Conducted user surveys and EDA to validate problem statements and project feasibility.</>,
+      <>Trained and evaluated <strong>KNN, LightFM, and K-Means</strong> models in Python.</>,
+    ],
+    stack: ['Python', 'KNN', 'LightFM', 'K-Means', 'EDA'],
+    metric: { num: '90% / 40%', label: 'Accuracy: returning / new users' },
+  },
+];
+
+const CERTS = [
+  {
+    name: 'Effective Data Reporting and Visualization Certification',
+    issuer: 'NEU × VNPT AI',
+    date: 'Nov 2024',
+    href: 'https://vnptai.io/certificates/2024FDA8642183725',
+  },
+  {
+    name: 'IELTS — Academic',
+    issuer: 'British Council',
+    date: '2024',
+    score: '6.5',
+  },
+  {
+    name: 'International Computer Drivers License (ICDL)',
+    issuer: '5 modules · Score 1720',
+    date: 'Aug 2023',
+  },
+];
+
+const BLOG_POSTS = [
+  {
+    cat: 'Power BI',
+    title: 'Handling Date Format Issues in Power Query',
+    desc: 'A practical playbook for the messy date formats — locale traps, ambiguous M/D/Y, and the column-by-example shortcut.',
+    readTime: '6 min',
+    date: '2025',
+    href: 'https://compaclass.com/blog/p/xu-ly-loi-inh-dang-ngay-thang-trong-power-query-CwrMr',
+    thumb: 'date',
+  },
+  {
+    cat: 'Power BI',
+    title: 'Designing Visually Appealing Org Charts in Power BI',
+    desc: 'Using HTML content visuals to escape the matrix-table look and make organizational data feel alive.',
+    readTime: '7 min',
+    date: '2025',
+    href: 'https://compaclass.com/blog/p/tao-so-o-co-cau-to-chuc-ep-mat-trong-power-bi-voi-html-content-Trrfo',
+    thumb: 'orgchart',
+  },
+  {
+    cat: 'Visualization',
+    title: 'Employee Work History with Gantt Charts in Power BI',
+    desc: 'How to build a clean, scannable career-history Gantt that HR and managers actually want to look at.',
+    readTime: '5 min',
+    date: '2025',
+    href: 'https://compaclass.com/blog/p/truc-quan-hoa-lich-su-cong-tac-cua-nhan-vien-bang-bieu-o-gantt-trong-power-bi-gKyVi',
+    thumb: 'gantt',
+  },
+];
+
+/* ---------------- DASHBOARD WIDGET ---------------- */
+function DashboardWidget() {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick(t => t + 1), 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  const data = useMemo(() => {
+    // generate slightly varying realistic-looking DAU data
+    const seed = tick;
+    const days = 30;
+    const points = [];
+    for (let i = 0; i < days; i++) {
+      const base = 4200 + Math.sin(i / 4) * 380 + i * 22;
+      const noise = Math.sin(i * 1.3 + seed * 0.7) * 110 + Math.cos(i * 0.8 + seed) * 80;
+      points.push({ x: i, dau: Math.round(base + noise), retention: 38 + Math.sin(i / 5) * 4 + Math.cos(i + seed) * 1.5 });
+    }
+    return points;
+  }, [tick]);
+
+  const W = 460, H = 130, P = { l: 4, r: 4, t: 8, b: 18 };
+  const xs = data.map(d => d.x);
+  const ys = data.map(d => d.dau);
+  const yMax = Math.max(...ys) * 1.1;
+  const yMin = Math.min(...ys) * 0.9;
+  const sx = i => P.l + (i / (data.length - 1)) * (W - P.l - P.r);
+  const sy = v => P.t + (1 - (v - yMin) / (yMax - yMin)) * (H - P.t - P.b);
+
+  const areaPath = data.map((d, i) => (i === 0 ? `M ${sx(i)},${sy(d.dau)}` : `L ${sx(i)},${sy(d.dau)}`)).join(' ') +
+    ` L ${sx(data.length - 1)},${H - P.b} L ${sx(0)},${H - P.b} Z`;
+  const linePath = data.map((d, i) => (i === 0 ? `M ${sx(i)},${sy(d.dau)}` : `L ${sx(i)},${sy(d.dau)}`)).join(' ');
+
+  const lastDau = data[data.length - 1].dau;
+  const prevDau = data[data.length - 8].dau;
+  const dauDelta = (((lastDau - prevDau) / prevDau) * 100).toFixed(1);
+
+  return (
+    <div className="dashboard">
+      <div className="dash-head">
+        <div className="dash-title">
+          <span className="dash-title-dot"></span>
+          Live Game · 30D Performance
+        </div>
+        <div className="dash-meta">v 2.4 · auto-refresh</div>
+      </div>
+
+      <div className="kpi-row">
+        <div className="kpi">
+          <div className="kpi-label">DAU</div>
+          <div className="kpi-value mono">{lastDau.toLocaleString()}</div>
+          <div className={`kpi-delta ${dauDelta >= 0 ? 'up' : 'down'}`}>
+            {dauDelta >= 0 ? '▲' : '▼'} {Math.abs(dauDelta)}% w/w
+          </div>
+        </div>
+        <div className="kpi">
+          <div className="kpi-label">D1 Retention</div>
+          <div className="kpi-value mono">42.3%</div>
+          <div className="kpi-delta up">▲ 1.8 pp</div>
+        </div>
+        <div className="kpi">
+          <div className="kpi-label">ARPDAU</div>
+          <div className="kpi-value mono">$0.184</div>
+          <div className="kpi-delta up">▲ 3.2%</div>
+        </div>
+      </div>
+
+      <div className="chart-area">
+        <svg className="chart-svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.32" />
+              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#1E40AF" />
+              <stop offset="100%" stopColor="#0E7490" />
+            </linearGradient>
+          </defs>
+          <g className="chart-grid">
+            {[0.25, 0.5, 0.75].map((p, i) => (
+              <line key={i} x1={P.l} x2={W - P.r} y1={P.t + p * (H - P.t - P.b)} y2={P.t + p * (H - P.t - P.b)} />
+            ))}
+          </g>
+          <path d={areaPath} fill="url(#areaGrad)" />
+          <path d={linePath} fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx={sx(data.length - 1)} cy={sy(lastDau)} r="4" fill="#0E7490" stroke="white" strokeWidth="2" />
+          <g className="chart-axis">
+            <text x={P.l} y={H - 4} textAnchor="start">D-30</text>
+            <text x={(W - P.l - P.r) / 2 + P.l} y={H - 4} textAnchor="middle">D-15</text>
+            <text x={W - P.r} y={H - 4} textAnchor="end">today</text>
+          </g>
+        </svg>
+      </div>
+
+      <div className="legend">
+        <div className="legend-item">
+          <span className="legend-dot" style={{ background: '#1E40AF' }}></span>
+          Daily Active Users
+        </div>
+        <div className="legend-item" style={{ marginLeft: 'auto', fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--ink-faint)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          ※ illustrative data
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------- THUMBNAIL SVGs ---------------- */
+function ThumbSVG({ kind }) {
+  const palettes = {
+    metrics:    { bg: '#FEF3C7', fg: '#D97706', alt: '#F59E0B' },
+    funnel:     { bg: '#E0E7FF', fg: '#4338CA', alt: '#6366F1' },
+    shield:     { bg: '#FCE7F3', fg: '#BE185D', alt: '#EC4899' },
+    capping:    { bg: '#CFFAFE', fg: '#0E7490', alt: '#06B6D4' },
+    cohort:     { bg: '#E0E7FF', fg: '#4338CA', alt: '#7C3AED' },
+    pricing:    { bg: '#D1FAE5', fg: '#047857', alt: '#10B981' },
+    hrdash:     { bg: '#CFFAFE', fg: '#0E7490', alt: '#06B6D4' },
+    heatmap:    { bg: '#D1FAE5', fg: '#047857', alt: '#059669' },
+    globe:      { bg: '#E0E7FF', fg: '#1E40AF', alt: '#3B82F6' },
+    date:       { bg: '#FEF3C7', fg: '#D97706', alt: '#F59E0B' },
+    orgchart:   { bg: '#E0E7FF', fg: '#4338CA', alt: '#6366F1' },
+    gantt:      { bg: '#CFFAFE', fg: '#0E7490', alt: '#14B8A6' },
+  };
+  const p = palettes[kind] || palettes.metrics;
+
+  if (kind === 'metrics') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      {/* metric tree visualization */}
+      <g stroke={p.fg} strokeWidth="1.5" fill="none" opacity="0.4">
+        <path d="M160,40 L80,90 M160,40 L240,90 M80,90 L40,140 M80,90 L120,140 M240,90 L200,140 M240,90 L280,140" />
+      </g>
+      <circle cx="160" cy="40" r="22" fill={p.fg} />
+      <text x="160" y="46" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11" fontWeight="600">ROAS</text>
+      {[{x:80,y:90,t:'LTV'}, {x:240,y:90,t:'CPI'}, {x:40,y:140,t:'DAU'}, {x:120,y:140,t:'ARPU'}, {x:200,y:140,t:'CTR'}, {x:280,y:140,t:'INST'}].map((n,i)=> (
+        <g key={i}>
+          <circle cx={n.x} cy={n.y} r="16" fill={p.alt} opacity="0.85" />
+          <text x={n.x} y={n.y+4} textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="9">{n.t}</text>
+        </g>
+      ))}
+    </svg>
+  );
+
+  if (kind === 'funnel') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g>
+        {[
+          {y:30, w:280, label:'Install', val:'100%'},
+          {y:62, w:220, label:'D1 Open', val:'72%'},
+          {y:94, w:160, label:'Lvl 5', val:'48%'},
+          {y:126, w:90,  label:'Lvl 26', val:'18%'},
+          {y:158, w:50,  label:'Lvl 50', val:'7%'},
+        ].map((b,i)=>(
+          <g key={i}>
+            <rect x={(320-b.w)/2} y={b.y} width={b.w} height="22" rx="4" fill={p.fg} opacity={1 - i*0.15} />
+            <text x="160" y={b.y+15} textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11" fontWeight="500">{b.label} · {b.val}</text>
+          </g>
+        ))}
+      </g>
+    </svg>
+  );
+
+  if (kind === 'shield') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g transform="translate(110, 30)">
+        <path d="M50,0 L100,18 L100,75 Q100,118 50,140 Q0,118 0,75 L0,18 Z" fill={p.fg} opacity="0.92"/>
+        <path d="M28,68 L42,82 L70,52" stroke="white" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+      {/* alert rows */}
+      <g transform="translate(20, 165)" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>
+        <rect x="0" y="0" width="280" height="6" rx="2" fill={p.alt} opacity="0.4"/>
+        <rect x="0" y="10" width="200" height="6" rx="2" fill={p.alt} opacity="0.6"/>
+        <rect x="0" y="20" width="120" height="6" rx="2" fill={p.alt} opacity="0.8"/>
+      </g>
+    </svg>
+  );
+
+  if (kind === 'capping') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g>
+        {/* histogram bars */}
+        {[16,28,38,52,68,82,90,82,68,50,38,24,16,10,6].map((h,i)=>(
+          <rect key={i} x={20 + i*18} y={170 - h} width="14" height={h} rx="2" fill={p.alt} opacity="0.7"/>
+        ))}
+        {/* threshold line */}
+        <line x1="20" x2="290" y1="100" y2="100" stroke={p.fg} strokeWidth="2" strokeDasharray="6 4"/>
+        <text x="295" y="103" fill={p.fg} fontFamily="JetBrains Mono" fontSize="10" textAnchor="end" dx="-4">P75</text>
+        {/* curve */}
+        <path d="M20,170 Q160,40 290,80" stroke={p.fg} strokeWidth="2" fill="none"/>
+      </g>
+    </svg>
+  );
+
+  if (kind === 'cohort') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      {/* cohort heatmap */}
+      <g transform="translate(40, 30)">
+        {Array.from({length:8}).map((_,r)=>
+          Array.from({length:10}).map((_,c)=> {
+            const v = Math.max(0, 0.85 - r*0.08 - c*0.04 - Math.random()*0.05);
+            return <rect key={`${r}-${c}`} x={c*24} y={r*16} width="22" height="14" rx="2" fill={p.fg} opacity={v}/>;
+          })
+        )}
+      </g>
+      <text x="40" y="20" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>D0  D1  D3  D7  D14  D30  D60  D90  D120  D180</text>
+    </svg>
+  );
+
+  if (kind === 'pricing') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      {/* world map abstract */}
+      <g fill={p.fg} opacity="0.8">
+        <circle cx="60" cy="80" r="22"/>
+        <text x="60" y="84" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11">$0.99</text>
+        <circle cx="160" cy="60" r="26"/>
+        <text x="160" y="64" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="12">$4.99</text>
+        <circle cx="260" cy="100" r="20"/>
+        <text x="260" y="104" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="10">$1.99</text>
+        <circle cx="100" cy="150" r="18"/>
+        <text x="100" y="153" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="10">$2.49</text>
+        <circle cx="220" cy="155" r="22"/>
+        <text x="220" y="159" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11">$3.49</text>
+      </g>
+      <g stroke={p.alt} strokeWidth="1" opacity="0.4" fill="none">
+        <path d="M60,80 Q110,40 160,60"/>
+        <path d="M160,60 Q210,80 260,100"/>
+        <path d="M100,150 Q160,170 220,155"/>
+      </g>
+    </svg>
+  );
+
+  if (kind === 'hrdash') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      {/* dashboard tiles */}
+      <g>
+        <rect x="20" y="20" width="84" height="50" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
+        <text x="32" y="42" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} opacity="0.7">HEADCOUNT</text>
+        <text x="32" y="62" fontFamily="Fraunces" fontSize="18" fontWeight="600" fill={p.fg}>1,247</text>
+
+        <rect x="116" y="20" width="84" height="50" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
+        <text x="128" y="42" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} opacity="0.7">ATTRITION</text>
+        <text x="128" y="62" fontFamily="Fraunces" fontSize="18" fontWeight="600" fill={p.fg}>12.4%</text>
+
+        <rect x="212" y="20" width="84" height="50" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
+        <text x="224" y="42" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} opacity="0.7">TENURE</text>
+        <text x="224" y="62" fontFamily="Fraunces" fontSize="18" fontWeight="600" fill={p.fg}>3.7y</text>
+
+        {/* chart panel */}
+        <rect x="20" y="84" width="280" height="96" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
+        <polyline points="32,160 60,140 90,148 118,120 148,128 178,108 208,118 238,98 268,110 290,90"
+          fill="none" stroke={p.alt} strokeWidth="2"/>
+        <polyline points="32,170 60,160 90,164 118,150 148,156 178,144 208,150 238,138 268,144 290,132"
+          fill="none" stroke={p.fg} strokeWidth="2" strokeDasharray="3 3"/>
+      </g>
+    </svg>
+  );
+
+  if (kind === 'heatmap') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      {/* store heatmap grid */}
+      <g transform="translate(20, 20)">
+        {Array.from({length:6}).map((_,r)=>
+          Array.from({length:10}).map((_,c)=>{
+            const v = Math.random() * 0.85 + 0.1;
+            return <rect key={`${r}-${c}`} x={c*28} y={r*26} width="26" height="24" rx="3" fill={p.fg} opacity={v}/>
+          })
+        )}
+      </g>
+      <text x="20" y="190" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>store traffic heatmap · cold ←————→ hot</text>
+    </svg>
+  );
+
+  if (kind === 'globe') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g transform="translate(160, 100)">
+        <circle r="70" fill="none" stroke={p.fg} strokeWidth="1.5" opacity="0.5"/>
+        <ellipse rx="70" ry="20" fill="none" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
+        <ellipse rx="70" ry="40" fill="none" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
+        <line x1="-70" y1="0" x2="70" y2="0" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
+        <ellipse rx="20" ry="70" fill="none" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
+        <ellipse rx="40" ry="70" fill="none" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
+        {/* clusters */}
+        <circle cx="-30" cy="-20" r="6" fill={p.alt}/>
+        <circle cx="20" cy="-30" r="9" fill={p.fg}/>
+        <circle cx="40" cy="15" r="5" fill={p.alt}/>
+        <circle cx="-15" cy="35" r="7" fill={p.fg}/>
+        <circle cx="-50" cy="10" r="4" fill={p.alt}/>
+      </g>
+    </svg>
+  );
+
+  if (kind === 'date') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g transform="translate(50, 40)">
+        <rect width="100" height="120" rx="8" fill="white" stroke={p.fg} strokeWidth="1.5"/>
+        <rect width="100" height="24" rx="8" fill={p.fg}/>
+        <text x="50" y="16" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="10">MM/DD/YYYY</text>
+        <text x="50" y="78" textAnchor="middle" fill={p.fg} fontFamily="Fraunces" fontSize="32" fontWeight="600">12</text>
+      </g>
+      <g transform="translate(170, 40)">
+        <rect width="100" height="120" rx="8" fill="white" stroke={p.alt} strokeWidth="1.5"/>
+        <rect width="100" height="24" rx="8" fill={p.alt}/>
+        <text x="50" y="16" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="10">DD/MM/YYYY</text>
+        <text x="50" y="78" textAnchor="middle" fill={p.alt} fontFamily="Fraunces" fontSize="32" fontWeight="600">12</text>
+      </g>
+      <text x="160" y="180" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="10" fill={p.fg}>same number, different meaning</text>
+    </svg>
+  );
+
+  if (kind === 'orgchart') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g stroke={p.fg} strokeWidth="1.5" fill="none" opacity="0.4">
+        <line x1="160" y1="50" x2="80" y2="100"/>
+        <line x1="160" y1="50" x2="160" y2="100"/>
+        <line x1="160" y1="50" x2="240" y2="100"/>
+        <line x1="80" y1="120" x2="50" y2="160"/>
+        <line x1="80" y1="120" x2="110" y2="160"/>
+        <line x1="240" y1="120" x2="210" y2="160"/>
+        <line x1="240" y1="120" x2="270" y2="160"/>
+      </g>
+      <g>
+        <rect x="130" y="35" width="60" height="22" rx="4" fill={p.fg}/>
+        <rect x="50" y="100" width="60" height="22" rx="4" fill={p.alt}/>
+        <rect x="130" y="100" width="60" height="22" rx="4" fill={p.alt}/>
+        <rect x="210" y="100" width="60" height="22" rx="4" fill={p.alt}/>
+        <rect x="20" y="156" width="60" height="22" rx="4" fill={p.fg} opacity="0.7"/>
+        <rect x="80" y="156" width="60" height="22" rx="4" fill={p.fg} opacity="0.7"/>
+        <rect x="180" y="156" width="60" height="22" rx="4" fill={p.fg} opacity="0.7"/>
+        <rect x="240" y="156" width="60" height="22" rx="4" fill={p.fg} opacity="0.7"/>
+      </g>
+    </svg>
+  );
+
+  if (kind === 'gantt') return (
+    <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="200" fill={p.bg} />
+      <g transform="translate(20, 30)">
+        {[
+          {y:0, x:0, w:120, l:'A'},
+          {y:24, x:60, w:100, l:'B'},
+          {y:48, x:30, w:180, l:'C'},
+          {y:72, x:140, w:140, l:'D'},
+          {y:96, x:90, w:80, l:'E'},
+          {y:120, x:180, w:100, l:'F'},
+        ].map((bar,i)=>(
+          <g key={i}>
+            <rect x={bar.x} y={bar.y} width={bar.w} height="16" rx="3" fill={i%2?p.alt:p.fg}/>
+            <text x={bar.x+bar.w+6} y={bar.y+12} fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>{bar.l}</text>
+          </g>
+        ))}
+      </g>
+    </svg>
+  );
+
+  return <svg viewBox="0 0 320 200"><rect width="320" height="200" fill={p.bg}/></svg>;
+}
+
+/* ---------------- COMPONENTS ---------------- */
+function Nav() {
+  return (
+    <nav className="nav">
+      <div className="nav-inner">
+        <a href="#" className="nav-logo">Hang N<span>.</span></a>
+        <div className="nav-links">
+          <a href="#about" className="nav-link">About</a>
+          <a href="#work" className="nav-link">Work</a>
+          <a href="#experience" className="nav-link">Experience</a>
+          <a href="#education" className="nav-link">Education</a>
+          <a href="#blog" className="nav-link">Blog</a>
+          <a href="#contact" className="nav-link">Contact</a>
+        </div>
+        <div className="nav-actions">
+          <a href="https://www.linkedin.com/in/nguyen-ngoc-thanh-hang" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="mailto:hangvt2003@gmail.com" className="icon-btn" aria-label="Email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+          <a href="assets/cv/Hang_Nguyen_DA_CV.pdf" target="_blank" className="resume-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Resume
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <header className="hero">
+      <div className="hero-bg-grid" aria-hidden="true"></div>
+      <div className="container hero-grid">
+        <div>
+          <div className="hero-tag">Data Analyst · Mobile Gaming · BI</div>
+          <h1 className="hero-title">
+            I turn data into<br/><em>decisions people trust.</em>
+          </h1>
+          <p className="hero-desc">
+            Bachelor of Business Analytics from National Economics University (GPA 3.87/4.0) and now a Game Data Analyst supporting live mobile titles. I work the full descriptive → diagnostic → prescriptive stack — from ETL pipelines to A/B tests to the one-page memo a Project Owner actually reads.
+          </p>
+          <div className="hero-ctas">
+            <a href="#work" className="btn-primary">
+              View My Work
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="assets/cv/Hang_Nguyen_DA_CV.pdf" target="_blank" className="btn-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download CV
+            </a>
+          </div>
+          <div className="hero-stats">
+            <div>
+              <div className="stat-num">3.87<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>/4.0</span></div>
+              <div className="stat-label">GPA · Honors</div>
+            </div>
+            <div>
+              <div className="stat-num">1<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>+ yr</span></div>
+              <div className="stat-label">Industry experience</div>
+            </div>
+            <div>
+              <div className="stat-num">3<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>+</span></div>
+              <div className="stat-label">Domains shipped</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <DashboardWidget />
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function About() {
+  return (
+    <section id="about">
+      <div className="container">
+        <div className="section-head">
+          <span className="section-num">01</span>
+          <h2 className="section-title">About <em>Me</em></h2>
+          <span className="section-rule"></span>
+        </div>
+        <div className="about-grid">
+          <div className="about-photo">
+            <img src="assets/img/profile.jpg" alt="Hang Nguyen" onError={(e)=>{e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg, var(--indigo-pale), var(--teal-pale))';}}/>
+            <div className="about-photo-tag">NEU '25 · Honors</div>
+          </div>
+          <div>
+            <h3 className="about-heading">
+              Every dataset holds a <em>story</em> waiting to be told. I make sure stakeholders actually hear it.
+            </h3>
+            <p className="about-bio">
+              My career began at the intersection of curiosity and rigor — a Business Analytics degree where I learned that <strong>numbers without narrative don't move decisions</strong>. From there, internships at <strong>VNPT IT</strong> (recommendation systems for public services) and <strong>KPIM</strong> (HR dashboards for a Microsoft Partner) sharpened my full BI/ML stack — Python, SQL, Power BI, Tableau, and the patience to clean data nobody wants to clean.
+            </p>
+            <p className="about-bio">
+              Today, as a <strong>Game Data Analyst</strong> on multiple live mobile titles, I work the messy, decision-driving end of analytics: ETL maintenance from Firebase and ad-mediation platforms, custom-SQL dashboards for Project Owners, and ad-hoc diagnostic deep-dives whenever a metric moves. I believe great analysis isn't just numbers — it's <strong>a hypothesis tested against behavior</strong>, then explained in language a non-technical stakeholder can act on.
+            </p>
+
+            <div className="skills-block">
+              <div className="skills-label">Core Skills</div>
+              <div className="skills-tags">
+                <span className="tag tag-blue">EDA</span>
+                <span className="tag tag-blue">Diagnostic Analytics</span>
+                <span className="tag tag-blue">Cohort Analysis</span>
+                <span className="tag tag-blue">Funnel Analysis</span>
+                <span className="tag tag-teal">A/B Testing</span>
+                <span className="tag tag-teal">ETL Pipelines</span>
+                <span className="tag tag-teal">Event Tracking</span>
+                <span className="tag tag-amber">Storytelling with Data</span>
+                <span className="tag tag-amber">Stakeholder Reporting</span>
+                <span className="tag tag-rose">Statistics</span>
+                <span className="tag tag-rose">ML (KNN, K-Means, LightFM)</span>
+              </div>
+
+              <div className="skills-label">Tools</div>
+              <div className="skills-tags">
+                <span className="tag tag-grey">Tableau</span>
+                <span className="tag tag-grey">Power BI</span>
+                <span className="tag tag-grey">DAX</span>
+                <span className="tag tag-grey">Python</span>
+                <span className="tag tag-grey">SQL</span>
+                <span className="tag tag-grey">Firebase</span>
+                <span className="tag tag-grey">Google Colab</span>
+                <span className="tag tag-grey">Excel</span>
+              </div>
+
+              <div className="skills-label">Domains</div>
+              <div className="skills-tags">
+                <span className="tag tag-green">Mobile Gaming (F2P)</span>
+                <span className="tag tag-green">HR Analytics</span>
+                <span className="tag tag-green">Retail Behavioral</span>
+                <span className="tag tag-green">Public Service</span>
+              </div>
+
+              <div className="skills-label">Soft Skills</div>
+              <div className="skills-tags">
+                <span className="tag tag-blue">AI-augmented productivity</span>
+                <span className="tag tag-blue">Cross-functional collaboration</span>
+                <span className="tag tag-blue">Stakeholder communication</span>
+                <span className="tag tag-blue">English (IELTS 6.5)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Work() {
+  const [filter, setFilter] = useState('All');
+  const filtered = filter === 'All' ? WORK_PROJECTS : WORK_PROJECTS.filter(p => p.cat === filter);
+  return (
+    <section id="work">
+      <div className="container">
+        <div className="section-head">
+          <span className="section-num">02</span>
+          <h2 className="section-title">Selected <em>Work</em></h2>
+          <span className="section-rule"></span>
+        </div>
+        <div className="filter-bar">
+          {FILTERS.map(f => (
+            <button key={f}
+              className={`filter-btn ${filter === f ? 'active' : ''}`}
+              onClick={() => setFilter(f)}>
+              {f}
+            </button>
+          ))}
+        </div>
+        <div className="work-grid">
+          {filtered.map(p => (
+            <a key={p.id} href={p.href} className="work-card">
+              <div className="work-thumb">
+                <ThumbSVG kind={p.thumb} />
+                <span className="work-tag">{p.cat}</span>
+              </div>
+              <div className="work-body">
+                <div className="work-meta">
+                  <span>{p.company}</span>
+                  <span className="work-year">{p.year}</span>
+                </div>
+                <h3 className="work-title">{p.title}</h3>
+                <p className="work-desc">{p.desc}</p>
+                <div className="work-tags">
+                  {p.tags.map(t => <span key={t} className="pill">{t}</span>)}
+                </div>
+              </div>
+              <div className="work-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section id="experience">
+      <div className="container">
+        <div className="section-head">
+          <span className="section-num">03</span>
+          <h2 className="section-title">Experience <em>Timeline</em></h2>
+          <span className="section-rule"></span>
+        </div>
+        <div className="timeline">
+          {EXPERIENCE.map((e, i) => (
+            <div key={i} className="timeline-item">
+              <div className="timeline-meta">
+                <div className="timeline-period">{e.period}</div>
+                <div className="timeline-company">{e.company}</div>
+                <div style={{fontSize:'12px', color:'var(--ink-faint)', marginTop:4, fontFamily:'JetBrains Mono, monospace', letterSpacing:'0.04em'}}>{e.location}</div>
+              </div>
+              <div className="timeline-card">
+                <span className={`role-tag role-tag-${e.roleTagColor}`}>{e.roleTag}</span>
+                <div className="timeline-role">{e.title}</div>
+                <div className="timeline-product">{e.product}</div>
+                <ul className="timeline-points">
+                  {e.points.map((pt, j) => <li key={j}>{pt}</li>)}
+                </ul>
+                <div className="timeline-stack">
+                  {e.stack.map(s => <span key={s} className="stack-item">{s}</span>)}
+                </div>
+                {e.metric && (
+                  <div className="timeline-metric">
+                    <div>
+                      <div className="metric-num">{e.metric.num}</div>
+                      <div className="metric-label">{e.metric.label}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Education() {
+  return (
+    <section id="education">
+      <div className="container">
+        <div className="section-head">
+          <span className="section-num">04</span>
+          <h2 className="section-title">Education <em>& Certifications</em></h2>
+          <span className="section-rule"></span>
+        </div>
+        <div className="edu-grid">
+          <div className="edu-card">
+            <div className="edu-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div className="edu-period">2021 — 2025</div>
+            <div className="edu-school">National Economics University (NEU)</div>
+            <div className="edu-degree">Bachelor of Business Analytics</div>
+            <ul className="edu-list">
+              <li><strong>GPA: 3.87 / 4.0</strong> (Honors)</li>
+              <li>4× Merit-based scholarships for outstanding academic performance</li>
+              <li>Coursework: Statistics, Econometrics, Data Mining, Predictive Analytics</li>
+            </ul>
+          </div>
+          <div className="edu-card">
+            <div className="edu-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg>
+            </div>
+            <div className="edu-period">Certifications</div>
+            <ul className="cert-list">
+              {CERTS.map((c, i) => (
+                <li key={i} className="cert-item">
+                  <div>
+                    <div className="cert-name">
+                      {c.href ? <a href={c.href} target="_blank" rel="noopener noreferrer">{c.name}</a> : c.name}
+                    </div>
+                    <div className="cert-issuer">
+                      {c.issuer}
+                      {c.score && <span style={{color:'var(--accent)', marginLeft:8, fontWeight:600}}>· {c.score}</span>}
+                    </div>
+                  </div>
+                  <div className="cert-date">{c.date}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Blog() {
+  return (
+    <section id="blog">
+      <div className="container">
+        <div className="section-head">
+          <span className="section-num">05</span>
+          <h2 className="section-title">From the <em>Blog</em></h2>
+          <span className="section-rule"></span>
+        </div>
+        <div className="blog-grid">
+          {BLOG_POSTS.map((b, i) => (
+            <a key={i} href={b.href} target="_blank" rel="noopener noreferrer" className="blog-card">
+              <div className="blog-thumb">
+                <ThumbSVG kind={b.thumb} />
+              </div>
+              <div className="blog-body">
+                <div className="blog-cat">{b.cat}</div>
+                <h3 className="blog-title">{b.title}</h3>
+                <p className="blog-desc">{b.desc}</p>
+                <div className="blog-meta">
+                  <span>{b.readTime}</span>
+                  <span>·</span>
+                  <span>{b.date}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" style={{paddingBottom: 56}}>
+      <div className="container">
+        <div className="section-head">
+          <span className="section-num">06</span>
+          <h2 className="section-title">Let's <em>Talk</em></h2>
+          <span className="section-rule"></span>
+        </div>
+        <h3 className="contact-heading">Got a project, role, or<br/><em>a stubborn dataset?</em></h3>
+        <p className="contact-desc">
+          I'm always open to discussing analytics roles, interesting datasets, or just geeking out about mobile game KPIs and the occasional Power BI quirk.
+        </p>
+        <div className="contact-cards">
+          <a href="mailto:hangvt2003@gmail.com" className="contact-card">
+            <div className="contact-card-head">
+              <div className="contact-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              </div>
+              <div>
+                <div className="contact-card-label">Email</div>
+              </div>
+            </div>
+            <div className="contact-card-value">hangvt2003@gmail.com</div>
+          </a>
+          <a href="https://www.linkedin.com/in/nguyen-ngoc-thanh-hang" target="_blank" rel="noopener noreferrer" className="contact-card">
+            <div className="contact-card-head">
+              <div className="contact-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </div>
+              <div>
+                <div className="contact-card-label">LinkedIn</div>
+              </div>
+            </div>
+            <div className="contact-card-value">nguyen-ngoc-thanh-hang</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <div className="container footer-inner">
+        <div>© 2026 Nguyễn Ngọc Thanh Hằng · Built in HCMC</div>
+        <div>Vietnamese (native) · English (IELTS 6.5)</div>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <About />
+      <Work />
+      <Experience />
+      <Education />
+      <Blog />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
