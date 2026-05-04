@@ -326,3 +326,23 @@ a:hover { opacity: 0.7; }
   max-width: 760px;
 }
 .cs-notice strong { color: var(--amber); font-weight: 600; }
+
+/* ========== Language toggle (added for bilingual support) ========== */
+.cs-lang-toggle {
+  display: inline-flex; align-items: center;
+  background: var(--card, #FFFFFF); border: 1px solid var(--rule, #DBE3EE);
+  border-radius: 999px; padding: 3px;
+  transition: border-color 180ms ease;
+}
+.cs-lang-toggle:hover { border-color: var(--accent, #1E40AF); }
+.cs-lang-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+  padding: 5px 11px; border-radius: 999px;
+  color: var(--ink-faint, #94A3B8);
+  transition: all 180ms ease;
+  cursor: pointer; border: none; background: none;
+}
+.cs-lang-btn.active { background: var(--accent, #1E40AF); color: white; }
+.cs-lang-btn:not(.active):hover { color: var(--ink, #0B1220); }
+.cs-lang-btn[disabled] { cursor: default; }

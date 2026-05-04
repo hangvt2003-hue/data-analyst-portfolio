@@ -53,7 +53,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography */
   .display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
   .display-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; letter-spacing: -0.015em; }
   .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: 'tnum'; }
@@ -63,7 +62,6 @@
   a { color: inherit; text-decoration: none; }
   button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
-  /* LAYOUT */
   .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
   @media (max-width: 720px) { .container { padding: 0 20px; } }
 
@@ -87,7 +85,6 @@
   .section-title em { font-style: italic; color: var(--accent); }
   .section-rule { flex: 1; height: 1px; background: linear-gradient(to right, var(--rule), transparent); }
 
-  /* ========== NAV ========== */
   .nav {
     position: sticky; top: 0; z-index: 50;
     background: rgba(244, 248, 251, 0.85);
@@ -124,11 +121,31 @@
     transition: all 180ms ease;
   }
   .resume-btn:hover { background: var(--ink); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+  .lang-toggle {
+    display: inline-flex; align-items: center;
+    background: var(--card); border: 1px solid var(--rule);
+    border-radius: 999px; padding: 3px; gap: 0;
+    transition: border-color 180ms ease;
+  }
+  .lang-toggle:hover { border-color: var(--accent); }
+  .lang-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 5px 11px; border-radius: 999px;
+    color: var(--ink-faint); transition: all 180ms ease;
+    cursor: pointer;
+  }
+  .lang-btn.active {
+    background: var(--accent); color: white;
+  }
+  .lang-btn:not(.active):hover { color: var(--ink); }
+
   @media (max-width: 880px) {
     .nav-links { display: none; }
   }
 
-  /* ========== HERO ========== */
   .hero {
     padding: 64px 0 96px; border-bottom: 1px solid var(--rule-soft);
     position: relative; overflow: hidden;
@@ -180,7 +197,6 @@
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-top: 8px;
   }
 
-  /* hero background grid */
   .hero-bg-grid {
     position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
     background-image:
@@ -191,7 +207,6 @@
     -webkit-mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%);
   }
 
-  /* ========== DASHBOARD WIDGET ========== */
   .dashboard {
     background: var(--card);
     border: 1px solid var(--rule);
@@ -239,7 +254,6 @@
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-soft); }
   .legend-dot { width: 8px; height: 2px; border-radius: 1px; }
 
-  /* ========== ABOUT ========== */
   .about-grid {
     display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: start;
   }
@@ -291,7 +305,6 @@
   .tag-green  { background: var(--green-pale); color: var(--green); }
   .tag-grey   { background: #F1F5F9; color: var(--ink-soft); }
 
-  /* ========== WORK ========== */
   .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
   .filter-btn {
     padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
@@ -363,7 +376,6 @@
   }
   .work-card:hover .work-arrow { opacity: 1; transform: translateX(0); }
 
-  /* ========== EXPERIENCE TIMELINE ========== */
   .timeline { position: relative; padding-left: 0; }
   .timeline-item {
     display: grid; grid-template-columns: 200px 1fr; gap: 32px;
@@ -452,7 +464,6 @@
     color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
   }
 
-  /* ========== EDUCATION & CERTS ========== */
   .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 800px) { .edu-grid { grid-template-columns: 1fr; } }
   .edu-card {
@@ -505,7 +516,6 @@
     color: var(--ink-faint); white-space: nowrap; padding-top: 4px;
   }
 
-  /* ========== BLOG ========== */
   .blog-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   }
@@ -542,7 +552,6 @@
     color: var(--ink-faint);
   }
 
-  /* ========== CONTACT ========== */
   .contact-heading {
     font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 52px);
     font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px;
@@ -568,7 +577,6 @@
   }
   .contact-card-value { font-size: 15px; color: var(--ink); font-weight: 500; word-break: break-all; }
 
-  /* ========== FOOTER ========== */
   footer {
     border-top: 1px solid var(--rule); padding: 32px 0; background: var(--paper-warm);
   }
@@ -577,7 +585,6 @@
     font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-soft);
   }
 
-  /* fade-in */
   .fade-up {
     opacity: 0; transform: translateY(20px);
     transition: opacity 700ms cubic-bezier(.2,.8,.2,1), transform 700ms cubic-bezier(.2,.8,.2,1);
@@ -593,229 +600,344 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel" data-presets="env,react">
-const { useState, useEffect, useRef, useMemo } = React;
+const { useState, useEffect, useRef, useMemo, createContext, useContext } = React;
 
-/* ---------------- DATA ---------------- */
+/* ---------------- LANGUAGE CONTEXT ---------------- */
+const LangContext = createContext({ lang: 'en', setLang: () => {} });
+const useT = () => {
+  const { lang } = useContext(LangContext);
+  return (en, vi) => (lang === 'vi' ? vi : en);
+};
+
+const localizeHref = (href, lang) => {
+  if (lang !== 'vi') return href;
+  if (!href || !href.endsWith('.html')) return href;
+  if (href.includes('Game_Metrics_Brief')) return href;
+  return href.replace(/\.html$/, '-vi.html');
+};
 
 const WORK_PROJECTS = [
   {
     id: 'game-metrics',
-    cat: 'Framework',
+    cat: { en: 'Framework', vi: 'Framework' },
     catColor: 'amber',
     year: '2026',
-    company: 'Mobile Gaming Studio',
-    title: 'Game Metrics Framework',
-    desc: 'A comprehensive guide on F2P mobile game KPIs — from DAU and session quality to LTV, eCPM, and ROAS.',
-    tags: ['Domain', 'Writing', 'Frameworks'],
+    company: { en: 'Mobile Gaming Studio', vi: 'Mobile Gaming Studio' },
+    title: { en: 'Game Metrics Framework', vi: 'Game Metrics Framework' },
+    desc: {
+      en: 'A comprehensive guide on F2P mobile game KPIs — from DAU and session quality to LTV, eCPM, and ROAS.',
+      vi: 'Tài liệu toàn diện về các KPI của game mobile F2P — từ DAU và chất lượng session đến LTV, eCPM, và ROAS.',
+    },
+    tags: { en: ['Domain', 'Writing', 'Frameworks'], vi: ['Domain', 'Writing', 'Framework'] },
     href: 'projects/game-metrics-framework.html',
     thumb: 'metrics',
   },
   {
     id: 'engagement-drop',
-    cat: 'Mobile Game',
+    cat: { en: 'Mobile Game', vi: 'Mobile Game' },
     catColor: 'indigo',
     year: '2025',
-    company: 'Mobile Gaming Studio',
-    title: 'Why Engagement Drops at Specific Levels',
-    desc: 'Diagnostic funnel analysis on a match-3 puzzle game — finding the level-design culprits behind a sudden retention cliff.',
-    tags: ['Diagnostic', 'Funnel', 'SQL'],
+    company: { en: 'Mobile Gaming Studio', vi: 'Mobile Gaming Studio' },
+    title: {
+      en: 'Why Engagement Drops at Specific Levels',
+      vi: 'Tại sao Engagement giảm ở những level cụ thể',
+    },
+    desc: {
+      en: 'Diagnostic funnel analysis on a match-3 puzzle game — finding the level-design culprits behind a sudden retention cliff.',
+      vi: 'Phân tích funnel chẩn đoán cho game match-3 puzzle — tìm ra những level thiết kế chưa hợp lý đứng sau sự sụt giảm retention đột ngột.',
+    },
+    tags: { en: ['Diagnostic', 'Funnel', 'SQL'], vi: ['Diagnostic', 'Funnel', 'SQL'] },
     href: 'projects/engagement-drop-analysis.html',
     thumb: 'funnel',
   },
   {
     id: 'ad-quality',
-    cat: 'Mobile Game',
+    cat: { en: 'Mobile Game', vi: 'Mobile Game' },
     catColor: 'indigo',
     year: '2026',
-    company: 'Mobile Gaming Studio',
-    title: 'Ad Quality Monitoring System',
-    desc: 'Designed a system to detect and block toxic advertisers at scale — protecting user experience and retention.',
-    tags: ['System Design', 'Monitoring', 'SQL'],
+    company: { en: 'Mobile Gaming Studio', vi: 'Mobile Gaming Studio' },
+    title: {
+      en: 'Ad Quality Monitoring System',
+      vi: 'Hệ thống giám sát chất lượng quảng cáo',
+    },
+    desc: {
+      en: 'Designed a system to detect and block toxic advertisers at scale — protecting user experience and retention.',
+      vi: 'Thiết kế hệ thống phát hiện và chặn các nhà quảng cáo độc hại ở quy mô lớn — bảo vệ trải nghiệm người dùng và retention.',
+    },
+    tags: { en: ['System Design', 'Monitoring', 'SQL'], vi: ['System Design', 'Monitoring', 'SQL'] },
     href: 'projects/ad-quality-monitoring.html',
     thumb: 'shield',
   },
   {
     id: 'max-force-ad',
-    cat: 'Mobile Game',
+    cat: { en: 'Mobile Game', vi: 'Mobile Game' },
     catColor: 'indigo',
     year: '2026',
-    company: 'Mobile Gaming Studio',
-    title: 'Choosing the Optimal Daily Force-Ad Cap',
-    desc: 'Two methodologies — a percentile-based approach and an LTV-curve approach — to balance revenue vs retention.',
-    tags: ['Optimization', 'Statistics', 'Monetization'],
+    company: { en: 'Mobile Gaming Studio', vi: 'Mobile Gaming Studio' },
+    title: {
+      en: 'Choosing the Optimal Daily Force-Ad Cap',
+      vi: 'Lựa chọn ngưỡng force-ad tối ưu hằng ngày',
+    },
+    desc: {
+      en: 'Two methodologies — a percentile-based approach and an LTV-curve approach — to balance revenue vs retention.',
+      vi: 'Hai phương pháp luận — tiếp cận theo percentile hành vi và đường cong LTV — để cân bằng doanh thu với retention.',
+    },
+    tags: { en: ['Optimization', 'Statistics', 'Monetization'], vi: ['Optimization', 'Statistics', 'Monetization'] },
     href: 'projects/max-force-ad-daily.html',
     thumb: 'capping',
   },
   {
     id: 'cohort',
-    cat: 'Mobile Game',
+    cat: { en: 'Mobile Game', vi: 'Mobile Game' },
     catColor: 'indigo',
     year: '2026',
-    company: 'Mobile Gaming Studio',
-    title: 'User Cohort Profiling',
-    desc: 'Behavioral segmentation that distinguishes loyal whales, churning casuals, and dormant returnees.',
-    tags: ['Segmentation', 'Cohort', 'Tableau'],
+    company: { en: 'Mobile Gaming Studio', vi: 'Mobile Gaming Studio' },
+    title: { en: 'User Cohort Profiling', vi: 'Phân tích cohort người dùng' },
+    desc: {
+      en: 'Behavioral segmentation that distinguishes loyal whales, churning casuals, and dormant returnees.',
+      vi: 'Phân khúc hành vi để tách biệt nhóm whale trung thành, casual user đang churn, và nhóm dormant quay lại.',
+    },
+    tags: { en: ['Segmentation', 'Cohort', 'Tableau'], vi: ['Segmentation', 'Cohort', 'Tableau'] },
     href: 'projects/user-cohort-profiling.html',
     thumb: 'cohort',
   },
   {
     id: 'iap-localization',
-    cat: 'Mobile Game',
+    cat: { en: 'Mobile Game', vi: 'Mobile Game' },
     catColor: 'indigo',
     year: '2026',
-    company: 'Mobile Gaming Studio',
-    title: 'IAP Price Localization',
-    desc: 'Region-aware IAP pricing strategy combining purchasing power parity, competitor benchmarks, and historical conversion.',
-    tags: ['Pricing', 'PPP', 'Strategy'],
+    company: { en: 'Mobile Gaming Studio', vi: 'Mobile Gaming Studio' },
+    title: { en: 'IAP Price Localization', vi: 'Localization giá IAP theo thị trường' },
+    desc: {
+      en: 'Region-aware IAP pricing strategy combining purchasing power parity, competitor benchmarks, and historical conversion.',
+      vi: 'Chiến lược định giá IAP theo từng khu vực, kết hợp purchasing power parity, benchmark đối thủ, và conversion lịch sử.',
+    },
+    tags: { en: ['Pricing', 'PPP', 'Strategy'], vi: ['Pricing', 'PPP', 'Strategy'] },
     href: 'projects/iap-price-localization.html',
     thumb: 'pricing',
   },
   {
     id: 'hr-bi',
-    cat: 'BI Dashboard',
+    cat: { en: 'BI Dashboard', vi: 'BI Dashboard' },
     catColor: 'teal',
     year: '2025',
-    company: 'KPIM (Microsoft Partner)',
-    title: 'HR Power BI Dashboard',
-    desc: 'End-to-end Power BI workforce dashboard with headcount, turnover, internal mobility, and predictive attrition signals.',
-    tags: ['Power BI', 'DAX', 'HR Analytics'],
+    company: { en: 'KPIM (Microsoft Partner)', vi: 'KPIM (Microsoft Partner)' },
+    title: { en: 'HR Power BI Dashboard', vi: 'Power BI Dashboard cho phòng Nhân sự' },
+    desc: {
+      en: 'End-to-end Power BI workforce dashboard with headcount, turnover, internal mobility, and predictive attrition signals.',
+      vi: 'Power BI dashboard end-to-end cho nhân sự, gồm headcount, turnover, luân chuyển nội bộ, và tín hiệu dự báo nghỉ việc.',
+    },
+    tags: { en: ['Power BI', 'DAX', 'HR Analytics'], vi: ['Power BI', 'DAX', 'HR Analytics'] },
     href: 'projects/hr-power-bi-dashboard.html',
     thumb: 'hrdash',
   },
   {
     id: 'supermarket',
-    cat: 'EDA',
+    cat: { en: 'EDA', vi: 'EDA' },
     catColor: 'green',
     year: '2024',
-    company: 'Academic Project',
-    title: 'Customer Behavior at Supermarket',
-    desc: 'Sensor data → store layout optimization. Heatmaps, conversion funnels at the shelf level, and demographic segmentation.',
-    tags: ['EDA', 'Funnel', 'Power BI'],
+    company: { en: 'Academic Project', vi: 'Đồ án học thuật' },
+    title: { en: 'Customer Behavior at Supermarket', vi: 'Hành vi khách hàng tại siêu thị' },
+    desc: {
+      en: 'Sensor data → store layout optimization. Heatmaps, conversion funnels at the shelf level, and demographic segmentation.',
+      vi: 'Dữ liệu cảm biến → tối ưu layout siêu thị. Heatmap, conversion funnel theo từng kệ hàng, và phân khúc nhân khẩu học.',
+    },
+    tags: { en: ['EDA', 'Funnel', 'Power BI'], vi: ['EDA', 'Funnel', 'Power BI'] },
     href: 'projects/customer-behavior-supermarket.html',
     thumb: 'heatmap',
   },
   {
     id: 'suicide',
-    cat: 'EDA',
+    cat: { en: 'EDA', vi: 'EDA' },
     catColor: 'green',
     year: '2024',
-    company: 'Academic Project',
-    title: 'Suicide Rates of Countries',
-    desc: '35+ years × 100 countries × K-Means clustering. Cultural dimensions and economic conditions vs national mental health.',
-    tags: ['Python', 'ML', 'K-Means'],
+    company: { en: 'Academic Project', vi: 'Đồ án học thuật' },
+    title: { en: 'Suicide Rates of Countries', vi: 'Tỷ lệ tự tử giữa các quốc gia' },
+    desc: {
+      en: '35+ years × 100 countries × K-Means clustering. Cultural dimensions and economic conditions vs national mental health.',
+      vi: 'Hơn 35 năm × 100 quốc gia × phân cụm K-Means. Các chiều văn hóa và điều kiện kinh tế đối chiếu với sức khỏe tinh thần quốc gia.',
+    },
+    tags: { en: ['Python', 'ML', 'K-Means'], vi: ['Python', 'ML', 'K-Means'] },
     href: 'projects/suicide-rates-analysis.html',
     thumb: 'globe',
   },
 ];
 
-const FILTERS = ['All', 'Mobile Game', 'BI Dashboard', 'EDA', 'Framework'];
+const FILTERS = {
+  en: ['All', 'Mobile Game', 'BI Dashboard', 'EDA', 'Framework'],
+  vi: ['Tất cả', 'Mobile Game', 'BI Dashboard', 'EDA', 'Framework'],
+};
+const FILTER_KEYS = ['All', 'Mobile Game', 'BI Dashboard', 'EDA', 'Framework'];
 
 const EXPERIENCE = [
   {
     period: '09/2025 — Present',
+    period_vi: '09/2025 — Hiện tại',
     company: 'Mobile Gaming Studio',
-    location: 'Vietnam',
+    location: { en: 'Vietnam', vi: 'Việt Nam' },
     roleTagColor: 'blue',
     roleTag: 'Game Data Analyst',
-    title: 'Game Data Analyst',
-    product: 'Multiple live mobile titles · F2P puzzle & idle genres',
-    points: [
-      <><strong>Engagement-drop diagnostic on a match-3 puzzle</strong> — Funnel investigation with sibling-game baselines pinpointed level-design culprits behind a retention cliff. <em>Contributed to a ~2–4% drop in level-drop rate and improved day-over-day engagement.</em></>,
-      <><strong>Ad-quality monitoring system</strong> — Automated pipeline scoring advertisers against behavioral baselines to flag toxic creatives. <em>Contributed to ~2% lower ad-attributable churn; saved ~4h of manual review per cycle.</em></>,
-      <><strong>Force-ad cap optimization</strong> — Behavioral-percentile + LTV-curve methodologies recommended a lower daily cap. <em>Contributed to ~20% higher engagement minutes with LTV holding steady.</em></>,
-      <>End-to-end data flow (Firebase, Adjust, mediation, Play Store): ETL pipelines, custom-SQL Tableau dashboards, event tracking for new launches.</>,
-      <>Weekly KPI monitoring with diagnostic deep-dives; authored internal <strong>Game Metrics Framework</strong> for analyst onboarding.</>,
-    ],
+    title: { en: 'Game Data Analyst', vi: 'Game Data Analyst' },
+    product: {
+      en: 'Multiple live mobile titles · F2P puzzle & idle genres',
+      vi: 'Nhiều tựa game mobile đang vận hành · Thể loại puzzle & idle (F2P)',
+    },
+    points: {
+      en: [
+        <><strong>Engagement-drop diagnostic on a match-3 puzzle</strong> — Funnel investigation with sibling-game baselines pinpointed level-design culprits behind a retention cliff. <em>Contributed to a ~2–4% drop in level-drop rate and improved day-over-day engagement.</em></>,
+        <><strong>Ad-quality monitoring system</strong> — Automated pipeline scoring advertisers against behavioral baselines to flag toxic creatives. <em>Contributed to ~2% lower ad-attributable churn; saved ~4h of manual review per cycle.</em></>,
+        <><strong>Force-ad cap optimization</strong> — Behavioral-percentile + LTV-curve methodologies recommended a lower daily cap. <em>Contributed to ~20% higher engagement minutes with LTV holding steady.</em></>,
+        <>End-to-end data flow (Firebase, Adjust, mediation, Play Store): ETL pipelines, custom-SQL Tableau dashboards, event tracking for new launches.</>,
+        <>Weekly KPI monitoring with diagnostic deep-dives; authored internal <strong>Game Metrics Framework</strong> for analyst onboarding.</>,
+      ],
+      vi: [
+        <><strong>Chẩn đoán engagement giảm trên game match-3 puzzle</strong> — Phân tích funnel với baseline từ các game cùng studio, xác định những level thiết kế chưa hợp lý gây ra retention cliff. <em>Góp phần giảm ~2–4% level-drop rate và cải thiện engagement theo ngày.</em></>,
+        <><strong>Hệ thống giám sát chất lượng quảng cáo</strong> — Pipeline tự động chấm điểm advertiser dựa trên baseline hành vi để đánh dấu creative độc hại. <em>Góp phần giảm ~2% churn do quảng cáo; tiết kiệm ~4 giờ review thủ công mỗi chu kỳ.</em></>,
+        <><strong>Tối ưu cap force-ad</strong> — Hai phương pháp percentile hành vi và LTV-curve cùng đề xuất cap thấp hơn. <em>Góp phần tăng ~20% engagement minutes trong khi LTV giữ ổn định.</em></>,
+        <>Phụ trách end-to-end data flow (Firebase, Adjust, mediation, Play Store): ETL pipeline, Tableau dashboard custom-SQL, event tracking cho game mới ra mắt.</>,
+        <>Theo dõi KPI hằng tuần kèm deep-dive chẩn đoán; tự viết tài liệu nội bộ <strong>Game Metrics Framework</strong> để onboard analyst mới.</>,
+      ],
+    },
     stack: ['Tableau', 'SQL', 'Firebase', 'Adjust', 'ETL', 'Python', 'A/B Testing'],
-    metric: { num: '10+', label: 'Analyses shipped' },
+    metric: { num: '10+', label: { en: 'Analyses shipped', vi: 'Phân tích đã hoàn thành' } },
   },
   {
     period: '03/2025 — 06/2025',
+    period_vi: '03/2025 — 06/2025',
     company: 'KPIM (Microsoft Partner)',
-    location: 'Hanoi',
+    location: { en: 'Hanoi', vi: 'Hà Nội' },
     roleTagColor: 'teal',
     roleTag: 'BI Intern',
-    title: 'Business Intelligence Intern',
-    product: 'HR Analytics & enterprise reporting',
-    points: [
-      <>Built and shipped an <strong>end-to-end HRM Power BI dashboard</strong> covering headcount, turnover, tenure, and attrition signals.</>,
-      <>Executed data pipeline tasks for a major reporting project for <strong>PetroVietnam Insurance (PVI)</strong>.</>,
-      <>Authored 3 technical blog posts on Power BI best practices for the company knowledge base.</>,
-      <>Served as <strong>Teaching Assistant</strong> for an internal Power BI course (30+ learners).</>,
-    ],
+    title: { en: 'Business Intelligence Intern', vi: 'Business Intelligence Intern' },
+    product: {
+      en: 'HR Analytics & enterprise reporting',
+      vi: 'HR Analytics & báo cáo doanh nghiệp',
+    },
+    points: {
+      en: [
+        <>Built and shipped an <strong>end-to-end HRM Power BI dashboard</strong> covering headcount, turnover, tenure, and attrition signals.</>,
+        <>Executed data pipeline tasks for a major reporting project for <strong>PetroVietnam Insurance (PVI)</strong>.</>,
+        <>Authored 3 technical blog posts on Power BI best practices for the company knowledge base.</>,
+        <>Served as <strong>Teaching Assistant</strong> for an internal Power BI course (30+ learners).</>,
+      ],
+      vi: [
+        <>Xây dựng và bàn giao <strong>HRM Power BI dashboard end-to-end</strong> bao quát headcount, turnover, thâm niên, và tín hiệu nghỉ việc.</>,
+        <>Thực hiện các tác vụ data pipeline cho dự án reporting lớn của <strong>Bảo hiểm PetroVietnam (PVI)</strong>.</>,
+        <>Viết 3 bài blog kỹ thuật về best practice Power BI cho kho kiến thức nội bộ công ty.</>,
+        <>Đảm nhiệm vai trò <strong>Teaching Assistant</strong> cho khóa Power BI nội bộ (30+ học viên).</>,
+      ],
+    },
     stack: ['Power BI', 'DAX', 'Power Query', 'Excel'],
-    metric: { num: '~10h/mo', label: 'Manual reporting saved' },
+    metric: { num: '~10h/mo', label: { en: 'Manual reporting saved', vi: 'Reporting thủ công tiết kiệm' } },
   },
   {
     period: '11/2024 — 02/2025',
+    period_vi: '11/2024 — 02/2025',
     company: 'VNPT IT (VNPT AI)',
-    location: 'Hanoi',
+    location: { en: 'Hanoi', vi: 'Hà Nội' },
     roleTagColor: 'amber',
     roleTag: 'DA Intern',
-    title: 'Data Analyst Intern',
-    product: 'Recommendation system for the National Public Service Portal',
-    points: [
-      <>Lead the data analysis phase of an innovation project building a <strong>recommendation engine</strong> for public services.</>,
-      <>Conducted user surveys and EDA to validate problem statements and project feasibility.</>,
-      <>Trained and evaluated <strong>KNN, LightFM, and K-Means</strong> models in Python.</>,
-    ],
+    title: { en: 'Data Analyst Intern', vi: 'Data Analyst Intern' },
+    product: {
+      en: 'Recommendation system for the National Public Service Portal',
+      vi: 'Hệ thống recommendation cho Cổng Dịch vụ Công Quốc gia',
+    },
+    points: {
+      en: [
+        <>Lead the data analysis phase of an innovation project building a <strong>recommendation engine</strong> for public services.</>,
+        <>Conducted user surveys and EDA to validate problem statements and project feasibility.</>,
+        <>Trained and evaluated <strong>KNN, LightFM, and K-Means</strong> models in Python.</>,
+      ],
+      vi: [
+        <>Dẫn dắt giai đoạn phân tích dữ liệu của một dự án sáng kiến xây dựng <strong>recommendation engine</strong> cho dịch vụ công.</>,
+        <>Thực hiện khảo sát người dùng và EDA để xác thực bài toán và tính khả thi của dự án.</>,
+        <>Huấn luyện và đánh giá các mô hình <strong>KNN, LightFM, và K-Means</strong> bằng Python.</>,
+      ],
+    },
     stack: ['Python', 'KNN', 'LightFM', 'K-Means', 'EDA'],
-    metric: { num: '90% / 40%', label: 'Accuracy: returning / new users' },
+    metric: {
+      num: '90% / 40%',
+      label: { en: 'Accuracy: returning / new users', vi: 'Độ chính xác: user cũ / user mới' },
+    },
   },
 ];
 
 const CERTS = [
   {
-    name: 'Effective Data Reporting and Visualization Certification',
+    name: {
+      en: 'Effective Data Reporting and Visualization Certification',
+      vi: 'Chứng chỉ Effective Data Reporting and Visualization',
+    },
     issuer: 'NEU × VNPT AI',
-    date: 'Nov 2024',
+    date: { en: 'Nov 2024', vi: 'Tháng 11/2024' },
     href: 'https://vnptai.io/certificates/2024FDA8642183725',
   },
   {
-    name: 'IELTS — Academic',
+    name: { en: 'IELTS — Academic', vi: 'IELTS — Academic' },
     issuer: 'British Council',
     date: '2024',
     score: '6.5',
   },
   {
-    name: 'International Computer Drivers License (ICDL)',
-    issuer: '5 modules · Score 1720',
-    date: 'Aug 2023',
+    name: {
+      en: 'International Computer Drivers License (ICDL)',
+      vi: 'International Computer Drivers License (ICDL)',
+    },
+    issuer: { en: '5 modules · Score 1720', vi: '5 module · Điểm 1720' },
+    date: { en: 'Aug 2023', vi: 'Tháng 8/2023' },
   },
 ];
 
 const BLOG_POSTS = [
   {
     cat: 'Power BI',
-    title: 'Handling Date Format Issues in Power Query',
-    desc: 'A practical playbook for the messy date formats — locale traps, ambiguous M/D/Y, and the column-by-example shortcut.',
-    readTime: '6 min',
+    title: {
+      en: 'Handling Date Format Issues in Power Query',
+      vi: 'Xử lý lỗi định dạng ngày tháng trong Power Query',
+    },
+    desc: {
+      en: 'A practical playbook for the messy date formats — locale traps, ambiguous M/D/Y, and the column-by-example shortcut.',
+      vi: 'Cẩm nang thực tế cho các định dạng ngày tháng phức tạp — bẫy locale, M/D/Y mập mờ, và shortcut column-by-example.',
+    },
+    readTime: { en: '6 min', vi: '6 phút' },
     date: '2025',
     href: 'https://compaclass.com/blog/p/xu-ly-loi-inh-dang-ngay-thang-trong-power-query-CwrMr',
     thumb: 'date',
   },
   {
     cat: 'Power BI',
-    title: 'Designing Visually Appealing Org Charts in Power BI',
-    desc: 'Using HTML content visuals to escape the matrix-table look and make organizational data feel alive.',
-    readTime: '7 min',
+    title: {
+      en: 'Designing Visually Appealing Org Charts in Power BI',
+      vi: 'Tạo sơ đồ cơ cấu tổ chức đẹp mắt trong Power BI',
+    },
+    desc: {
+      en: 'Using HTML content visuals to escape the matrix-table look and make organizational data feel alive.',
+      vi: 'Dùng HTML content visual để thoát khỏi kiểu matrix-table và làm dữ liệu tổ chức trở nên sinh động hơn.',
+    },
+    readTime: { en: '7 min', vi: '7 phút' },
     date: '2025',
     href: 'https://compaclass.com/blog/p/tao-so-o-co-cau-to-chuc-ep-mat-trong-power-bi-voi-html-content-Trrfo',
     thumb: 'orgchart',
   },
   {
-    cat: 'Visualization',
-    title: 'Employee Work History with Gantt Charts in Power BI',
-    desc: 'How to build a clean, scannable career-history Gantt that HR and managers actually want to look at.',
-    readTime: '5 min',
+    cat: { en: 'Visualization', vi: 'Visualization' },
+    title: {
+      en: 'Employee Work History with Gantt Charts in Power BI',
+      vi: 'Trực quan hóa lịch sử công tác bằng biểu đồ Gantt trong Power BI',
+    },
+    desc: {
+      en: 'How to build a clean, scannable career-history Gantt that HR and managers actually want to look at.',
+      vi: 'Cách xây dựng biểu đồ Gantt lịch sử công tác gọn gàng, dễ đọc — mà HR và quản lý thực sự muốn xem.',
+    },
+    readTime: { en: '5 min', vi: '5 phút' },
     date: '2025',
     href: 'https://compaclass.com/blog/p/truc-quan-hoa-lich-su-cong-tac-cua-nhan-vien-bang-bieu-o-gantt-trong-power-bi-gKyVi',
     thumb: 'gantt',
   },
 ];
 
-/* ---------------- DASHBOARD WIDGET ---------------- */
 function DashboardWidget() {
+  const t = useT();
   const [tick, setTick] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setTick(t => t + 1), 4000);
@@ -823,7 +945,6 @@ function DashboardWidget() {
   }, []);
 
   const data = useMemo(() => {
-    // generate slightly varying realistic-looking DAU data
     const seed = tick;
     const days = 30;
     const points = [];
@@ -836,7 +957,6 @@ function DashboardWidget() {
   }, [tick]);
 
   const W = 460, H = 130, P = { l: 4, r: 4, t: 8, b: 18 };
-  const xs = data.map(d => d.x);
   const ys = data.map(d => d.dau);
   const yMax = Math.max(...ys) * 1.1;
   const yMin = Math.min(...ys) * 0.9;
@@ -856,7 +976,7 @@ function DashboardWidget() {
       <div className="dash-head">
         <div className="dash-title">
           <span className="dash-title-dot"></span>
-          Live Game · 30D Performance
+          {t('Live Game · 30D Performance', 'Game đang vận hành · Hiệu suất 30 ngày')}
         </div>
         <div className="dash-meta">v 2.4 · auto-refresh</div>
       </div>
@@ -899,81 +1019,75 @@ function DashboardWidget() {
             ))}
           </g>
           <path d={areaPath} fill="url(#areaGrad)" />
-          <path d={linePath} fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx={sx(data.length - 1)} cy={sy(lastDau)} r="4" fill="#0E7490" stroke="white" strokeWidth="2" />
-          <g className="chart-axis">
-            <text x={P.l} y={H - 4} textAnchor="start">D-30</text>
-            <text x={(W - P.l - P.r) / 2 + P.l} y={H - 4} textAnchor="middle">D-15</text>
-            <text x={W - P.r} y={H - 4} textAnchor="end">today</text>
-          </g>
+          <path d={linePath} fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+          <circle cx={sx(data.length - 1)} cy={sy(lastDau)} r="3.5" fill="#1E40AF" stroke="white" strokeWidth="2" />
         </svg>
       </div>
 
       <div className="legend">
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: '#1E40AF' }}></span>
-          Daily Active Users
+          <span className="legend-dot" style={{background:'#1E40AF', width:14, height:2}}></span>
+          <span>Daily Active Users</span>
         </div>
-        <div className="legend-item" style={{ marginLeft: 'auto', fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--ink-faint)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-          ※ illustrative data
+        <div className="legend-item">
+          <span style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, color:'var(--ink-faint)'}}>30 {t('days', 'ngày')}</span>
         </div>
       </div>
     </div>
   );
 }
 
-/* ---------------- THUMBNAIL SVGs ---------------- */
 function ThumbSVG({ kind }) {
-  const palettes = {
-    metrics:    { bg: '#FEF3C7', fg: '#D97706', alt: '#F59E0B' },
-    funnel:     { bg: '#E0E7FF', fg: '#4338CA', alt: '#6366F1' },
-    shield:     { bg: '#FCE7F3', fg: '#BE185D', alt: '#EC4899' },
-    capping:    { bg: '#CFFAFE', fg: '#0E7490', alt: '#06B6D4' },
-    cohort:     { bg: '#E0E7FF', fg: '#4338CA', alt: '#7C3AED' },
-    pricing:    { bg: '#D1FAE5', fg: '#047857', alt: '#10B981' },
-    hrdash:     { bg: '#CFFAFE', fg: '#0E7490', alt: '#06B6D4' },
-    heatmap:    { bg: '#D1FAE5', fg: '#047857', alt: '#059669' },
-    globe:      { bg: '#E0E7FF', fg: '#1E40AF', alt: '#3B82F6' },
-    date:       { bg: '#FEF3C7', fg: '#D97706', alt: '#F59E0B' },
-    orgchart:   { bg: '#E0E7FF', fg: '#4338CA', alt: '#6366F1' },
-    gantt:      { bg: '#CFFAFE', fg: '#0E7490', alt: '#14B8A6' },
+  const palette = {
+    metrics:   { bg: '#FEF3C7', fg: '#D97706', alt: '#92400E' },
+    funnel:    { bg: '#E0E7FF', fg: '#4338CA', alt: '#3730A3' },
+    shield:    { bg: '#E0E7FF', fg: '#4338CA', alt: '#0E7490' },
+    capping:   { bg: '#E0E7FF', fg: '#4338CA', alt: '#BE185D' },
+    cohort:    { bg: '#E0E7FF', fg: '#4338CA', alt: '#0E7490' },
+    pricing:   { bg: '#E0E7FF', fg: '#4338CA', alt: '#047857' },
+    hrdash:    { bg: '#CFFAFE', fg: '#0E7490', alt: '#1E40AF' },
+    heatmap:   { bg: '#D1FAE5', fg: '#047857', alt: '#0E7490' },
+    globe:     { bg: '#D1FAE5', fg: '#047857', alt: '#1E40AF' },
+    date:      { bg: '#E0E7FF', fg: '#4338CA', alt: '#0E7490' },
+    orgchart:  { bg: '#E0E7FF', fg: '#4338CA', alt: '#0E7490' },
+    gantt:     { bg: '#CFFAFE', fg: '#0E7490', alt: '#1E40AF' },
   };
-  const p = palettes[kind] || palettes.metrics;
+  const p = palette[kind] || palette.funnel;
 
   if (kind === 'metrics') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      {/* metric tree visualization */}
-      <g stroke={p.fg} strokeWidth="1.5" fill="none" opacity="0.4">
-        <path d="M160,40 L80,90 M160,40 L240,90 M80,90 L40,140 M80,90 L120,140 M240,90 L200,140 M240,90 L280,140" />
+      <g transform="translate(40, 30)">
+        <rect width="240" height="140" rx="10" fill="white" opacity="0.4" stroke={p.fg} strokeWidth="1.5"/>
+        <text x="120" y="32" textAnchor="middle" fontFamily="Fraunces" fontSize="22" fontWeight="600" fill={p.alt}>ROAS</text>
+        <line x1="120" y1="42" x2="60" y2="76" stroke={p.fg} strokeWidth="1.5"/>
+        <line x1="120" y1="42" x2="180" y2="76" stroke={p.fg} strokeWidth="1.5"/>
+        <text x="60" y="92" textAnchor="middle" fontFamily="Fraunces" fontSize="14" fontWeight="500" fill={p.fg}>Revenue</text>
+        <text x="180" y="92" textAnchor="middle" fontFamily="Fraunces" fontSize="14" fontWeight="500" fill={p.fg}>Spend</text>
+        <line x1="60" y1="100" x2="40" y2="124" stroke={p.fg} strokeWidth="1" opacity="0.6"/>
+        <line x1="60" y1="100" x2="80" y2="124" stroke={p.fg} strokeWidth="1" opacity="0.6"/>
+        <line x1="180" y1="100" x2="160" y2="124" stroke={p.fg} strokeWidth="1" opacity="0.6"/>
+        <line x1="180" y1="100" x2="200" y2="124" stroke={p.fg} strokeWidth="1" opacity="0.6"/>
+        <text x="40" y="135" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" fill={p.alt}>LTV</text>
+        <text x="80" y="135" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" fill={p.alt}>ARPU</text>
+        <text x="160" y="135" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" fill={p.alt}>CPI</text>
+        <text x="200" y="135" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" fill={p.alt}>eCPM</text>
       </g>
-      <circle cx="160" cy="40" r="22" fill={p.fg} />
-      <text x="160" y="46" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11" fontWeight="600">ROAS</text>
-      {[{x:80,y:90,t:'LTV'}, {x:240,y:90,t:'CPI'}, {x:40,y:140,t:'DAU'}, {x:120,y:140,t:'ARPU'}, {x:200,y:140,t:'CTR'}, {x:280,y:140,t:'INST'}].map((n,i)=> (
-        <g key={i}>
-          <circle cx={n.x} cy={n.y} r="16" fill={p.alt} opacity="0.85" />
-          <text x={n.x} y={n.y+4} textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="9">{n.t}</text>
-        </g>
-      ))}
     </svg>
   );
 
   if (kind === 'funnel') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      <g>
-        {[
-          {y:30, w:280, label:'Install', val:'100%'},
-          {y:62, w:220, label:'D1 Open', val:'72%'},
-          {y:94, w:160, label:'Lvl 5', val:'48%'},
-          {y:126, w:90,  label:'Lvl 26', val:'18%'},
-          {y:158, w:50,  label:'Lvl 50', val:'7%'},
-        ].map((b,i)=>(
-          <g key={i}>
-            <rect x={(320-b.w)/2} y={b.y} width={b.w} height="22" rx="4" fill={p.fg} opacity={1 - i*0.15} />
-            <text x="160" y={b.y+15} textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11" fontWeight="500">{b.label} · {b.val}</text>
-          </g>
-        ))}
+      <g transform="translate(60, 30)">
+        <polygon points="0,0 200,0 170,30 30,30" fill={p.fg} opacity="0.9"/>
+        <polygon points="30,38 170,38 145,68 55,68" fill={p.fg} opacity="0.7"/>
+        <polygon points="55,76 145,76 120,106 80,106" fill={p.fg} opacity="0.5"/>
+        <polygon points="80,114 120,114 105,140 95,140" fill={p.alt} opacity="0.95"/>
+        <text x="100" y="20" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="10" fill="white" fontWeight="500">100%</text>
+        <text x="100" y="58" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="10" fill="white">82%</text>
+        <text x="100" y="96" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="10" fill="white">61%</text>
+        <text x="100" y="132" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" fill="white">23%</text>
       </g>
     </svg>
   );
@@ -981,15 +1095,20 @@ function ThumbSVG({ kind }) {
   if (kind === 'shield') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      <g transform="translate(110, 30)">
-        <path d="M50,0 L100,18 L100,75 Q100,118 50,140 Q0,118 0,75 L0,18 Z" fill={p.fg} opacity="0.92"/>
-        <path d="M28,68 L42,82 L70,52" stroke="white" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <g transform="translate(160, 100)">
+        <path d="M 0,-60 L 50,-40 L 50,15 Q 50,55 0,70 Q -50,55 -50,15 L -50,-40 Z" fill={p.fg}/>
+        <path d="M -22,5 L -8,20 L 22,-12" stroke="white" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
       </g>
-      {/* alert rows */}
-      <g transform="translate(20, 165)" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>
-        <rect x="0" y="0" width="280" height="6" rx="2" fill={p.alt} opacity="0.4"/>
-        <rect x="0" y="10" width="200" height="6" rx="2" fill={p.alt} opacity="0.6"/>
-        <rect x="0" y="20" width="120" height="6" rx="2" fill={p.alt} opacity="0.8"/>
+      <g transform="translate(40, 40)" opacity="0.5">
+        <circle r="3" fill={p.alt}/>
+        <circle cx="20" cy="10" r="2" fill={p.alt}/>
+        <circle cx="-15" cy="20" r="2.5" fill={p.alt}/>
+        <circle cx="35" cy="-10" r="2" fill={p.alt}/>
+      </g>
+      <g transform="translate(280, 40)" opacity="0.5">
+        <circle r="3" fill={p.alt}/>
+        <circle cx="-20" cy="10" r="2" fill={p.alt}/>
+        <circle cx="-35" cy="-10" r="2" fill={p.alt}/>
       </g>
     </svg>
   );
@@ -997,16 +1116,16 @@ function ThumbSVG({ kind }) {
   if (kind === 'capping') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      <g>
-        {/* histogram bars */}
-        {[16,28,38,52,68,82,90,82,68,50,38,24,16,10,6].map((h,i)=>(
-          <rect key={i} x={20 + i*18} y={170 - h} width="14" height={h} rx="2" fill={p.alt} opacity="0.7"/>
-        ))}
-        {/* threshold line */}
-        <line x1="20" x2="290" y1="100" y2="100" stroke={p.fg} strokeWidth="2" strokeDasharray="6 4"/>
-        <text x="295" y="103" fill={p.fg} fontFamily="JetBrains Mono" fontSize="10" textAnchor="end" dx="-4">P75</text>
-        {/* curve */}
-        <path d="M20,170 Q160,40 290,80" stroke={p.fg} strokeWidth="2" fill="none"/>
+      <g transform="translate(40, 40)">
+        <line x1="0" y1="120" x2="240" y2="120" stroke={p.fg} strokeWidth="1.5"/>
+        <line x1="0" y1="0" x2="0" y2="120" stroke={p.fg} strokeWidth="1.5"/>
+        <path d="M 0,100 Q 40,80 80,60 T 160,30 T 240,20" stroke={p.fg} strokeWidth="2" fill="none"/>
+        <line x1="120" y1="0" x2="120" y2="120" stroke={p.alt} strokeDasharray="4 4" strokeWidth="1.5"/>
+        <text x="125" y="14" fontFamily="JetBrains Mono" fontSize="9" fill={p.alt}>cap</text>
+        <circle cx="120" cy="42" r="4" fill={p.alt}/>
+        <text x="40" y="135" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>0</text>
+        <text x="220" y="135" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>ads/day</text>
+        <text x="-30" y="60" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} transform="rotate(-90, -30, 60)">LTV</text>
       </g>
     </svg>
   );
@@ -1014,39 +1133,35 @@ function ThumbSVG({ kind }) {
   if (kind === 'cohort') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      {/* cohort heatmap */}
-      <g transform="translate(40, 30)">
-        {Array.from({length:8}).map((_,r)=>
-          Array.from({length:10}).map((_,c)=> {
-            const v = Math.max(0, 0.85 - r*0.08 - c*0.04 - Math.random()*0.05);
-            return <rect key={`${r}-${c}`} x={c*24} y={r*16} width="22" height="14" rx="2" fill={p.fg} opacity={v}/>;
-          })
-        )}
+      <g transform="translate(40, 40)">
+        {[
+          [120,30,'Whales',p.alt],[180,30,'Steady',p.fg],[60,30,'Casual',p.fg],
+          [120,90,'Returnees',p.fg],[180,90,'Dormant',p.fg],[60,90,'New',p.fg],
+        ].map((seg,i)=>{
+          const [x,y,label,col]=seg;
+          const r = i===0?22:14;
+          return (
+            <g key={i}>
+              <circle cx={x} cy={y} r={r} fill={col} opacity={i===0?1:0.6}/>
+              <text x={x} y={y+r+12} textAnchor="middle" fontFamily="JetBrains Mono" fontSize="8" fill={p.alt}>{label}</text>
+            </g>
+          );
+        })}
       </g>
-      <text x="40" y="20" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg}>D0  D1  D3  D7  D14  D30  D60  D90  D120  D180</text>
     </svg>
   );
 
   if (kind === 'pricing') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      {/* world map abstract */}
-      <g fill={p.fg} opacity="0.8">
-        <circle cx="60" cy="80" r="22"/>
-        <text x="60" y="84" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11">$0.99</text>
-        <circle cx="160" cy="60" r="26"/>
-        <text x="160" y="64" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="12">$4.99</text>
-        <circle cx="260" cy="100" r="20"/>
-        <text x="260" y="104" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="10">$1.99</text>
-        <circle cx="100" cy="150" r="18"/>
-        <text x="100" y="153" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="10">$2.49</text>
-        <circle cx="220" cy="155" r="22"/>
-        <text x="220" y="159" textAnchor="middle" fill="white" fontFamily="JetBrains Mono" fontSize="11">$3.49</text>
-      </g>
-      <g stroke={p.alt} strokeWidth="1" opacity="0.4" fill="none">
-        <path d="M60,80 Q110,40 160,60"/>
-        <path d="M160,60 Q210,80 260,100"/>
-        <path d="M100,150 Q160,170 220,155"/>
+      <g transform="translate(40, 40)">
+        {[['US','$4.99',45,p.fg],['BR','$2.49',75,p.alt],['VN','$1.99',95,p.fg],['IN','$1.49',115,p.alt]].map((row,i)=>(
+          <g key={i}>
+            <text x="0" y={i*30+15} fontFamily="JetBrains Mono" fontSize="11" fill={p.alt}>{row[0]}</text>
+            <rect x="40" y={i*30+5} width={row[2]} height="14" rx="2" fill={row[3]} opacity={0.85}/>
+            <text x={40+row[2]+8} y={i*30+15} fontFamily="JetBrains Mono" fontSize="10" fill={p.alt}>{row[1]}</text>
+          </g>
+        ))}
       </g>
     </svg>
   );
@@ -1054,26 +1169,26 @@ function ThumbSVG({ kind }) {
   if (kind === 'hrdash') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      {/* dashboard tiles */}
-      <g>
-        <rect x="20" y="20" width="84" height="50" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
-        <text x="32" y="42" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} opacity="0.7">HEADCOUNT</text>
-        <text x="32" y="62" fontFamily="Fraunces" fontSize="18" fontWeight="600" fill={p.fg}>1,247</text>
-
-        <rect x="116" y="20" width="84" height="50" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
-        <text x="128" y="42" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} opacity="0.7">ATTRITION</text>
-        <text x="128" y="62" fontFamily="Fraunces" fontSize="18" fontWeight="600" fill={p.fg}>12.4%</text>
-
-        <rect x="212" y="20" width="84" height="50" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
-        <text x="224" y="42" fontFamily="JetBrains Mono" fontSize="9" fill={p.fg} opacity="0.7">TENURE</text>
-        <text x="224" y="62" fontFamily="Fraunces" fontSize="18" fontWeight="600" fill={p.fg}>3.7y</text>
-
-        {/* chart panel */}
-        <rect x="20" y="84" width="280" height="96" rx="6" fill="white" stroke={p.fg} strokeOpacity="0.3"/>
-        <polyline points="32,160 60,140 90,148 118,120 148,128 178,108 208,118 238,98 268,110 290,90"
-          fill="none" stroke={p.alt} strokeWidth="2"/>
-        <polyline points="32,170 60,160 90,164 118,150 148,156 178,144 208,150 238,138 268,144 290,132"
-          fill="none" stroke={p.fg} strokeWidth="2" strokeDasharray="3 3"/>
+      <g transform="translate(20, 20)">
+        <rect width="84" height="50" rx="6" fill="white" opacity="0.7"/>
+        <rect width="84" height="50" rx="6" fill="none" stroke={p.fg} strokeWidth="1"/>
+        <text x="10" y="22" fontFamily="JetBrains Mono" fontSize="8" fill={p.alt}>HEADCOUNT</text>
+        <text x="10" y="42" fontFamily="Fraunces" fontSize="20" fontWeight="600" fill={p.fg}>1,247</text>
+        <rect x="98" y="0" width="84" height="50" rx="6" fill="white" opacity="0.7"/>
+        <rect x="98" y="0" width="84" height="50" rx="6" fill="none" stroke={p.fg} strokeWidth="1"/>
+        <text x="108" y="22" fontFamily="JetBrains Mono" fontSize="8" fill={p.alt}>TURNOVER</text>
+        <text x="108" y="42" fontFamily="Fraunces" fontSize="20" fontWeight="600" fill={p.alt}>8.3%</text>
+        <rect x="196" y="0" width="84" height="50" rx="6" fill="white" opacity="0.7"/>
+        <rect x="196" y="0" width="84" height="50" rx="6" fill="none" stroke={p.fg} strokeWidth="1"/>
+        <text x="206" y="22" fontFamily="JetBrains Mono" fontSize="8" fill={p.alt}>TENURE</text>
+        <text x="206" y="42" fontFamily="Fraunces" fontSize="20" fontWeight="600" fill={p.fg}>4.2y</text>
+        <g transform="translate(0, 70)">
+          <rect width="280" height="80" rx="6" fill="white" opacity="0.6"/>
+          <rect width="280" height="80" rx="6" fill="none" stroke={p.fg} strokeWidth="1"/>
+          {[40, 60, 35, 70, 55, 80, 45, 65, 50].map((h,i)=>(
+            <rect key={i} x={20+i*28} y={70-h} width="18" height={h} fill={p.fg} opacity={0.6+i*0.04} rx="1"/>
+          ))}
+        </g>
       </g>
     </svg>
   );
@@ -1081,7 +1196,6 @@ function ThumbSVG({ kind }) {
   if (kind === 'heatmap') return (
     <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="200" fill={p.bg} />
-      {/* store heatmap grid */}
       <g transform="translate(20, 20)">
         {Array.from({length:6}).map((_,r)=>
           Array.from({length:10}).map((_,c)=>{
@@ -1104,7 +1218,6 @@ function ThumbSVG({ kind }) {
         <line x1="-70" y1="0" x2="70" y2="0" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
         <ellipse rx="20" ry="70" fill="none" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
         <ellipse rx="40" ry="70" fill="none" stroke={p.fg} strokeWidth="1" opacity="0.4"/>
-        {/* clusters */}
         <circle cx="-30" cy="-20" r="6" fill={p.alt}/>
         <circle cx="20" cy="-30" r="9" fill={p.fg}/>
         <circle cx="40" cy="15" r="5" fill={p.alt}/>
@@ -1182,30 +1295,53 @@ function ThumbSVG({ kind }) {
   return <svg viewBox="0 0 320 200"><rect width="320" height="200" fill={p.bg}/></svg>;
 }
 
-/* ---------------- COMPONENTS ---------------- */
+function LangToggle() {
+  const { lang, setLang } = useContext(LangContext);
+  return (
+    <div className="lang-toggle" role="group" aria-label="Language">
+      <button
+        className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+        onClick={() => setLang('en')}
+        aria-pressed={lang === 'en'}
+      >EN</button>
+      <button
+        className={`lang-btn ${lang === 'vi' ? 'active' : ''}`}
+        onClick={() => setLang('vi')}
+        aria-pressed={lang === 'vi'}
+      >VI</button>
+    </div>
+  );
+}
+
 function Nav() {
+  const t = useT();
+  const { lang } = useContext(LangContext);
+  const cvHref = lang === 'vi'
+    ? 'assets/cv/Hang_Nguyen_DA_CV_VI.pdf'
+    : 'assets/cv/Hang_Nguyen_DA_CV.pdf';
   return (
     <nav className="nav">
       <div className="nav-inner">
         <a href="#" className="nav-logo">Hang N<span>.</span></a>
         <div className="nav-links">
-          <a href="#about" className="nav-link">About</a>
-          <a href="#work" className="nav-link">Work</a>
-          <a href="#experience" className="nav-link">Experience</a>
-          <a href="#education" className="nav-link">Education</a>
-          <a href="#blog" className="nav-link">Blog</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#about" className="nav-link">{t('About', 'Giới thiệu')}</a>
+          <a href="#work" className="nav-link">{t('Work', 'Dự án')}</a>
+          <a href="#experience" className="nav-link">{t('Experience', 'Kinh nghiệm')}</a>
+          <a href="#education" className="nav-link">{t('Education', 'Học vấn')}</a>
+          <a href="#blog" className="nav-link">{t('Blog', 'Blog')}</a>
+          <a href="#contact" className="nav-link">{t('Contact', 'Liên hệ')}</a>
         </div>
         <div className="nav-actions">
+          <LangToggle />
           <a href="https://www.linkedin.com/in/nguyen-ngoc-thanh-hang" target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           </a>
           <a href="mailto:hangvt2003@gmail.com" className="icon-btn" aria-label="Email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           </a>
-          <a href="assets/cv/Hang_Nguyen_DA_CV.pdf" target="_blank" className="resume-btn">
+          <a href={cvHref} target="_blank" className="resume-btn">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Resume
+            {t('Resume', 'CV')}
           </a>
         </div>
       </div>
@@ -1214,6 +1350,11 @@ function Nav() {
 }
 
 function Hero() {
+  const t = useT();
+  const { lang } = useContext(LangContext);
+  const cvHref = lang === 'vi'
+    ? 'assets/cv/Hang_Nguyen_DA_CV_VI.pdf'
+    : 'assets/cv/Hang_Nguyen_DA_CV.pdf';
   return (
     <header className="hero">
       <div className="hero-bg-grid" aria-hidden="true"></div>
@@ -1221,33 +1362,40 @@ function Hero() {
         <div>
           <div className="hero-tag">Data Analyst · Mobile Gaming · BI</div>
           <h1 className="hero-title">
-            I turn data into<br/><em>decisions people trust.</em>
+            {lang === 'vi' ? (
+              <>Biến dữ liệu thành<br/><em>quyết định đáng tin cậy.</em></>
+            ) : (
+              <>I turn data into<br/><em>decisions people trust.</em></>
+            )}
           </h1>
           <p className="hero-desc">
-            Bachelor of Business Analytics from National Economics University (GPA 3.87/4.0) and now a Game Data Analyst supporting live mobile titles. I work the full descriptive → diagnostic → prescriptive stack — from ETL pipelines to A/B tests to the one-page memo a Project Owner actually reads.
+            {t(
+              'Bachelor of Business Analytics from National Economics University (GPA 3.87/4.0) and now a Game Data Analyst supporting live mobile titles. I work the full descriptive → diagnostic → prescriptive stack — from ETL pipelines to A/B tests to the one-page memo a Project Owner actually reads.',
+              'Cử nhân Business Analytics tại Đại học Kinh tế Quốc dân (GPA 3.87/4.0), hiện là Game Data Analyst hỗ trợ các tựa game mobile đang vận hành. Tôi làm toàn bộ stack descriptive → diagnostic → prescriptive — từ ETL pipeline, A/B test, đến bản memo một trang mà Project Owner thực sự đọc.'
+            )}
           </p>
           <div className="hero-ctas">
             <a href="#work" className="btn-primary">
-              View My Work
+              {t('View My Work', 'Xem các dự án')}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="assets/cv/Hang_Nguyen_DA_CV.pdf" target="_blank" className="btn-secondary">
+            <a href={cvHref} target="_blank" className="btn-secondary">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download CV
+              {t('Download CV', 'Tải CV')}
             </a>
           </div>
           <div className="hero-stats">
             <div>
               <div className="stat-num">3.87<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>/4.0</span></div>
-              <div className="stat-label">GPA · Honors</div>
+              <div className="stat-label">{t('GPA · Honors', 'GPA · Bằng Giỏi')}</div>
             </div>
             <div>
-              <div className="stat-num">1<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>+ yr</span></div>
-              <div className="stat-label">Industry experience</div>
+              <div className="stat-num">1<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>{t('+ yr', '+ năm')}</span></div>
+              <div className="stat-label">{t('Industry experience', 'Kinh nghiệm thực tế')}</div>
             </div>
             <div>
               <div className="stat-num">3<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>+</span></div>
-              <div className="stat-label">Domains shipped</div>
+              <div className="stat-label">{t('Domains shipped', 'Lĩnh vực đã làm')}</div>
             </div>
           </div>
         </div>
@@ -1260,32 +1408,42 @@ function Hero() {
 }
 
 function About() {
+  const t = useT();
   return (
     <section id="about">
       <div className="container">
         <div className="section-head">
           <span className="section-num">01</span>
-          <h2 className="section-title">About <em>Me</em></h2>
+          <h2 className="section-title">{t(<>About <em>Me</em></>, <>Giới thiệu <em>về tôi</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="about-grid">
           <div className="about-photo">
             <img src="assets/img/profile.jpg" alt="Hang Nguyen" onError={(e)=>{e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg, var(--indigo-pale), var(--teal-pale))';}}/>
-            <div className="about-photo-tag">NEU '25 · Honors</div>
+            <div className="about-photo-tag">{t("NEU '25 · Honors", "NEU '25 · Bằng Giỏi")}</div>
           </div>
           <div>
             <h3 className="about-heading">
-              Every dataset holds a <em>story</em> waiting to be told. I make sure stakeholders actually hear it.
+              {t(
+                <>Every dataset holds a <em>story</em> waiting to be told. I make sure stakeholders actually hear it.</>,
+                <>Mỗi tập dữ liệu đều ẩn chứa một <em>câu chuyện</em> chờ được kể. Tôi đảm bảo stakeholder thực sự lắng nghe được câu chuyện ấy.</>
+              )}
             </h3>
             <p className="about-bio">
-              My career began at the intersection of curiosity and rigor — a Business Analytics degree where I learned that <strong>numbers without narrative don't move decisions</strong>. From there, internships at <strong>VNPT IT</strong> (recommendation systems for public services) and <strong>KPIM</strong> (HR dashboards for a Microsoft Partner) sharpened my full BI/ML stack — Python, SQL, Power BI, Tableau, and the patience to clean data nobody wants to clean.
+              {t(
+                <>My career began at the intersection of curiosity and rigor — a Business Analytics degree where I learned that <strong>numbers without narrative don't move decisions</strong>. From there, internships at <strong>VNPT IT</strong> (recommendation systems for public services) and <strong>KPIM</strong> (HR dashboards for a Microsoft Partner) sharpened my full BI/ML stack — Python, SQL, Power BI, Tableau, and the patience to clean data nobody wants to clean.</>,
+                <>Hành trình của tôi bắt đầu ở giao điểm giữa sự tò mò và sự chặt chẽ — chương trình Business Analytics đã dạy tôi rằng <strong>những con số không kèm câu chuyện sẽ không thể tạo ra quyết định</strong>. Từ đó, các kỳ thực tập tại <strong>VNPT IT</strong> (recommendation system cho dịch vụ công) và <strong>KPIM</strong> (HR dashboard cho một Microsoft Partner) đã rèn giũa toàn bộ stack BI/ML của tôi — Python, SQL, Power BI, Tableau, và cả sự kiên nhẫn để làm sạch những bộ dữ liệu chẳng ai muốn đụng vào.</>
+              )}
             </p>
             <p className="about-bio">
-              Today, as a <strong>Game Data Analyst</strong> on multiple live mobile titles, I work the messy, decision-driving end of analytics: ETL maintenance from Firebase and ad-mediation platforms, custom-SQL dashboards for Project Owners, and ad-hoc diagnostic deep-dives whenever a metric moves. I believe great analysis isn't just numbers — it's <strong>a hypothesis tested against behavior</strong>, then explained in language a non-technical stakeholder can act on.
+              {t(
+                <>Today, as a <strong>Game Data Analyst</strong> on multiple live mobile titles, I work the messy, decision-driving end of analytics: ETL maintenance from Firebase and ad-mediation platforms, custom-SQL dashboards for Project Owners, and ad-hoc diagnostic deep-dives whenever a metric moves. I believe great analysis isn't just numbers — it's <strong>a hypothesis tested against behavior</strong>, then explained in language a non-technical stakeholder can act on.</>,
+                <>Hiện tại, với vai trò <strong>Game Data Analyst</strong> cho nhiều tựa game mobile đang vận hành, tôi làm việc ở phần dữ liệu thực tế và trực tiếp dẫn đến quyết định: bảo trì ETL từ Firebase và các nền tảng ad-mediation, dashboard custom-SQL cho Project Owner, và những deep-dive chẩn đoán đột xuất mỗi khi một chỉ số dịch chuyển. Tôi tin rằng một bài phân tích tốt không chỉ là những con số — đó là <strong>một giả thuyết được kiểm chứng qua hành vi</strong>, rồi được diễn giải bằng ngôn ngữ mà một stakeholder không chuyên về kỹ thuật có thể hành động ngay được.</>
+              )}
             </p>
 
             <div className="skills-block">
-              <div className="skills-label">Core Skills</div>
+              <div className="skills-label">{t('Core Skills', 'Kỹ năng chuyên môn')}</div>
               <div className="skills-tags">
                 <span className="tag tag-blue">EDA</span>
                 <span className="tag tag-blue">Diagnostic Analytics</span>
@@ -1296,11 +1454,11 @@ function About() {
                 <span className="tag tag-teal">Event Tracking</span>
                 <span className="tag tag-amber">Storytelling with Data</span>
                 <span className="tag tag-amber">Stakeholder Reporting</span>
-                <span className="tag tag-rose">Statistics</span>
+                <span className="tag tag-rose">{t('Statistics', 'Thống kê')}</span>
                 <span className="tag tag-rose">ML (KNN, K-Means, LightFM)</span>
               </div>
 
-              <div className="skills-label">Tools</div>
+              <div className="skills-label">{t('Tools', 'Công cụ')}</div>
               <div className="skills-tags">
                 <span className="tag tag-grey">Tableau</span>
                 <span className="tag tag-grey">Power BI</span>
@@ -1312,20 +1470,20 @@ function About() {
                 <span className="tag tag-grey">Excel</span>
               </div>
 
-              <div className="skills-label">Domains</div>
+              <div className="skills-label">{t('Domains', 'Lĩnh vực')}</div>
               <div className="skills-tags">
                 <span className="tag tag-green">Mobile Gaming (F2P)</span>
                 <span className="tag tag-green">HR Analytics</span>
-                <span className="tag tag-green">Retail Behavioral</span>
-                <span className="tag tag-green">Public Service</span>
+                <span className="tag tag-green">{t('Retail Behavioral', 'Hành vi khách hàng bán lẻ')}</span>
+                <span className="tag tag-green">{t('Public Service', 'Dịch vụ công')}</span>
               </div>
 
-              <div className="skills-label">Soft Skills</div>
+              <div className="skills-label">{t('Soft Skills', 'Kỹ năng mềm')}</div>
               <div className="skills-tags">
-                <span className="tag tag-blue">AI-augmented productivity</span>
-                <span className="tag tag-blue">Cross-functional collaboration</span>
-                <span className="tag tag-blue">Stakeholder communication</span>
-                <span className="tag tag-blue">English (IELTS 6.5)</span>
+                <span className="tag tag-blue">{t('AI-augmented productivity', 'Năng suất hỗ trợ bởi AI')}</span>
+                <span className="tag tag-blue">{t('Cross-functional collaboration', 'Phối hợp đa phòng ban')}</span>
+                <span className="tag tag-blue">{t('Stakeholder communication', 'Giao tiếp với stakeholder')}</span>
+                <span className="tag tag-blue">{t('English (IELTS 6.5)', 'Tiếng Anh (IELTS 6.5)')}</span>
               </div>
             </div>
           </div>
@@ -1336,41 +1494,43 @@ function About() {
 }
 
 function Work() {
+  const t = useT();
+  const { lang } = useContext(LangContext);
   const [filter, setFilter] = useState('All');
-  const filtered = filter === 'All' ? WORK_PROJECTS : WORK_PROJECTS.filter(p => p.cat === filter);
+  const filtered = filter === 'All' ? WORK_PROJECTS : WORK_PROJECTS.filter(p => p.cat.en === filter);
   return (
     <section id="work">
       <div className="container">
         <div className="section-head">
           <span className="section-num">02</span>
-          <h2 className="section-title">Selected <em>Work</em></h2>
+          <h2 className="section-title">{t(<>Selected <em>Work</em></>, <>Dự án <em>tiêu biểu</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="filter-bar">
-          {FILTERS.map(f => (
+          {FILTER_KEYS.map((f, i) => (
             <button key={f}
               className={`filter-btn ${filter === f ? 'active' : ''}`}
               onClick={() => setFilter(f)}>
-              {f}
+              {lang === 'vi' ? FILTERS.vi[i] : FILTERS.en[i]}
             </button>
           ))}
         </div>
         <div className="work-grid">
           {filtered.map(p => (
-            <a key={p.id} href={p.href} className="work-card">
+            <a key={p.id} href={localizeHref(p.href, lang)} className="work-card">
               <div className="work-thumb">
                 <ThumbSVG kind={p.thumb} />
-                <span className="work-tag">{p.cat}</span>
+                <span className="work-tag">{lang === 'vi' ? p.cat.vi : p.cat.en}</span>
               </div>
               <div className="work-body">
                 <div className="work-meta">
-                  <span>{p.company}</span>
+                  <span>{lang === 'vi' ? p.company.vi : p.company.en}</span>
                   <span className="work-year">{p.year}</span>
                 </div>
-                <h3 className="work-title">{p.title}</h3>
-                <p className="work-desc">{p.desc}</p>
+                <h3 className="work-title">{lang === 'vi' ? p.title.vi : p.title.en}</h3>
+                <p className="work-desc">{lang === 'vi' ? p.desc.vi : p.desc.en}</p>
                 <div className="work-tags">
-                  {p.tags.map(t => <span key={t} className="pill">{t}</span>)}
+                  {(lang === 'vi' ? p.tags.vi : p.tags.en).map(tg => <span key={tg} className="pill">{tg}</span>)}
                 </div>
               </div>
               <div className="work-arrow">
@@ -1385,28 +1545,32 @@ function Work() {
 }
 
 function Experience() {
+  const t = useT();
+  const { lang } = useContext(LangContext);
   return (
     <section id="experience">
       <div className="container">
         <div className="section-head">
           <span className="section-num">03</span>
-          <h2 className="section-title">Experience <em>Timeline</em></h2>
+          <h2 className="section-title">{t(<>Experience <em>Timeline</em></>, <>Dòng thời gian <em>kinh nghiệm</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="timeline">
           {EXPERIENCE.map((e, i) => (
             <div key={i} className="timeline-item">
               <div className="timeline-meta">
-                <div className="timeline-period">{e.period}</div>
+                <div className="timeline-period">{lang === 'vi' ? e.period_vi : e.period}</div>
                 <div className="timeline-company">{e.company}</div>
-                <div style={{fontSize:'12px', color:'var(--ink-faint)', marginTop:4, fontFamily:'JetBrains Mono, monospace', letterSpacing:'0.04em'}}>{e.location}</div>
+                <div style={{fontSize:'12px', color:'var(--ink-faint)', marginTop:4, fontFamily:'JetBrains Mono, monospace', letterSpacing:'0.04em'}}>
+                  {lang === 'vi' ? e.location.vi : e.location.en}
+                </div>
               </div>
               <div className="timeline-card">
                 <span className={`role-tag role-tag-${e.roleTagColor}`}>{e.roleTag}</span>
-                <div className="timeline-role">{e.title}</div>
-                <div className="timeline-product">{e.product}</div>
+                <div className="timeline-role">{lang === 'vi' ? e.title.vi : e.title.en}</div>
+                <div className="timeline-product">{lang === 'vi' ? e.product.vi : e.product.en}</div>
                 <ul className="timeline-points">
-                  {e.points.map((pt, j) => <li key={j}>{pt}</li>)}
+                  {(lang === 'vi' ? e.points.vi : e.points.en).map((pt, j) => <li key={j}>{pt}</li>)}
                 </ul>
                 <div className="timeline-stack">
                   {e.stack.map(s => <span key={s} className="stack-item">{s}</span>)}
@@ -1415,7 +1579,7 @@ function Experience() {
                   <div className="timeline-metric">
                     <div>
                       <div className="metric-num">{e.metric.num}</div>
-                      <div className="metric-label">{e.metric.label}</div>
+                      <div className="metric-label">{lang === 'vi' ? e.metric.label.vi : e.metric.label.en}</div>
                     </div>
                   </div>
                 )}
@@ -1429,12 +1593,14 @@ function Experience() {
 }
 
 function Education() {
+  const t = useT();
+  const { lang } = useContext(LangContext);
   return (
     <section id="education">
       <div className="container">
         <div className="section-head">
           <span className="section-num">04</span>
-          <h2 className="section-title">Education <em>& Certifications</em></h2>
+          <h2 className="section-title">{t(<>Education <em>& Certifications</em></>, <>Học vấn <em>& Chứng chỉ</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="edu-grid">
@@ -1443,34 +1609,39 @@ function Education() {
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             </div>
             <div className="edu-period">2021 — 2025</div>
-            <div className="edu-school">National Economics University (NEU)</div>
-            <div className="edu-degree">Bachelor of Business Analytics</div>
+            <div className="edu-school">{t('National Economics University (NEU)', 'Đại học Kinh tế Quốc dân (NEU)')}</div>
+            <div className="edu-degree">{t('Bachelor of Business Analytics', 'Cử nhân Business Analytics')}</div>
             <ul className="edu-list">
-              <li><strong>GPA: 3.87 / 4.0</strong> (Honors)</li>
-              <li>4× Merit-based scholarships for outstanding academic performance</li>
-              <li>Coursework: Statistics, Econometrics, Data Mining, Predictive Analytics</li>
+              <li><strong>{t('GPA: 3.87 / 4.0 (Honors)', 'GPA: 3.87 / 4.0 (Bằng Giỏi)')}</strong></li>
+              <li>{t('4× Merit-based scholarships for outstanding academic performance', '4 lần học bổng khuyến khích học tập cho thành tích xuất sắc')}</li>
+              <li>{t('Coursework: Statistics, Econometrics, Data Mining, Predictive Analytics', 'Môn học: Thống kê, Kinh tế lượng, Data Mining, Predictive Analytics')}</li>
             </ul>
           </div>
           <div className="edu-card">
             <div className="edu-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg>
             </div>
-            <div className="edu-period">Certifications</div>
+            <div className="edu-period">{t('Certifications', 'Chứng chỉ')}</div>
             <ul className="cert-list">
-              {CERTS.map((c, i) => (
-                <li key={i} className="cert-item">
-                  <div>
-                    <div className="cert-name">
-                      {c.href ? <a href={c.href} target="_blank" rel="noopener noreferrer">{c.name}</a> : c.name}
+              {CERTS.map((c, i) => {
+                const name = typeof c.name === 'string' ? c.name : (lang === 'vi' ? c.name.vi : c.name.en);
+                const issuer = typeof c.issuer === 'string' ? c.issuer : (lang === 'vi' ? c.issuer.vi : c.issuer.en);
+                const date = typeof c.date === 'string' ? c.date : (lang === 'vi' ? c.date.vi : c.date.en);
+                return (
+                  <li key={i} className="cert-item">
+                    <div>
+                      <div className="cert-name">
+                        {c.href ? <a href={c.href} target="_blank" rel="noopener noreferrer">{name}</a> : name}
+                      </div>
+                      <div className="cert-issuer">
+                        {issuer}
+                        {c.score && <span style={{color:'var(--accent)', marginLeft:8, fontWeight:600}}>· {c.score}</span>}
+                      </div>
                     </div>
-                    <div className="cert-issuer">
-                      {c.issuer}
-                      {c.score && <span style={{color:'var(--accent)', marginLeft:8, fontWeight:600}}>· {c.score}</span>}
-                    </div>
-                  </div>
-                  <div className="cert-date">{c.date}</div>
-                </li>
-              ))}
+                    <div className="cert-date">{date}</div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -1480,32 +1651,40 @@ function Education() {
 }
 
 function Blog() {
+  const t = useT();
+  const { lang } = useContext(LangContext);
   return (
     <section id="blog">
       <div className="container">
         <div className="section-head">
           <span className="section-num">05</span>
-          <h2 className="section-title">From the <em>Blog</em></h2>
+          <h2 className="section-title">{t(<>From the <em>Blog</em></>, <>Từ <em>Blog</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="blog-grid">
-          {BLOG_POSTS.map((b, i) => (
-            <a key={i} href={b.href} target="_blank" rel="noopener noreferrer" className="blog-card">
-              <div className="blog-thumb">
-                <ThumbSVG kind={b.thumb} />
-              </div>
-              <div className="blog-body">
-                <div className="blog-cat">{b.cat}</div>
-                <h3 className="blog-title">{b.title}</h3>
-                <p className="blog-desc">{b.desc}</p>
-                <div className="blog-meta">
-                  <span>{b.readTime}</span>
-                  <span>·</span>
-                  <span>{b.date}</span>
+          {BLOG_POSTS.map((b, i) => {
+            const cat = typeof b.cat === 'string' ? b.cat : (lang === 'vi' ? b.cat.vi : b.cat.en);
+            const title = lang === 'vi' ? b.title.vi : b.title.en;
+            const desc = lang === 'vi' ? b.desc.vi : b.desc.en;
+            const readTime = typeof b.readTime === 'string' ? b.readTime : (lang === 'vi' ? b.readTime.vi : b.readTime.en);
+            return (
+              <a key={i} href={b.href} target="_blank" rel="noopener noreferrer" className="blog-card">
+                <div className="blog-thumb">
+                  <ThumbSVG kind={b.thumb} />
                 </div>
-              </div>
-            </a>
-          ))}
+                <div className="blog-body">
+                  <div className="blog-cat">{cat}</div>
+                  <h3 className="blog-title">{title}</h3>
+                  <p className="blog-desc">{desc}</p>
+                  <div className="blog-meta">
+                    <span>{readTime}</span>
+                    <span>·</span>
+                    <span>{b.date}</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -1513,17 +1692,26 @@ function Blog() {
 }
 
 function Contact() {
+  const t = useT();
   return (
     <section id="contact" style={{paddingBottom: 56}}>
       <div className="container">
         <div className="section-head">
           <span className="section-num">06</span>
-          <h2 className="section-title">Let's <em>Talk</em></h2>
+          <h2 className="section-title">{t(<>Let's <em>Talk</em></>, <>Cùng <em>trao đổi</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
-        <h3 className="contact-heading">Got a project, role, or<br/><em>a stubborn dataset?</em></h3>
+        <h3 className="contact-heading">
+          {t(
+            <>Got a project, role, or<br/><em>a stubborn dataset?</em></>,
+            <>Bạn có dự án, vị trí công việc,<br/><em>hay một bộ dữ liệu khó nhằn?</em></>
+          )}
+        </h3>
         <p className="contact-desc">
-          I'm always open to discussing analytics roles, interesting datasets, or just geeking out about mobile game KPIs and the occasional Power BI quirk.
+          {t(
+            "I'm always open to discussing analytics roles, interesting datasets, or just geeking out about mobile game KPIs and the occasional Power BI quirk.",
+            'Tôi luôn sẵn sàng trao đổi về các vị trí analytics, các bộ dữ liệu thú vị, hay đơn giản là bàn luận về KPI game mobile và những điều thú vị trong Power BI.'
+          )}
         </p>
         <div className="contact-cards">
           <a href="mailto:hangvt2003@gmail.com" className="contact-card">
@@ -1555,19 +1743,43 @@ function Contact() {
 }
 
 function Footer() {
+  const t = useT();
   return (
     <footer>
       <div className="container footer-inner">
-        <div>© 2026 Nguyễn Ngọc Thanh Hằng · Built in HCMC</div>
-        <div>Vietnamese (native) · English (IELTS 6.5)</div>
+        <div>{t('© 2026 Nguyễn Ngọc Thanh Hằng · Built in HCMC', '© 2026 Nguyễn Ngọc Thanh Hằng · Thực hiện tại TP.HCM')}</div>
+        <div>{t('Vietnamese (native) · English (IELTS 6.5)', 'Tiếng Việt (bản ngữ) · Tiếng Anh (IELTS 6.5)')}</div>
       </div>
     </footer>
   );
 }
 
 function App() {
+  const [lang, setLangState] = useState('en');
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem('portfolio-lang');
+      if (saved === 'vi' || saved === 'en') setLangState(saved);
+    } catch (e) { /* localStorage unavailable */ }
+  }, []);
+
+  const setLang = (newLang) => {
+    setLangState(newLang);
+    try { window.localStorage.setItem('portfolio-lang', newLang); } catch (e) {}
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('lang', newLang);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('lang', lang);
+    }
+  }, [lang]);
+
   return (
-    <>
+    <LangContext.Provider value={{ lang, setLang }}>
       <Nav />
       <Hero />
       <About />
@@ -1577,7 +1789,7 @@ function App() {
       <Blog />
       <Contact />
       <Footer />
-    </>
+    </LangContext.Provider>
   );
 }
 

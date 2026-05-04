@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tỷ lệ tự tử giữa các quốc gia — Hang Nguyen</title>
+<meta name="description" content="Phân tích cross-country tỷ lệ tự tử trong hơn 35 năm với phân cụm K-Means và phân tích các chiều văn hóa-kinh tế.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Quay lại portfolio
+    </a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="cs-lang-toggle" role="group" aria-label="Language">
+        <a href="suicide-rates-analysis.html" class="cs-lang-btn" aria-pressed="false">EN</a>
+        <button class="cs-lang-btn active" aria-pressed="true" disabled>VI</button>
+      </div>
+      <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+    </div>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Python · Machine Learning · EDA</div>
+    <h1 class="cs-title">Tỷ lệ tự tử <em>giữa các quốc gia</em></h1>
+    <p class="cs-subtitle">Bộ dữ liệu cross-country trải dài hơn 35 năm, phân tích bằng K-Means clustering. Tìm hiểu các pattern nơi điều kiện kinh tế, các chiều văn hóa, và cấu trúc nhân khẩu học giao thoa với sức khỏe tinh thần quốc gia.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Đồ án học thuật · NEU</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2024</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Lead Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Python · pandas · scikit-learn</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — Lưu ý về chủ đề</div>
+      <h2 class="cs-section-title">Một chủ đề nhạy cảm, được xử lý cẩn trọng.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Đây là một chủ đề nhạy cảm, và bài phân tích được tiếp cận như một bài tập về sức khỏe cộng đồng và khoa học xã hội — không phải một phân tích dữ liệu tùy hứng. Mục tiêu là hiểu cấu trúc vĩ mô của tỷ lệ tự tử quốc gia và cách nó tương quan với các biến xã hội, kinh tế, và văn hóa rộng hơn — công việc hỗ trợ thảo luận chính sách công cộng, chứ không phải để phán xét cá nhân.</p>
+      <div class="cs-notice">
+        <strong>Nếu bạn hoặc người thân đang gặp khó khăn —</strong> hãy tìm đến các nguồn hỗ trợ tại địa phương. Tại Việt Nam, liên hệ Đường dây nóng Sức khỏe Tâm thần Quốc gia. Bạn đọc quốc tế: xem <a href="https://findahelpline.com" target="_blank">findahelpline.com</a> để tìm hỗ trợ theo khu vực.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Cách tiếp cận</div>
+      <h2 class="cs-section-title">Từ làm sạch đến phân cụm.</h2>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Tích hợp dữ liệu</div>
+          <div class="cs-step-body">Kết hợp dữ liệu tỷ lệ tự tử của WHO với chỉ số kinh tế của World Bank và điểm các chiều văn hóa của Hofstede. Việc merge đòi hỏi chuẩn hóa tên quốc gia cẩn thận và xử lý các quốc gia không xuất hiện trong tất cả nguồn.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Phân tích thăm dò</div>
+          <div class="cs-step-body">Pattern time-series qua nhiều thập kỷ, tỷ lệ phân tầng theo tuổi và giới, phân cụm theo khu vực, và mối quan hệ giữa các cú sốc kinh tế (suy thoái, khủng hoảng tiền tệ) với thay đổi tỷ lệ ngắn hạn.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">K-Means clustering</div>
+          <div class="cs-step-body">Phân cụm các quốc gia dựa trên feature vector kết hợp tỷ lệ trung bình, hình dạng phân phối tuổi, tỷ lệ giới, và các chiều văn hóa. Dùng elbow method và silhouette score để chọn k. Các cluster sinh ra có diễn giải rõ ràng — cluster các nước phát triển cao, cluster hậu Xô-Viết, v.v.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Diễn giải và báo cáo</div>
+          <div class="cs-step-body">Viết báo cáo với nhận thức rằng tương quan thống kê trong lĩnh vực này có hệ quả chính sách — đóng khung cẩn thận về điều dữ liệu cho thấy và điều dữ liệu không cho thấy.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-pills">
+      <span class="cs-pill accent">Python</span>
+      <span class="cs-pill accent">pandas</span>
+      <span class="cs-pill teal">scikit-learn</span>
+      <span class="cs-pill teal">K-Means</span>
+      <span class="cs-pill green">Time-series Analysis</span>
+      <span class="cs-pill amber">Multi-source Data Integration</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — Notebook</div>
+      <h2 class="cs-section-title">Xem trên Google Colab.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Toàn bộ phân tích nằm trong một Google Colab notebook — chạy được, tái lập được, với mọi biểu đồ inline. Click bên dưới để mở.</p>
+    </div>
+    <div class="cs-embed">
+      <div class="cs-embed-placeholder" style="background: linear-gradient(135deg, var(--indigo-pale), var(--teal-pale)); padding: 64px 32px;">
+        <div class="cs-embed-placeholder-icon" style="background: white;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <h4>Google Colab Notebook</h4>
+        <p>Toàn bộ phân tích — tải dữ liệu, EDA, clustering, và diễn giải — được host dưới dạng Google Colab notebook.</p>
+        <a href="https://colab.research.google.com/drive/1PoPScORECGLZDR0ywpzn5qvC5dD282Y5?usp=sharing" target="_blank" class="cs-embed-cta">
+          Mở trong Google Colab
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
+      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Stack ML Python</div>
+        <h4>End-to-end với scikit-learn</h4>
+        <p>Chuẩn bị dữ liệu bằng pandas, feature scaling, K-Means kèm chọn k đúng cách (elbow + silhouette), và diễn giải cluster — toàn bộ pipeline unsupervised learning.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Tích hợp đa nguồn</div>
+        <h4>WHO + World Bank + Hofstede</h4>
+        <p>Mỗi nguồn có danh sách quốc gia, khoảng thời gian, và định danh khác nhau. Tích hợp thành công là phần "không hấp dẫn" nhưng thiết yếu.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Nhạy cảm với lĩnh vực</div>
+        <h4>Đóng khung cẩn thận trên chủ đề nhạy cảm</h4>
+        <p>Tương quan thống kê trong lĩnh vực sức khỏe cộng đồng đòi hỏi diễn giải cẩn thận — phân biệt rõ điều dữ liệu cho thấy với điều sẽ là một tuyên bố chính sách.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Tính tái lập</div>
+        <h4>Host trên Colab</h4>
+        <p>Notebook chạy mở. Người review không phải cài đặt gì — họ chỉ cần click và execute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Quay lại portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

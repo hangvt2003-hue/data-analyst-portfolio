@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tại sao Engagement giảm ở những level cụ thể — Hang Nguyen</title>
+<meta name="description" content="Phân tích funnel chẩn đoán cho một game match-3 puzzle — tìm ra những level thiết kế chưa hợp lý đứng sau retention cliff.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/case-study.css">
+</head>
+<body>
+
+<nav class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="../index.html" class="cs-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Quay lại portfolio
+    </a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="cs-lang-toggle" role="group" aria-label="Language">
+        <a href="engagement-drop-analysis.html" class="cs-lang-btn" aria-pressed="false">EN</a>
+        <button class="cs-lang-btn active" aria-pressed="true" disabled>VI</button>
+      </div>
+      <a href="../index.html" class="cs-logo">Hang N<span>.</span></a>
+    </div>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cs-tag">Diagnostic Analytics · Mobile Game</div>
+    <h1 class="cs-title">Tại sao <em>Engagement giảm</em> ở những level cụ thể</h1>
+    <p class="cs-subtitle">Một bài chẩn đoán funnel trên game match-3 puzzle. Các chỉ số engagement rơi tự do ở một số level nhất định — nhưng KPI hằng ngày không cho biết level nào, hay vì sao. Đây là cách chúng tôi tìm ra thủ phạm.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Game đang vận hành</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Lead Analyst</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Đối tượng</div><div class="cs-meta-value">Project Owner · Game Designer</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">01 — Vấn đề</div>
+      <h2 class="cs-section-title">Các chỉ số ngày dịch chuyển cùng chiều. Câu chuyện thì không.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Game puzzle mà ta tạm gọi là <strong>Puzzle Game A</strong> cho thấy engagement đang giảm trong báo cáo tuần — số session, thời lượng chơi, và tiến độ qua màn đều theo xu hướng đi xuống. Project Owner đặt câu hỏi hiển nhiên: <em>chính xác thì người chơi đang rớt lại ở đâu?</em></p>
+      <p>Nhìn vào retention curve ở mức cohort là chưa đủ. Người chơi về mặt kỹ thuật vẫn được giữ lại — nhưng họ đang mất hứng. Câu hỏi không phải là "họ có rời đi không?" mà là <strong>"họ có đang bị kẹt không?"</strong> — và nếu có, thì kẹt ở những level nào và tại sao.</p>
+      <div class="cs-notice">
+        <strong>Lưu ý —</strong> Tên game cụ thể, ID nội bộ, và các con số doanh thu tuyệt đối đã được ẩn danh. Phương pháp luận, cấu trúc, và các biểu đồ trực quan vẫn được giữ nguyên; deliverable thực tế đã được bàn giao cho stakeholder.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">02 — Cách tiếp cận</div>
+      <h2 class="cs-section-title">Một funnel chẩn đoán bốn lớp.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Thay vì chọn một chỉ số duy nhất, tôi xây dựng một bài chẩn đoán phân lớp, đi từ <strong>"hiện tượng này có thật không?"</strong> đến <strong>"vì sao nó xảy ra?"</strong>. Mỗi lớp trả lời một câu hỏi và quyết định có nên đào sâu thêm hay không.</p>
+    </div>
+    <div class="cs-steps">
+      <div class="cs-step">
+        <div class="cs-step-num">1</div>
+        <div>
+          <div class="cs-step-title">Xác nhận triệu chứng — xu hướng D0–D5</div>
+          <div class="cs-step-body">Average session length, số match/ngày, và số level vượt qua/ngày theo day-since-install. Đối chiếu với hai game cùng studio (Puzzle Game B và Puzzle Game C) để loại trừ tác động chung của studio hoặc yếu tố mùa vụ.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">2</div>
+        <div>
+          <div class="cs-step-title">Định vị điểm rơi — win rate theo từng level</div>
+          <div class="cs-step-body">Tính first-attempt win rate cho mỗi level (1–50), chuẩn hóa để loại bỏ độ khó tự nhiên tăng dần. Biểu đồ đã cô lập được vài level cụ thể có win rate thấp bất thường — đây là các level nghi vấn.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">3</div>
+        <div>
+          <div class="cs-step-title">Hành vi tại level nghi vấn — sử dụng hint &amp; số lần thử lại</div>
+          <div class="cs-step-body">Với mỗi level nghi vấn, xem hint balance, tỷ lệ fail liên tiếp, và phân phối thời gian dành cho level. Hint balance phẳng + tỷ lệ fail liên tiếp cao chính là dấu vân tay của "frustration without escape valve" — bế tắc mà không có lối thoát.</div>
+        </div>
+      </div>
+      <div class="cs-step">
+        <div class="cs-step-num">4</div>
+        <div>
+          <div class="cs-step-title">Tác động downstream — retention sau thất bại</div>
+          <div class="cs-step-body">Mô hình hóa tỷ lệ % user còn chơi sau N level kể từ khi tiếp xúc với level nghi vấn. Xác nhận các level nghi vấn không chỉ khó — chúng đang gây ra churn có thể đo được trong 5–10 level kế tiếp.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-pills">
+      <span class="cs-pill accent">SQL</span>
+      <span class="cs-pill accent">Funnel Analysis</span>
+      <span class="cs-pill teal">Cohort Comparison</span>
+      <span class="cs-pill teal">Distribution Analysis</span>
+      <span class="cs-pill green">Storytelling with Data</span>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">03 — Sản phẩm bàn giao</div>
+      <h2 class="cs-section-title">Những gì đã được giao.</h2>
+    </div>
+    <div class="cs-prose">
+      <p>Sản phẩm cuối là một <strong>báo cáo HTML tương tác độc lập</strong>, sử dụng bởi Project Owner và đội Game Design. Báo cáo bao gồm:</p>
+      <ul>
+        <li>Đường cong engagement D0–D7 (số phút, số match, số level vượt qua) cho game mục tiêu và hai game cùng studio, dùng làm control để loại trừ ảnh hưởng chung toàn studio.</li>
+        <li>Phân tích baseline win-rate theo từng level trên 50 level, chỉ ra cụ thể những level có tỷ lệ thành công lần đầu thấp bất thường.</li>
+        <li>Phân phối hint balance và fail liên tiếp tại các level nghi vấn, để đặc tả "frustration without escape valve".</li>
+        <li>Đường cong retention sau thất bại, lượng hóa mức churn downstream do từng level nghi vấn gây ra.</li>
+        <li>Đề xuất cụ thể từng level một mà đội Game Design có thể hành động ngay.</li>
+      </ul>
+      <p>Deliverable thực tế chứa dữ liệu nội bộ và thuộc quyền sở hữu của công ty, nên không được công bố tại đây. Tôi sẵn sàng trao đổi về phương pháp luận, biểu đồ, và phát hiện trong buổi phỏng vấn dưới điều khoản bảo mật phù hợp.</p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">Bạn muốn xem một thứ tương tự?</div>
+        <p>Phần <a href="game-metrics-framework-vi.html">Game Metrics Framework</a> trên trang này cho thấy cách tôi cấu trúc tài liệu phân tích cho đối tượng là Game Designer — đó là một tài liệu đào tạo không thuộc diện bảo mật mà tôi tự viết, dùng cùng phong cách trực quan và giọng văn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head">
+      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
+      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+    </div>
+    <div class="cs-grid-2">
+      <div class="cs-insight">
+        <div class="cs-insight-label">Tư duy chẩn đoán</div>
+        <h4>Từ triệu chứng đến gốc rễ</h4>
+        <p>Cuộc điều tra không dừng lại ở "engagement đang giảm". Nó thu hẹp dần: ngày nào, level nào, hành vi gì, hệ quả downstream ra sao.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Phân tích so sánh</div>
+        <h4>Baseline từ game cùng studio</h4>
+        <p>Dùng các game cùng studio làm control giúp tách biệt vấn đề riêng của game này khỏi nhiễu chung của toàn studio hoặc yếu tố mùa vụ — một bước nhỏ nhưng then chốt.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Sản phẩm liên phòng ban</div>
+        <h4>Thiết kế cho Game Designer</h4>
+        <p>Đối tượng đọc báo cáo là Game Designer, không phải analyst. Biểu đồ được chú thích kèm ngưỡng, vùng cảnh báo, và kết luận bằng ngôn ngữ thông thường.</p>
+      </div>
+      <div class="cs-insight">
+        <div class="cs-insight-label">Công cụ</div>
+        <h4>Pipeline SQL → HTML</h4>
+        <p>Custom SQL query cho các chỉ số theo từng level, export và render thành một HTML artifact có thể chia sẻ và mang đi được.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <a href="../index.html" class="cs-footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Quay lại portfolio
+  </a>
+  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
+</footer>
+
+</body>
+</html>
