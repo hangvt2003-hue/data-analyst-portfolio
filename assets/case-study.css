@@ -46,6 +46,25 @@ body {
 a { color: var(--accent); text-decoration: none; transition: opacity 180ms; }
 a:hover { opacity: 0.7; }
 
+/* ===== Vietnamese font overrides =====
+   Geist & JetBrains Mono lack full Vietnamese diacritics support.
+   Be Vietnam Pro (sans) and IBM Plex Mono (mono) cover them properly. */
+html[lang="vi"] body {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+html[lang="vi"] .mono,
+html[lang="vi"] code,
+html[lang="vi"] kbd,
+html[lang="vi"] pre,
+html[lang="vi"] [class*="-mono"],
+html[lang="vi"] [class*="micro"],
+html[lang="vi"] [class*="meta"],
+html[lang="vi"] [class*="kpi-label"],
+html[lang="vi"] [class*="dash-meta"],
+html[lang="vi"] [class*="section-num"] {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
 /* Typography helpers */
 .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: 'tnum'; }
 .serif { font-family: 'Fraunces', Georgia, serif; }
