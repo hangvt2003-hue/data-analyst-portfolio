@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Power BI Dashboard cho phòng Nhân sự — Hang Nguyen</title>
-<meta name="description" content="Power BI dashboard end-to-end cho nhân sự, gồm headcount, turnover, luân chuyển nội bộ, và tín hiệu dự báo nghỉ việc.">
+<meta name="description" content="Dashboard Power BI toàn diện dành cho phòng Nhân sự, theo dõi headcount, tỷ lệ nghỉ việc, luân chuyển nội bộ và các thông tin chi tiết.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   <div class="cs-nav-inner">
     <a href="../index.html" class="cs-back">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Quay lại portfolio
+      Quay lại Portfolio
     </a>
     <div style="display:flex; align-items:center; gap:14px;">
       <div class="cs-lang-toggle" role="group" aria-label="Language">
@@ -33,12 +33,12 @@
   <div class="container">
     <div class="cs-tag">Power BI · BI Dashboard</div>
     <h1 class="cs-title">Power BI <em>Dashboard</em> cho phòng Nhân sự</h1>
-    <p class="cs-subtitle">Một workforce analytics dashboard end-to-end được xây trong kỳ thực tập BI tại KPIM (Microsoft Partner). Headcount, turnover, thâm niên, luân chuyển nội bộ, và tín hiệu dự báo nghỉ việc — thiết kế để HR leadership có thể hành động.</p>
+    <p class="cs-subtitle">Một dashboard phân tích dữ liệu nhân sự (workforce analytics) toàn diện được tôi xây dựng trong kỳ thực tập BI tại KPIM (Đối tác của Microsoft). Tập trung vào các chỉ số: headcount, turnover, thâm niên, luân chuyển nội bộ và thông tin chi tiết — được thiết kế đặc biệt để hỗ trợ Team Nhân sự ra quyết định.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">KPIM (Microsoft Partner) · Thực tập BI</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">KPIM (Đối tác Microsoft) · Thực tập BI</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2025</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">End-to-end Builder</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Power BI · DAX · Power Query</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Chịu trách nhiệm toàn bộ (End-to-end)</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Công nghệ</div><div class="cs-meta-value">Power BI · DAX · Power Query</div></div>
     </div>
   </div>
 </header>
@@ -47,11 +47,11 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">01 — Vì sao có dự án này</div>
-      <h2 class="cs-section-title">Dữ liệu HR nằm rải rác ở 8 nơi. Quyết định cần dữ liệu gom về một chỗ.</h2>
+      <h2 class="cs-section-title">Dữ liệu nhân sự phân mảnh ở 8 nơi khác nhau. Ban Lãnh đạo cần mọi thứ quy về một mối.</h2>
     </div>
     <div class="cs-prose">
-      <p>Đội HR thường vận hành từ một hệ thống payroll, một hệ thống recruiting, một hệ thống performance, và vài bảng spreadsheet. Mỗi công cụ trả lời một câu hỏi. Không công cụ nào kết nối được "tỷ lệ nghỉ việc quý này là bao nhiêu" với "vị trí nào đang tuyển" với "đội nào đang có thâm niên đứng yên" — những câu hỏi mà HR leadership thực sự cần trả lời.</p>
-      <p>Brief của dự án: <strong>xây một Power BI dashboard duy nhất tổng hợp các nguồn này và surface các chỉ số cần thiết để HR leadership ra quyết định về tuyển dụng, retention, và cấu trúc đội.</strong></p>
+      <p>Phòng Nhân sự thường xuyên phải làm việc với hàng tá công cụ: phần mềm tính lương, phần mềm tuyển dụng, hệ thống đánh giá hiệu suất, và vô số file Excel. Mỗi công cụ chỉ trả lời được một câu hỏi đơn lẻ. Không có công cụ nào xâu chuỗi được "tỷ lệ nghỉ việc quý này là bao nhiêu" với "vị trí nào đang cần tuyển gấp" hay "đội ngũ nào đang có dấu hiệu chững lại về thâm niên" — và đây mới chính là những câu hỏi mà Ban Lãnh đạo thực sự quan tâm.</p>
+      <p>Mục tiêu của dự án: <strong>Xây dựng một Power BI Dashboard duy nhất giúp tổng hợp mọi nguồn dữ liệu, đồng thời trực quan hóa các chỉ số quan trọng để Ban Lãnh đạo đưa ra quyết định về tuyển dụng, giữ chân nhân tài và tối ưu hóa cấu trúc nhân sự.</strong></p>
     </div>
   </div>
 </section>
@@ -60,35 +60,35 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Từ source data đến dashboard.</h2>
+      <h2 class="cs-section-title">Hành trình từ dữ liệu thô đến Dashboard.</h2>
     </div>
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div>
-          <div class="cs-step-title">Data modeling — star schema</div>
-          <div class="cs-step-body">Thiết kế star schema xoay quanh một bảng <code>FactEmployment</code>. Các bảng dimension cho Employee, Department, Role, và Date. Schema hỗ trợ các truy vấn time-intelligence (turnover period-over-period, tenure-by-cohort) mà không cần DAX rối rắm.</div>
+          <div class="cs-step-title">Mô hình hóa dữ liệu (Star schema)</div>
+          <div class="cs-step-body">Thiết kế mô hình star schema xoay quanh bảng trung tâm <code>FactEmployment</code>. Các bảng dimension bao gồm Employee (Nhân viên), Department (Phòng ban), Role (Vị trí) và Date (Thời gian). Cấu trúc này hỗ trợ cực tốt cho các truy vấn theo thời gian (time-intelligence) như so sánh tỷ lệ nghỉ việc theo kỳ, thâm niên theo nhóm (cohort) mà không cần viết các hàm DAX quá phức tạp.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Power Query để wrangle dữ liệu</div>
-          <div class="cs-step-body">Source data không nhất quán — định dạng ngày khác nhau giữa các hệ thống, role title chưa chuẩn hóa, và headcount lịch sử phải dựng lại từ event log. Power Query phụ trách pipeline cleaning, có tham số hóa để tái sử dụng.</div>
+          <div class="cs-step-title">Làm sạch dữ liệu bằng Power Query</div>
+          <div class="cs-step-body">Nguồn dữ liệu ban đầu rất lộn xộn: định dạng ngày tháng không đồng nhất giữa các hệ thống, tên vị trí (role title) chưa được chuẩn hóa, và dữ liệu headcount trong quá khứ phải được tái tạo lại từ log sự kiện. Tôi đã dùng Power Query để xây dựng quy trình (pipeline) làm sạch dữ liệu, kết hợp tham số hóa (parameterized) để dễ dàng tái sử dụng cho sau này.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">DAX measure — lớp phân tích</div>
-          <div class="cs-step-body">Viết các measure cho: rolling 12 tháng attrition, voluntary vs involuntary turnover, tỷ lệ luân chuyển nội bộ, time-to-fill theo nhóm role, và histogram phân phối thâm niên. Sử dụng nhiều <code>CALCULATE</code>, <code>FILTER</code>, và time-intelligence function.</div>
+          <div class="cs-step-title">Lớp phân tích bằng DAX</div>
+          <div class="cs-step-body">Xây dựng các measure để tính toán: tỷ lệ nghỉ việc luân phiên 12 tháng (rolling 12-month attrition), phân loại nghỉ việc tự nguyện/bắt buộc, tỷ lệ luân chuyển nội bộ, thời gian tuyển người (time-to-fill), và biểu đồ phân phối thâm niên. Dự án ứng dụng chuyên sâu các hàm <code>CALCULATE</code>, <code>FILTER</code> và nhóm hàm time-intelligence.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Thiết kế trực quan cho đối tượng người dùng</div>
-          <div class="cs-step-body">HR leadership đọc dashboard khác analyst. KPI chính nằm phía trên cùng. Drill-down theo phòng ban khi click. Visual sơ đồ tổ chức custom dùng HTML content — xem bài blog của tôi về kỹ thuật này. Biểu đồ Gantt cho lịch sử công tác cá nhân.</div>
+          <div class="cs-step-title">Thiết kế giao diện hướng đến người dùng</div>
+          <div class="cs-step-body">Ban Lãnh đạo có cách đọc dashboard hoàn toàn khác với các Analyst. Vì vậy, các KPI quan trọng nhất được đưa lên trên cùng. Chi tiết theo phòng ban có thể drill-down chỉ với một cú click chuột. Tôi cũng tạo sơ đồ tổ chức (org-chart) tùy chỉnh bằng HTML content (bạn có thể xem bài blog của tôi về kỹ thuật này) và biểu đồ Gantt để theo dõi lịch sử công tác của từng cá nhân.</div>
         </div>
       </div>
     </div>
@@ -107,11 +107,11 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">03 — Dashboard trực tiếp</div>
-      <h2 class="cs-section-title">Power BI report được embed.</h2>
+      <div class="cs-section-num">03 — Trải nghiệm thực tế</div>
+      <h2 class="cs-section-title">Bản nhúng (Embed) của Power BI.</h2>
     </div>
     <div class="cs-prose">
-      <p>Power BI dashboard đã publish được embed bên dưới. Sử dụng slicer để lọc theo phòng ban, khoảng thời gian, và nhóm nhân viên. Click vào visual để cross-filter phần còn lại của trang.</p>
+      <p>Dưới đây là phiên bản Dashboard Power BI đã được nhúng trực tiếp. Bạn có thể sử dụng các bộ lọc (slicer) để xem dữ liệu theo phòng ban, khoảng thời gian và nhóm nhân viên. Hãy thử click trực tiếp vào các biểu đồ để trải nghiệm tính năng cross-filter toàn trang.</p>
     </div>
     <div class="cs-embed">
       <div class="cs-embed-head">
@@ -125,7 +125,7 @@
         style="height: 600px;"
       ></iframe>
       <div class="cs-embed-link">
-        <span style="color: var(--ink-soft);">Để embed: trong Power BI Service, File → Embed report → Publish to web (public)</span>
+        <span style="color: var(--ink-soft);">Để nhúng: trong Power BI Service, chọn File → Embed report → Publish to web (public)</span>
         <a href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-publish-to-web" target="_blank">Cách publish →</a>
       </div>
     </div>
@@ -135,29 +135,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+      <div class="cs-section-num">04 — Tổng kết</div>
+      <h2 class="cs-section-title">Dự án này phản ánh những kỹ năng gì?</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Sở hữu end-to-end</div>
-        <h4>Source đến dashboard, một mình</h4>
-        <p>Đưa dự án từ raw HR data qua cleaning, modeling, DAX measure, và visual design — không có hand-off ở khâu nào.</p>
+        <div class="cs-insight-label">Sở hữu toàn bộ dự án</div>
+        <h4>Từ dữ liệu thô đến Dashboard cuối cùng</h4>
+        <p>Đảm nhiệm toàn bộ vòng đời dự án: từ việc tiếp nhận dữ liệu nhân sự thô, làm sạch, xây dựng mô hình, viết hàm DAX cho đến thiết kế giao diện trực quan — hoàn toàn độc lập mà không cần chuyển giao (hand-off) ở bất kỳ khâu nào.</p>
       </div>
       <div class="cs-insight">
         <div class="cs-insight-label">Thành thạo DAX</div>
-        <h4>Pattern time-intelligence</h4>
-        <p>Rolling attrition, tenure cohort, so sánh period-over-period — các pattern DAX tôi dùng tự tin và đã viết blog chia sẻ.</p>
+        <h4>Áp dụng Time-intelligence nâng cao</h4>
+        <p>Tự tin ứng dụng các pattern DAX phức tạp như: tỷ lệ nghỉ việc luân phiên (rolling attrition), phân nhóm thâm niên (tenure cohorts) hay so sánh theo kỳ (period-over-period). Tôi cũng đã viết bài blog hướng dẫn chi tiết về các kỹ thuật này.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Storytelling bằng visual</div>
-        <h4>HTML content cho org chart</h4>
-        <p>Visual mặc định của Power BI render org structure không tốt. Tôi dùng HTML content visual để thiết kế org-chart và Gantt chart custom — đã viết về kỹ thuật này trong hai bài blog trên trang.</p>
+        <div class="cs-insight-label">Kể chuyện bằng dữ liệu</div>
+        <h4>HTML content cho sơ đồ tổ chức</h4>
+        <p>Do các biểu đồ mặc định của Power BI không thể hiện tốt cấu trúc tổ chức, tôi đã chủ động sử dụng HTML content để thiết kế org-chart và biểu đồ Gantt tùy chỉnh (tôi đã có 2 bài blog chia sẻ về thủ thuật này trên trang cá nhân).</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Thiết kế cho stakeholder</div>
-        <h4>Xây cho HR leadership, không cho analyst</h4>
-        <p>Tải nhận thức là quan trọng. KPI chính hiện ra ngay; phần phức tạp nằm sau một cú click. Dashboard có thể duyệt được, không chỉ truy vấn được.</p>
+        <div class="cs-insight-label">Thiết kế hướng đến người dùng</div>
+        <h4>Xây dựng cho Lãnh đạo, không phải cho Analyst</h4>
+        <p>Tối ưu hóa trải nghiệm người dùng (UX) bằng cách giảm thiểu gánh nặng nhận thức. Các KPI cốt lõi đập vào mắt ngay lập tức, trong khi các dữ liệu phức tạp được ẩn dưới các thao tác click. Dashboard được thiết kế để dễ dàng "khám phá" (browseable) chứ không chỉ để "truy vấn" (queryable).</p>
       </div>
     </div>
   </div>
@@ -166,7 +166,7 @@
 <footer class="cs-footer">
   <a href="../index.html" class="cs-footer-back">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Quay lại portfolio
+    Quay lại Portfolio
   </a>
   <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
 </footer>

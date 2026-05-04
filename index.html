@@ -695,7 +695,7 @@ const WORK_PROJECTS = [
     title: { en: 'User Cohort Profiling', vi: 'Phân tích cohort người dùng' },
     desc: {
       en: 'Behavioral segmentation that distinguishes loyal whales, churning casuals, and dormant returnees.',
-      vi: 'Phân khúc hành vi để tách biệt nhóm whale trung thành, casual user đang churn, và nhóm dormant quay lại.',
+      vi: 'Phân khúc hành vi để tách biệt nhóm user trung thành, casual user đang churn, và nhóm rời bỏ sớm.',
     },
     tags: { en: ['Segmentation', 'Cohort', 'Tableau'], vi: ['Segmentation', 'Cohort', 'Tableau'] },
     href: 'projects/user-cohort-profiling.html',
@@ -710,7 +710,7 @@ const WORK_PROJECTS = [
     title: { en: 'IAP Price Localization', vi: 'Localization giá IAP theo thị trường' },
     desc: {
       en: 'Region-aware IAP pricing strategy combining purchasing power parity, competitor benchmarks, and historical conversion.',
-      vi: 'Chiến lược định giá IAP theo từng khu vực, kết hợp purchasing power parity, benchmark đối thủ, và conversion lịch sử.',
+      vi: 'Chiến lược định giá IAP theo từng khu vực, kết hợp purchasing power parity (PPP), benchmark đối thủ, và dữ liệu lịch sử.',
     },
     tags: { en: ['Pricing', 'PPP', 'Strategy'], vi: ['Pricing', 'PPP', 'Strategy'] },
     href: 'projects/iap-price-localization.html',
@@ -724,8 +724,8 @@ const WORK_PROJECTS = [
     company: { en: 'KPIM (Microsoft Partner)', vi: 'KPIM (Microsoft Partner)' },
     title: { en: 'HR Power BI Dashboard', vi: 'Power BI Dashboard cho phòng Nhân sự' },
     desc: {
-      en: 'End-to-end Power BI workforce dashboard with headcount, turnover, internal mobility, and predictive attrition signals.',
-      vi: 'Power BI dashboard end-to-end cho nhân sự, gồm headcount, turnover, luân chuyển nội bộ, và tín hiệu dự báo nghỉ việc.',
+      en: 'End-to-end Power BI workforce dashboard with headcount, turnover, internal mobility, and detailed information.',
+      vi: 'Power BI dashboard end-to-end cho nhân sự, gồm tổng quan, phân tích hiệu suất, luân chuyển nội bộ, và thông tin chi tiết.',
     },
     tags: { en: ['Power BI', 'DAX', 'HR Analytics'], vi: ['Power BI', 'DAX', 'HR Analytics'] },
     href: 'projects/hr-power-bi-dashboard.html',
@@ -740,7 +740,7 @@ const WORK_PROJECTS = [
     title: { en: 'Customer Behavior at Supermarket', vi: 'Hành vi khách hàng tại siêu thị' },
     desc: {
       en: 'Sensor data → store layout optimization. Heatmaps, conversion funnels at the shelf level, and demographic segmentation.',
-      vi: 'Dữ liệu cảm biến → tối ưu layout siêu thị. Heatmap, conversion funnel theo từng kệ hàng, và phân khúc nhân khẩu học.',
+      vi: 'Dữ liệu cảm biến → tối ưu layout siêu thị. Heatmap, phễu chuyển đổi theo từng kệ hàng, và phân khúc nhân khẩu học.',
     },
     tags: { en: ['EDA', 'Funnel', 'Power BI'], vi: ['EDA', 'Funnel', 'Power BI'] },
     href: 'projects/customer-behavior-supermarket.html',
@@ -773,14 +773,14 @@ const EXPERIENCE = [
   {
     period: '09/2025 — Present',
     period_vi: '09/2025 — Hiện tại',
-    company: 'Mobile Gaming Studio',
-    location: { en: 'Vietnam', vi: 'Việt Nam' },
+    company: 'Mobile Gaming Studio (Wolffun Game)',
+    location: { en: 'Ho Chi Minh City', vi: 'TP. Hồ Chí Minh' },
     roleTagColor: 'blue',
     roleTag: 'Game Data Analyst',
     title: { en: 'Game Data Analyst', vi: 'Game Data Analyst' },
     product: {
       en: 'Multiple live mobile titles · F2P puzzle & idle genres',
-      vi: 'Nhiều tựa game mobile đang vận hành · Thể loại puzzle & idle (F2P)',
+      vi: 'Phụ trách nhiều tựa game đang vận hành · Thể loại puzzle & idle (F2P)',
     },
     points: {
       en: [
@@ -791,11 +791,11 @@ const EXPERIENCE = [
         <>Weekly KPI monitoring with diagnostic deep-dives; authored internal <strong>Game Metrics Framework</strong> for analyst onboarding.</>,
       ],
       vi: [
-        <><strong>Chẩn đoán engagement giảm trên game match-3 puzzle</strong> — Phân tích funnel với baseline từ các game cùng studio, xác định những level thiết kế chưa hợp lý gây ra retention cliff. <em>Góp phần giảm ~2–4% level-drop rate và cải thiện engagement theo ngày.</em></>,
-        <><strong>Hệ thống giám sát chất lượng quảng cáo</strong> — Pipeline tự động chấm điểm advertiser dựa trên baseline hành vi để đánh dấu creative độc hại. <em>Góp phần giảm ~2% churn do quảng cáo; tiết kiệm ~4 giờ review thủ công mỗi chu kỳ.</em></>,
-        <><strong>Tối ưu cap force-ad</strong> — Hai phương pháp percentile hành vi và LTV-curve cùng đề xuất cap thấp hơn. <em>Góp phần tăng ~20% engagement minutes trong khi LTV giữ ổn định.</em></>,
-        <>Phụ trách end-to-end data flow (Firebase, Adjust, mediation, Play Store): ETL pipeline, Tableau dashboard custom-SQL, event tracking cho game mới ra mắt.</>,
-        <>Theo dõi KPI hằng tuần kèm deep-dive chẩn đoán; tự viết tài liệu nội bộ <strong>Game Metrics Framework</strong> để onboard analyst mới.</>,
+        <><strong>Phân tích nguyên nhân giảm tương tác trên tựa game match-3</strong> — Nghiên cứu Funnel và đối chiếu với baseline của các game cùng thể loại để chỉ ra các lỗi thiết kế level làm giảm tỷ lệ retention. <em>Đóng góp: Giảm 2–4% tỷ lệ drop ở mỗi level và cải thiện day-over-day engagement.</em></>,
+        <><strong>Hệ thống giám sát chất lượng quảng cáo</strong> — Tự động hóa pipeline chấm điểm các nhà quảng cáo dựa trên baseline hành vi người dùng để gắn cờ các quảng cáo độc hại. <em>Đóng góp: Giảm khoảng 2% tỷ lệ churn do quảng cáo; tiết kiệm 4 giờ review thủ công định kỳ.</em></>,
+        <><strong>Tối ưu hóa giới hạn force-ad</strong> — Kết hợp phương pháp phân tích phân vị hành vi và đường cong LTV để đề xuất hạ mức giới hạn quảng cáo hiển thị hàng ngày. <em>Đóng góp: Tăng khoảng 20% số phút tương tác mà vẫn duy trì ổn định chỉ số LTV.</em></>,
+        <>Xây dựng luồng dữ liệu end-to-end từ Firebase, Adjust, mediation, Play Store: Phát triển ETL pipeline, Tableau dashboard bằng custom-SQL và cài đặt event tracking cho các tựa game mới ra mắt.</>,
+        <>Theo dõi KPI hàng tuần kèm theo các phân tích chẩn đoán chuyên sâu; biên soạn <strong>Game Metrics Framework</strong> nội bộ dùng để onboarding các Analyst mới.</>,
       ],
     },
     stack: ['Tableau', 'SQL', 'Firebase', 'Adjust', 'ETL', 'Python', 'A/B Testing'],
@@ -815,16 +815,16 @@ const EXPERIENCE = [
     },
     points: {
       en: [
-        <>Built and shipped an <strong>end-to-end HRM Power BI dashboard</strong> covering headcount, turnover, tenure, and attrition signals.</>,
-        <>Executed data pipeline tasks for a major reporting project for <strong>PetroVietnam Insurance (PVI)</strong>.</>,
-        <>Authored 3 technical blog posts on Power BI best practices for the company knowledge base.</>,
-        <>Served as <strong>Teaching Assistant</strong> for an internal Power BI course (30+ learners).</>,
+        <>Designed, developed, and deployed a comprehensive <strong>Power BI dashboard for Human Resource Management</strong>, visualizing key metrics such as employee turnover, headcount, and employee tenure to facilitate strategic decision-making.</>,
+        <>Executed data pipeline tasks for a major reporting project for <strong>PetroVietnam Insurance (PVI)</strong>, performing data processing, cleaning, and structuring from large Excel datasets to ensure data accuracy for BI reporting.</>,
+        <>Authored and published 3 technical blog posts on Power BI best practices, contributing to the company's knowledge base and online presence.</>,
+        <>Served as <strong>Teaching Assistant</strong> for a basic Power BI course, clarifying complex concepts and resolving technical queries for over 30+ learners.</>,
       ],
       vi: [
-        <>Xây dựng và bàn giao <strong>HRM Power BI dashboard end-to-end</strong> bao quát headcount, turnover, thâm niên, và tín hiệu nghỉ việc.</>,
-        <>Thực hiện các tác vụ data pipeline cho dự án reporting lớn của <strong>Bảo hiểm PetroVietnam (PVI)</strong>.</>,
-        <>Viết 3 bài blog kỹ thuật về best practice Power BI cho kho kiến thức nội bộ công ty.</>,
-        <>Đảm nhiệm vai trò <strong>Teaching Assistant</strong> cho khóa Power BI nội bộ (30+ học viên).</>,
+        <>Thiết kế, phát triển và triển khai <strong>dashboard Power BI toàn diện cho bộ phận Quản trị Nhân sự</strong>, trực quan hóa các chỉ số quan trọng như tỷ lệ turnover, headcount và thâm niên nhân viên nhằm hỗ trợ ra quyết định chiến lược.</>,
+        <>Thực hiện các tác vụ data pipeline cho dự án báo cáo lớn của <strong>Bảo hiểm Dầu khí PVI</strong>, bao gồm xử lý, làm sạch và cấu trúc hóa dữ liệu từ các tệp Excel lớn để đảm bảo độ chính xác cho báo cáo BI.</>,
+        <>Viết và xuất bản 3 bài blog kỹ thuật về Power BI best practices, đóng góp vào nền tảng kiến thức và sự hiện diện trực tuyến của công ty.</>,
+        <>Làm <strong>Trợ giảng</strong> cho khóa học Power BI cơ bản, hỗ trợ giải thích các khái niệm phức tạp và xử lý lỗi kỹ thuật cho hơn 30 học viên.</>,
       ],
     },
     stack: ['Power BI', 'DAX', 'Power Query', 'Excel'],
@@ -844,14 +844,16 @@ const EXPERIENCE = [
     },
     points: {
       en: [
-        <>Lead the data analysis phase of an innovation project building a <strong>recommendation engine</strong> for public services.</>,
-        <>Conducted user surveys and EDA to validate problem statements and project feasibility.</>,
-        <>Trained and evaluated <strong>KNN, LightFM, and K-Means</strong> models in Python.</>,
+        <>Spearheaded the data analysis phase of an innovation project to develop a <strong>recommendation system</strong> for the National Public Service Portal.</>,
+        <>Conducted user surveys and performed exploratory data analysis (EDA) on public service data to validate problem statements and assess project feasibility.</>,
+        <>Developed, trained, and evaluated machine learning models (<strong>KNN, LightFM, K-Means</strong>) using Python to personalize recommendations for administrative procedures.</>,
+        <>Key Achievement: Successfully engineered a recommendation engine that significantly improved user experience, achieving <strong>90% accuracy for users with extensive history</strong> and <strong>40% accuracy for new users</strong>.</>,
       ],
       vi: [
-        <>Dẫn dắt giai đoạn phân tích dữ liệu của một dự án sáng kiến xây dựng <strong>recommendation engine</strong> cho dịch vụ công.</>,
-        <>Thực hiện khảo sát người dùng và EDA để xác thực bài toán và tính khả thi của dự án.</>,
-        <>Huấn luyện và đánh giá các mô hình <strong>KNN, LightFM, và K-Means</strong> bằng Python.</>,
+        <>Tham gia giai đoạn phân tích dữ liệu của dự án đổi mới nhằm phát triển <strong>recommendation system</strong> cho Cổng Dịch vụ Công Quốc gia.</>,
+        <>Tiến hành khảo sát người dùng và thực hiện phân tích EDA trên tập dữ liệu dịch vụ công để kiểm chứng bài toán và đánh giá tính khả thi của dự án.</>,
+        <>Phát triển, huấn luyện và đánh giá các model Machine Learning (<strong>KNN, LightFM, KMeans</strong>) bằng Python để cá nhân hóa các gợi ý thủ tục hành chính.</>,
+        <>Thành tựu nổi bật: Xây dựng thành công engine gợi ý giúp cải thiện đáng kể trải nghiệm người dùng, đạt <strong>độ chính xác 90% đối với user có lịch sử truy cập nhiều</strong> và <strong>40% đối với user mới</strong>.</>,
       ],
     },
     stack: ['Python', 'KNN', 'LightFM', 'K-Means', 'EDA'],
@@ -875,7 +877,7 @@ const CERTS = [
   {
     name: { en: 'IELTS — Academic', vi: 'IELTS — Academic' },
     issuer: 'British Council',
-    date: '2024',
+    date: '2021',
     score: '6.5',
   },
   {
@@ -1371,7 +1373,7 @@ function Hero() {
           <p className="hero-desc">
             {t(
               'Bachelor of Business Analytics from National Economics University (GPA 3.87/4.0) and now a Game Data Analyst supporting live mobile titles. I work the full descriptive → diagnostic → prescriptive stack — from ETL pipelines to A/B tests to the one-page memo a Project Owner actually reads.',
-              'Cử nhân Business Analytics tại Đại học Kinh tế Quốc dân (GPA 3.87/4.0), hiện là Game Data Analyst hỗ trợ các tựa game mobile đang vận hành. Tôi làm toàn bộ stack descriptive → diagnostic → prescriptive — từ ETL pipeline, A/B test, đến bản memo một trang mà Project Owner thực sự đọc.'
+              'Cử nhân Business Analytics tại Đại học Kinh tế Quốc dân (GPA 3.87/4.0), hiện là Game Data Analyst hỗ trợ các tựa game mobile đang vận hành. Tôi làm toàn bộ stack descriptive → diagnostic → prescriptive — từ ETL pipeline, A/B test, đến report và đề xuất hành động cho Project Owner.'
             )}
           </p>
           <div className="hero-ctas">
@@ -1387,7 +1389,7 @@ function Hero() {
           <div className="hero-stats">
             <div>
               <div className="stat-num">3.87<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>/4.0</span></div>
-              <div className="stat-label">{t('GPA · Honors', 'GPA · Bằng Giỏi')}</div>
+              <div className="stat-label">{t('GPA · Honors', 'GPA · Bằng Xuất Sắc')}</div>
             </div>
             <div>
               <div className="stat-num">1<span style={{fontSize:'0.55em', color:'var(--ink-faint)'}}>{t('+ yr', '+ năm')}</span></div>
@@ -1420,7 +1422,7 @@ function About() {
         <div className="about-grid">
           <div className="about-photo">
             <img src="assets/img/profile.jpg" alt="Hang Nguyen" onError={(e)=>{e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg, var(--indigo-pale), var(--teal-pale))';}}/>
-            <div className="about-photo-tag">{t("NEU '25 · Honors", "NEU '25 · Bằng Giỏi")}</div>
+            <div className="about-photo-tag">{t("NEU '25 · Honors", "NEU '25 · Bằng Xuất Sắc")}</div>
           </div>
           <div>
             <h3 className="about-heading">
@@ -1432,13 +1434,13 @@ function About() {
             <p className="about-bio">
               {t(
                 <>My career began at the intersection of curiosity and rigor — a Business Analytics degree where I learned that <strong>numbers without narrative don't move decisions</strong>. From there, internships at <strong>VNPT IT</strong> (recommendation systems for public services) and <strong>KPIM</strong> (HR dashboards for a Microsoft Partner) sharpened my full BI/ML stack — Python, SQL, Power BI, Tableau, and the patience to clean data nobody wants to clean.</>,
-                <>Hành trình của tôi bắt đầu ở giao điểm giữa sự tò mò và sự chặt chẽ — chương trình Business Analytics đã dạy tôi rằng <strong>những con số không kèm câu chuyện sẽ không thể tạo ra quyết định</strong>. Từ đó, các kỳ thực tập tại <strong>VNPT IT</strong> (recommendation system cho dịch vụ công) và <strong>KPIM</strong> (HR dashboard cho một Microsoft Partner) đã rèn giũa toàn bộ stack BI/ML của tôi — Python, SQL, Power BI, Tableau, và cả sự kiên nhẫn để làm sạch những bộ dữ liệu chẳng ai muốn đụng vào.</>
+                <>Hành trình của tôi bắt đầu ở giao điểm giữa tò mò và cẩn thận — chương trình Business Analytics đã dạy tôi rằng <strong>những con số không kèm câu chuyện sẽ không thể tạo ra quyết định</strong>. Từ đó, các kỳ thực tập tại <strong>VNPT IT</strong> (recommendation system cho dịch vụ công) và <strong>KPIM</strong> (HR dashboard cho một Microsoft Partner) đã rèn giũa toàn bộ stack BI/ML của tôi — Python, SQL, Power BI, Tableau, và cả sự kiên nhẫn để làm sạch những bộ dữ liệu chẳng ai muốn đụng vào.</>
               )}
             </p>
             <p className="about-bio">
               {t(
                 <>Today, as a <strong>Game Data Analyst</strong> on multiple live mobile titles, I work the messy, decision-driving end of analytics: ETL maintenance from Firebase and ad-mediation platforms, custom-SQL dashboards for Project Owners, and ad-hoc diagnostic deep-dives whenever a metric moves. I believe great analysis isn't just numbers — it's <strong>a hypothesis tested against behavior</strong>, then explained in language a non-technical stakeholder can act on.</>,
-                <>Hiện tại, với vai trò <strong>Game Data Analyst</strong> cho nhiều tựa game mobile đang vận hành, tôi làm việc ở phần dữ liệu thực tế và trực tiếp dẫn đến quyết định: bảo trì ETL từ Firebase và các nền tảng ad-mediation, dashboard custom-SQL cho Project Owner, và những deep-dive chẩn đoán đột xuất mỗi khi một chỉ số dịch chuyển. Tôi tin rằng một bài phân tích tốt không chỉ là những con số — đó là <strong>một giả thuyết được kiểm chứng qua hành vi</strong>, rồi được diễn giải bằng ngôn ngữ mà một stakeholder không chuyên về kỹ thuật có thể hành động ngay được.</>
+                <>Hiện tại, với vai trò <strong>Game Data Analyst</strong> cho nhiều tựa game mobile đang vận hành, tôi làm việc ở phần dữ liệu thực tế và trực tiếp dẫn đến quyết định: bảo trì ETL từ Firebase và các nền tảng ad-mediation, Tableau dashboards cho Project Owner, và những bài toán ad hoc mỗi khi một chỉ số thay đổi bất thường. Tôi tin rằng một bài phân tích tốt không chỉ là những con số — đó là <strong>một giả thuyết được kiểm chứng qua hành vi</strong>, rồi được diễn giải bằng ngôn ngữ mà một stakeholder không chuyên về kỹ thuật có thể hành động ngay được.</>
               )}
             </p>
 
@@ -1480,7 +1482,7 @@ function About() {
 
               <div className="skills-label">{t('Soft Skills', 'Kỹ năng mềm')}</div>
               <div className="skills-tags">
-                <span className="tag tag-blue">{t('AI-augmented productivity', 'Năng suất hỗ trợ bởi AI')}</span>
+                <span className="tag tag-blue">{t('AI-augmented productivity', 'Ứng dụng AI để tăng hiệu suất')}</span>
                 <span className="tag tag-blue">{t('Cross-functional collaboration', 'Phối hợp đa phòng ban')}</span>
                 <span className="tag tag-blue">{t('Stakeholder communication', 'Giao tiếp với stakeholder')}</span>
                 <span className="tag tag-blue">{t('English (IELTS 6.5)', 'Tiếng Anh (IELTS 6.5)')}</span>
@@ -1552,7 +1554,7 @@ function Experience() {
       <div className="container">
         <div className="section-head">
           <span className="section-num">03</span>
-          <h2 className="section-title">{t(<>Experience <em>Timeline</em></>, <>Dòng thời gian <em>kinh nghiệm</em></>)}</h2>
+          <h2 className="section-title">{t(<>Experience <em>Timeline</em></>, <>Kinh nghiệm <em>làm việc</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="timeline">
@@ -1612,7 +1614,7 @@ function Education() {
             <div className="edu-school">{t('National Economics University (NEU)', 'Đại học Kinh tế Quốc dân (NEU)')}</div>
             <div className="edu-degree">{t('Bachelor of Business Analytics', 'Cử nhân Business Analytics')}</div>
             <ul className="edu-list">
-              <li><strong>{t('GPA: 3.87 / 4.0 (Honors)', 'GPA: 3.87 / 4.0 (Bằng Giỏi)')}</strong></li>
+              <li><strong>{t('GPA: 3.87 / 4.0 (Honors)', 'GPA: 3.87 / 4.0 (Bằng Xuất Sắc)')}</strong></li>
               <li>{t('4× Merit-based scholarships for outstanding academic performance', '4 lần học bổng khuyến khích học tập cho thành tích xuất sắc')}</li>
               <li>{t('Coursework: Statistics, Econometrics, Data Mining, Predictive Analytics', 'Môn học: Thống kê, Kinh tế lượng, Data Mining, Predictive Analytics')}</li>
             </ul>
@@ -1658,7 +1660,7 @@ function Blog() {
       <div className="container">
         <div className="section-head">
           <span className="section-num">05</span>
-          <h2 className="section-title">{t(<>From the <em>Blog</em></>, <>Từ <em>Blog</em></>)}</h2>
+          <h2 className="section-title">{t(<>From the <em>Blog</em></>, <>Về <em>Blog</em></>)}</h2>
           <span className="section-rule"></span>
         </div>
         <div className="blog-grid">

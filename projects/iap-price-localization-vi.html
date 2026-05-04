@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Localization giá IAP theo thị trường — Hang Nguyen</title>
-<meta name="description" content="Chiến lược định giá IAP theo từng khu vực, kết hợp purchasing power parity, benchmark đối thủ, và conversion lịch sử.">
+<title>Nội địa hóa giá IAP theo thị trường — Hang Nguyen</title>
+<meta name="description" content="Chiến lược định giá IAP theo từng khu vực, kết hợp sức mua tương đương (PPP), phân tích đối thủ và dữ liệu chuyển đổi lịch sử.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   <div class="cs-nav-inner">
     <a href="../index.html" class="cs-back">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Quay lại portfolio
+      Quay lại Portfolio
     </a>
     <div style="display:flex; align-items:center; gap:14px;">
       <div class="cs-lang-toggle" role="group" aria-label="Language">
@@ -31,14 +31,14 @@
 <header class="cs-hero">
   <div class="cs-hero-bg" aria-hidden="true"></div>
   <div class="container">
-    <div class="cs-tag">Pricing Strategy · Localization</div>
-    <h1 class="cs-title">Localization <em>giá IAP</em> theo thị trường</h1>
-    <p class="cs-subtitle">Một starter pack $4.99 mang ý nghĩa rất khác nhau ở San Francisco, São Paulo, và Hà Nội. Xây dựng một chiến lược định giá IAP có cơ sở theo từng khu vực, kết hợp purchasing-power parity, benchmark đối thủ, và conversion lịch sử.</p>
+    <div class="cs-tag">Chiến lược định giá · Nội địa hóa</div>
+    <h1 class="cs-title">Nội địa hóa <em>giá IAP</em> theo từng thị trường</h1>
+    <p class="cs-subtitle">Một gói starter pack giá $4.99 mang giá trị hoàn toàn khác biệt đối với người dùng ở San Francisco, São Paulo hay Hà Nội. Dự án này xây dựng một chiến lược định giá IAP hợp lý cho từng khu vực, dựa trên sự kết hợp giữa sức mua tương đương (PPP), mức giá của đối thủ cạnh tranh và dữ liệu chuyển đổi trong quá khứ.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Game idle</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Game Idle</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2026</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Pricing Analyst</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Excel · Python · Dữ liệu ngoài</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Chuyên viên Phân tích Định giá</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Công cụ</div><div class="cs-meta-value">Excel · Python · Dữ liệu ngoại bộ</div></div>
     </div>
   </div>
 </header>
@@ -47,14 +47,14 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">01 — Vấn đề</div>
-      <h2 class="cs-section-title">Một mức giá toàn cầu chỉ mang ý nghĩa của một mức giá toàn cầu.</h2>
+      <h2 class="cs-section-title">Một mức giá chung cho toàn cầu không giải quyết được bài toán địa phương.</h2>
     </div>
     <div class="cs-prose">
-      <p>Game mobile mặc định dùng định giá neo theo USD — $0.99, $4.99, $9.99 — và app store sẽ quy đổi sang các mức giá nội tệ. Hệ quả: một starter pack tốn 1.5 giờ lương trung bình ở Mỹ có thể tốn 8+ giờ lương trung bình ở các thị trường thu nhập thấp hơn. Conversion sụp đổ, và user ở những thị trường đó tự loại mình ra khỏi nền kinh tế IAP.</p>
-      <p>Project Owner đặt câu hỏi: <em>liệu chúng ta có thể đặt mức giá IAP theo từng khu vực để thu thêm doanh thu từ thị trường mới nổi mà không ăn cụt thị trường đã định hình?</em></p>
+      <p>Các tựa game mobile thường mặc định neo giá theo USD — $0.99, $4.99, $9.99 — sau đó các app store sẽ tự động quy đổi sang nội tệ. Hệ quả là: một gói starter pack chỉ tốn khoảng 1.5 giờ làm việc trung bình tại Mỹ, nhưng lại ngốn hơn 8 giờ lương ở các quốc gia có thu nhập thấp. Điều này khiến tỷ lệ chuyển đổi (conversion rate) chạm đáy, và người chơi ở các thị trường này nghiễm nhiên bị loại khỏi nền kinh tế IAP của game.</p>
+      <p>Project Owner đặt ra một bài toán: <em>Liệu chúng ta có thể thiết lập các mức giá IAP riêng cho từng khu vực, nhằm tối ưu doanh thu từ các thị trường mới nổi mà không làm ảnh hưởng (cannibalize) đến doanh thu từ các thị trường cốt lõi?</em></p>
       <div class="cs-callout">
-        <div class="cs-callout-label">Cách phát biểu thẳng thắn</div>
-        <p>Đây không phải thiện chí thuần túy — định giá theo khu vực làm tăng tổng doanh thu bằng cách thu hút những user vốn sẽ không bao giờ mua. Lập luận về công bằng giá cả và lập luận về doanh thu cùng chỉ về một hướng.</p>
+        <div class="cs-callout-label">Góc nhìn thực tế</div>
+        <p>Đây không hẳn là việc làm từ thiện — định giá theo khu vực thực chất giúp tăng tổng doanh thu bằng cách tiếp cận những người chơi vốn dĩ sẽ không bao giờ nạp tiền. Việc đảm bảo tính công bằng về giá và mục tiêu tăng trưởng doanh thu hoàn toàn đi chung một hướng.</p>
       </div>
     </div>
   </div>
@@ -64,50 +64,50 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Ba tín hiệu, được trọng số và kết hợp.</h2>
+      <h2 class="cs-section-title">Ba trọng số: Phân tích, đánh giá và kết hợp.</h2>
     </div>
     <div class="cs-prose">
-      <p>Không có tín hiệu đơn lẻ nào là đủ để đặt giá. PPP một mình sẽ giảm giá quá đà ở thị trường trưởng thành. Benchmark đối thủ một mình sẽ kéo dài sai lầm tập thể của ngành. Conversion lịch sử một mình không thể phân biệt "conversion thấp vì giá sai" với "conversion thấp vì thị trường đó vốn không chi cho game mobile". Tôi xây phương pháp tam giác hóa cả ba.</p>
+      <p>Không một chỉ số đơn lẻ nào là đủ để quyết định mức giá. Nếu chỉ dựa vào PPP, giá ở các thị trường trưởng thành sẽ bị giảm quá sâu. Nếu chỉ nhìn vào đối thủ, chúng ta sẽ lặp lại sai lầm chung của toàn ngành. Còn nếu chỉ dựa vào dữ liệu chuyển đổi lịch sử, ta không thể phân biệt được đâu là "ít người mua do giá sai" và đâu là "ít người mua do đặc thù thị trường ít nạp game". Vì vậy, tôi đã xây dựng một phương pháp "tam giác hóa" (triangulation) kết hợp cả ba yếu tố này.</p>
     </div>
 
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div>
-          <div class="cs-step-title">Xây baseline điều chỉnh PPP theo từng quốc gia</div>
-          <div class="cs-step-body">Lấy chỉ số PPP từ World Bank và tính "tương đương theo nội tệ" cho mỗi mức giá USD. Đây là sàn — bất kỳ mức giá nào đặt cao hơn ngưỡng này nghĩa là yêu cầu user trả nhiều hơn user Mỹ trong giá trị thực.</div>
+          <div class="cs-step-title">Xây dựng mức giá cơ sở theo PPP cho từng quốc gia</div>
+          <div class="cs-step-body">Trích xuất chỉ số Sức mua tương đương (PPP) từ World Bank và tính toán "giá trị nội tệ tương đương" cho mỗi mốc giá USD. Đây được xem là mức giá sàn — bất kỳ mức giá nào cao hơn ngưỡng này đều có nghĩa là chúng ta đang yêu cầu người chơi trả nhiều tiền hơn so với người Mỹ (xét trên giá trị thực tế).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Lồng vào benchmark đối thủ</div>
-          <div class="cs-step-body">Lấy mẫu top 10 game cùng thể loại ở mỗi quốc gia mục tiêu. Ghi lại giá starter pack và mid-tier của họ. Việc này hiệu chỉnh theo chuẩn willingness-to-pay thực tế ở mỗi thị trường — bao gồm các yếu tố mà PPP bỏ sót (văn hóa game mobile, hạ tầng thanh toán).</div>
+          <div class="cs-step-title">Kết hợp dữ liệu từ đối thủ cạnh tranh (Benchmark)</div>
+          <div class="cs-step-body">Lấy mẫu top 10 tựa game cùng thể loại tại mỗi quốc gia mục tiêu. Ghi nhận mức giá các gói starter pack và gói tầm trung (mid-tier) của họ. Bước này giúp đối chiếu với mức độ sẵn sàng chi trả thực tế ở mỗi thị trường — bao gồm cả những yếu tố mà PPP không phản ánh được (như văn hóa nạp game mobile hay hạ tầng thanh toán).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">Validate dựa trên dữ liệu conversion lịch sử</div>
-          <div class="cs-step-body">Với những thị trường đã có dữ liệu IAP, vẽ conversion rate vs % giá đã trả trên thu nhập trung bình tháng của thị trường đó. Dùng đường cong để xác định giá hiện tại đang ở trên hay dưới điểm conversion ngọt nhất theo từng khu vực.</div>
+          <div class="cs-step-title">Đối chiếu với dữ liệu tỷ lệ chuyển đổi trong quá khứ</div>
+          <div class="cs-step-body">Với những thị trường đã có sẵn dữ liệu IAP, vẽ biểu đồ tương quan giữa tỷ lệ chuyển đổi và tỷ lệ phần trăm thu nhập bình quân tháng mà người chơi đã chi. Dựa vào đường cong này để xác định xem mức giá hiện tại đang cao hay thấp hơn "điểm ngọt" (sweet spot) tối ưu chuyển đổi ở từng khu vực.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Tổng hợp và triển khai theo giai đoạn</div>
-          <div class="cs-step-body">Khuyến nghị mức giá theo thị trường kèm lý lẽ tường minh: "Với Việt Nam, giảm starter pack về tương đương $2.50 nội tệ; phù hợp PPP, khớp median thể loại, kỳ vọng conversion tăng ~2× dựa trên đường cong lịch sử." Triển khai theo giai đoạn kèm monitor.</div>
+          <div class="cs-step-title">Tổng hợp và triển khai theo từng giai đoạn</div>
+          <div class="cs-step-body">Đề xuất mức giá cho từng thị trường kèm theo lập luận rõ ràng: "Tại Việt Nam, nên giảm giá gói starter pack xuống mức tương đương $2.50; mức này phù hợp với PPP, khớp với mức trung bình của thể loại game, và kỳ vọng sẽ tăng tỷ lệ chuyển đổi lên ~2 lần dựa trên dữ liệu lịch sử." Triển khai áp dụng theo từng giai đoạn và theo dõi sát sao.</div>
         </div>
       </div>
     </div>
 
     <div class="cs-pills">
-      <span class="cs-pill accent">Pricing Strategy</span>
-      <span class="cs-pill accent">External Data Integration</span>
+      <span class="cs-pill accent">Chiến lược định giá</span>
+      <span class="cs-pill accent">Tích hợp dữ liệu ngoài</span>
       <span class="cs-pill teal">Excel</span>
       <span class="cs-pill teal">Python</span>
-      <span class="cs-pill green">Statistics</span>
-      <span class="cs-pill amber">Competitive Analysis</span>
+      <span class="cs-pill green">Thống kê</span>
+      <span class="cs-pill amber">Phân tích cạnh tranh</span>
     </div>
   </div>
 </section>
@@ -115,20 +115,20 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">03 — Sản phẩm bàn giao</div>
-      <h2 class="cs-section-title">Khuyến nghị giá theo từng thị trường, kèm lý lẽ.</h2>
+      <div class="cs-section-num">03 — Sản phẩm đầu ra</div>
+      <h2 class="cs-section-title">Đề xuất mức giá chi tiết cho từng thị trường, kèm theo lập luận.</h2>
     </div>
     <div class="cs-prose">
-      <p>Sản phẩm là một spreadsheet có cấu trúc kèm một memo viết tay:</p>
+      <p>Sản phẩm đầu ra bao gồm một bảng tính (spreadsheet) được cấu trúc bài bản và một báo cáo tóm tắt (memo):</p>
       <ul>
-        <li><strong>Top thị trường theo số user</strong>, đã xếp hạng.</li>
-        <li>Cho mỗi thị trường: giá đã điều chỉnh PPP, median của đối thủ, giá hiện tại, giá khuyến nghị, kỳ vọng conversion lift.</li>
-        <li>Một <strong>"cột lý lẽ"</strong> trên mỗi dòng — không chỉ là số, mà là một câu giải thích cho khuyến nghị. Đây là phần then chốt để thuyết phục stakeholder.</li>
-        <li>Cờ rủi ro cho những thị trường mà ba tín hiệu bất đồng mạnh (ví dụ PPP nói rẻ hơn, đối thủ nói đắt hơn — thường chỉ ra sample đối thủ yếu).</li>
+        <li>Bảng xếp hạng <strong>các thị trường hàng đầu theo số lượng người dùng</strong>.</li>
+        <li>Chi tiết cho mỗi thị trường: mức giá đã điều chỉnh theo PPP, mức giá trung bình của đối thủ, mức giá hiện tại, mức giá đề xuất, và mức tăng trưởng tỷ lệ chuyển đổi kỳ vọng.</li>
+        <li>Một <strong>"cột lập luận"</strong> cho từng hàng — không chỉ hiển thị những con số khô khan, mà là một câu giải thích ngắn gọn cho mức giá được đề xuất. Đây là yếu tố then chốt để thuyết phục các bên liên quan (stakeholder).</li>
+        <li>Gắn cờ cảnh báo rủi ro cho những thị trường mà ba chỉ số có sự chênh lệch lớn (ví dụ: PPP báo giá rẻ hơn, nhưng đối thủ lại bán đắt hơn — điều này thường cho thấy mẫu dữ liệu từ đối thủ chưa đủ mạnh).</li>
       </ul>
       <div class="cs-callout">
-        <div class="cs-callout-label">Vì sao cần "cột lý lẽ"</div>
-        <p>Nếu stakeholder phản biện một khuyến nghị thị trường cụ thể, bạn cần giải thích được dòng đó mà không phải kể lại toàn bộ phương pháp luận. Nhúng "tại sao" cạnh "cái gì" giúp spreadsheet tự bảo vệ chính nó.</p>
+        <div class="cs-callout-label">Tại sao cần "cột lập luận"?</div>
+        <p>Nếu một stakeholder thắc mắc về đề xuất ở một thị trường cụ thể, bạn cần giải thích ngay được dòng đó mà không phải trình bày lại toàn bộ phương pháp nghiên cứu. Việc đặt lý do "tại sao" ngay cạnh con số "bao nhiêu" giúp bảng tính mang tính thuyết phục cao và tự nó có thể giải trình các chất vấn.</p>
       </div>
     </div>
   </div>
@@ -137,29 +137,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+      <div class="cs-section-num">04 — Bài học & Kỹ năng</div>
+      <h2 class="cs-section-title">Những kinh nghiệm đúc kết được.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Tổng hợp đa nguồn</div>
-        <h4>Ba tín hiệu, một khuyến nghị</h4>
-        <p>Quyết định pricing thực tế cần tam giác hóa. PPP, benchmark cạnh tranh, và conversion lịch sử mỗi cái đều có điểm mù; cùng nhau, chúng ràng buộc đáp số.</p>
+        <div class="cs-insight-label">Tổng hợp dữ liệu đa nguồn</div>
+        <h4>Ba chỉ số, một đề xuất</h4>
+        <p>Các quyết định định giá trong thực tế luôn cần phương pháp tam giác hóa. PPP, mức giá cạnh tranh và tỷ lệ chuyển đổi lịch sử đều có những điểm mù riêng; nhưng khi kết hợp lại, chúng sẽ giới hạn và chỉ ra đáp án chính xác nhất.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Tích hợp dữ liệu ngoài</div>
-        <h4>Vượt ra khỏi first-party data</h4>
-        <p>Công việc đòi hỏi kéo dữ liệu PPP của World Bank, scrape ranking trên store, và merge với conversion data nội bộ — quen thuộc cả hai phía.</p>
+        <div class="cs-insight-label">Tích hợp dữ liệu ngoại bộ</div>
+        <h4>Bước ra khỏi vùng an toàn của dữ liệu nội bộ</h4>
+        <p>Dự án này đòi hỏi việc trích xuất dữ liệu PPP từ World Bank, cào dữ liệu (scrape) bảng xếp hạng trên app store và kết hợp chúng với dữ liệu chuyển đổi nội bộ — yêu cầu sự thành thạo trong việc xử lý cả hai luồng dữ liệu.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Kỹ năng stakeholder</div>
-        <h4>Deliverable tự bảo vệ</h4>
-        <p>Lý lẽ trên từng dòng giúp spreadsheet sống sót qua phản biện cục bộ. Một thắc mắc thị trường cụ thể có thể được trả lời mà không cần lặp lại toàn bộ framework.</p>
+        <div class="cs-insight-label">Kỹ năng làm việc với Stakeholder</div>
+        <h4>Báo cáo có khả năng tự giải trình</h4>
+        <p>Việc giải thích rõ ràng trên từng dòng giúp bảng tính "sống sót" qua những câu hỏi phản biện. Bất kỳ thắc mắc nào về một thị trường cụ thể đều có thể được giải đáp ngay lập tức mà không cần phải nhắc lại toàn bộ framework.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Trực giác kinh doanh</div>
-        <h4>Công bằng pricing gặp doanh thu</h4>
-        <p>Việc đóng khung công việc vừa đúng đắn về đạo đức vừa tích cực về doanh thu giúp việc thuyết phục tổ chức dễ dàng hơn so với cách đóng khung thuần thương mại.</p>
+        <div class="cs-insight-label">Tư duy nhạy bén trong kinh doanh</div>
+        <h4>Khi tính công bằng đi đôi với doanh thu</h4>
+        <p>Việc định vị dự án này như một giải pháp vừa mang tính công bằng cho người chơi, vừa mang lại tác động tích cực đến doanh thu giúp việc thuyết phục đội ngũ quản lý trở nên dễ dàng hơn rất nhiều so với góc độ thuần thương mại.</p>
       </div>
     </div>
   </div>
@@ -168,7 +168,7 @@
 <footer class="cs-footer">
   <a href="../index.html" class="cs-footer-back">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Quay lại portfolio
+    Quay lại Portfolio
   </a>
   <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
 </footer>

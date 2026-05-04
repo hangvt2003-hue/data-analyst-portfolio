@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tỷ lệ tự tử giữa các quốc gia — Hang Nguyen</title>
-<meta name="description" content="Phân tích cross-country tỷ lệ tự tử trong hơn 35 năm với phân cụm K-Means và phân tích các chiều văn hóa-kinh tế.">
+<title>Tỷ lệ tự tử tại các quốc gia — Hang Nguyen</title>
+<meta name="description" content="Phân tích dữ liệu đa quốc gia về tỷ lệ tự tử trong hơn 35 năm bằng phương pháp phân cụm K-Means, kết hợp đánh giá các khía cạnh văn hóa và kinh tế.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,10 +32,10 @@
   <div class="cs-hero-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="cs-tag">Python · Machine Learning · EDA</div>
-    <h1 class="cs-title">Tỷ lệ tự tử <em>giữa các quốc gia</em></h1>
-    <p class="cs-subtitle">Bộ dữ liệu cross-country trải dài hơn 35 năm, phân tích bằng K-Means clustering. Tìm hiểu các pattern nơi điều kiện kinh tế, các chiều văn hóa, và cấu trúc nhân khẩu học giao thoa với sức khỏe tinh thần quốc gia.</p>
+    <h1 class="cs-title">Tỷ lệ tự tử <em>tại các quốc gia</em></h1>
+    <p class="cs-subtitle">Phân tích bộ dữ liệu đa quốc gia trải dài hơn 35 năm bằng thuật toán phân cụm K-Means. Dự án nhằm khám phá những xu hướng nơi điều kiện kinh tế, yếu tố văn hóa và cấu trúc nhân khẩu học tác động đến bức tranh sức khỏe tinh thần của một quốc gia.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Đồ án học thuật · NEU</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Dự án học thuật · NEU</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2024</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Lead Analyst</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Python · pandas · scikit-learn</div></div>
@@ -47,12 +47,12 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">01 — Lưu ý về chủ đề</div>
-      <h2 class="cs-section-title">Một chủ đề nhạy cảm, được xử lý cẩn trọng.</h2>
+      <h2 class="cs-section-title">Xử lý cẩn trọng một vấn đề nhạy cảm.</h2>
     </div>
     <div class="cs-prose">
-      <p>Đây là một chủ đề nhạy cảm, và bài phân tích được tiếp cận như một bài tập về sức khỏe cộng đồng và khoa học xã hội — không phải một phân tích dữ liệu tùy hứng. Mục tiêu là hiểu cấu trúc vĩ mô của tỷ lệ tự tử quốc gia và cách nó tương quan với các biến xã hội, kinh tế, và văn hóa rộng hơn — công việc hỗ trợ thảo luận chính sách công cộng, chứ không phải để phán xét cá nhân.</p>
+      <p>Đây là một chủ đề nhạy cảm, do đó bài phân tích được thực hiện dưới góc độ y tế cộng đồng và khoa học xã hội — chứ không đơn thuần là một bài khám phá dữ liệu thông thường. Mục tiêu của dự án là hiểu được cấu trúc vĩ mô của tỷ lệ tự tử trên toàn quốc và mối tương quan của nó với các biến số rộng hơn về xã hội, kinh tế và văn hóa. Từ đó, cung cấp góc nhìn hỗ trợ cho các cuộc thảo luận về chính sách công, thay vì đưa ra những phán xét mang tính cá nhân.</p>
       <div class="cs-notice">
-        <strong>Nếu bạn hoặc người thân đang gặp khó khăn —</strong> hãy tìm đến các nguồn hỗ trợ tại địa phương. Tại Việt Nam, liên hệ Đường dây nóng Sức khỏe Tâm thần Quốc gia. Bạn đọc quốc tế: xem <a href="https://findahelpline.com" target="_blank">findahelpline.com</a> để tìm hỗ trợ theo khu vực.
+        <strong>Nếu bạn hoặc người thân đang gặp khó khăn về tâm lý —</strong> hãy tìm đến các dịch vụ hỗ trợ tại địa phương. Tại Việt Nam, bạn có thể liên hệ Đường dây nóng Sức khỏe Tâm thần Quốc gia. Với bạn đọc quốc tế: vui lòng truy cập <a href="https://findahelpline.com" target="_blank">findahelpline.com</a> để tìm kiếm sự trợ giúp theo từng khu vực.
       </div>
     </div>
   </div>
@@ -61,36 +61,36 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Từ làm sạch đến phân cụm.</h2>
+      <div class="cs-section-num">02 — Phương pháp tiếp cận</div>
+      <h2 class="cs-section-title">Từ bước làm sạch dữ liệu đến phân cụm.</h2>
     </div>
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div>
           <div class="cs-step-title">Tích hợp dữ liệu</div>
-          <div class="cs-step-body">Kết hợp dữ liệu tỷ lệ tự tử của WHO với chỉ số kinh tế của World Bank và điểm các chiều văn hóa của Hofstede. Việc merge đòi hỏi chuẩn hóa tên quốc gia cẩn thận và xử lý các quốc gia không xuất hiện trong tất cả nguồn.</div>
+          <div class="cs-step-body">Kết hợp dữ liệu tỷ lệ tự tử của WHO, các chỉ số kinh tế từ World Bank và điểm số các chiều kích văn hóa của Hofstede. Quá trình gộp (merge) đòi hỏi sự tỉ mỉ trong việc chuẩn hóa tên quốc gia và xử lý những nước không có mặt đầy đủ trong tất cả các nguồn dữ liệu.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Phân tích thăm dò</div>
-          <div class="cs-step-body">Pattern time-series qua nhiều thập kỷ, tỷ lệ phân tầng theo tuổi và giới, phân cụm theo khu vực, và mối quan hệ giữa các cú sốc kinh tế (suy thoái, khủng hoảng tiền tệ) với thay đổi tỷ lệ ngắn hạn.</div>
+          <div class="cs-step-title">Phân tích khám phá (EDA)</div>
+          <div class="cs-step-body">Phân tích xu hướng chuỗi thời gian (time-series) qua nhiều thập kỷ, phân tầng tỷ lệ theo độ tuổi và giới tính, phân cụm theo khu vực địa lý, và tìm hiểu mối liên hệ giữa các cú sốc kinh tế (suy thoái, khủng hoảng tiền tệ) với sự thay đổi tỷ lệ tự tử trong ngắn hạn.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">K-Means clustering</div>
-          <div class="cs-step-body">Phân cụm các quốc gia dựa trên feature vector kết hợp tỷ lệ trung bình, hình dạng phân phối tuổi, tỷ lệ giới, và các chiều văn hóa. Dùng elbow method và silhouette score để chọn k. Các cluster sinh ra có diễn giải rõ ràng — cluster các nước phát triển cao, cluster hậu Xô-Viết, v.v.</div>
+          <div class="cs-step-title">Phân cụm K-Means</div>
+          <div class="cs-step-body">Phân nhóm các quốc gia dựa trên một vector đặc trưng (feature vector) bao gồm: tỷ lệ trung bình, phân bố độ tuổi, tỷ lệ giới tính và các yếu tố văn hóa. Sử dụng phương pháp Elbow và điểm Silhouette để xác định số lượng cụm (k) tối ưu. Các cụm được tạo ra có ý nghĩa thực tiễn rõ ràng — ví dụ: cụm các nước phát triển cao, cụm các nước hậu Xô Viết, v.v.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Diễn giải và báo cáo</div>
-          <div class="cs-step-body">Viết báo cáo với nhận thức rằng tương quan thống kê trong lĩnh vực này có hệ quả chính sách — đóng khung cẩn thận về điều dữ liệu cho thấy và điều dữ liệu không cho thấy.</div>
+          <div class="cs-step-title">Diễn giải và Báo cáo</div>
+          <div class="cs-step-body">Viết báo cáo với nhận thức rõ ràng rằng: các tương quan thống kê trong lĩnh vực này có thể ảnh hưởng đến việc hoạch định chính sách. Do đó, cần trình bày cẩn thận ranh giới giữa những gì dữ liệu thực sự thể hiện và những gì nằm ngoài phạm vi của dữ liệu.</div>
         </div>
       </div>
     </div>
@@ -110,10 +110,10 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">03 — Notebook</div>
-      <h2 class="cs-section-title">Xem trên Google Colab.</h2>
+      <h2 class="cs-section-title">Xem chi tiết trên Google Colab.</h2>
     </div>
     <div class="cs-prose">
-      <p>Toàn bộ phân tích nằm trong một Google Colab notebook — chạy được, tái lập được, với mọi biểu đồ inline. Click bên dưới để mở.</p>
+      <p>Toàn bộ quá trình phân tích được lưu trữ trên Google Colab — có thể chạy trực tiếp, dễ dàng tái lập kết quả (reproducible) và hiển thị sẵn mọi biểu đồ. Bấm vào bên dưới để xem.</p>
     </div>
     <div class="cs-embed">
       <div class="cs-embed-placeholder" style="background: linear-gradient(135deg, var(--indigo-pale), var(--teal-pale)); padding: 64px 32px;">
@@ -121,7 +121,7 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         </div>
         <h4>Google Colab Notebook</h4>
-        <p>Toàn bộ phân tích — tải dữ liệu, EDA, clustering, và diễn giải — được host dưới dạng Google Colab notebook.</p>
+        <p>Toàn bộ bài phân tích — từ bước tải dữ liệu, EDA, phân cụm cho đến diễn giải kết quả — đều được host trên Google Colab.</p>
         <a href="https://colab.research.google.com/drive/1PoPScORECGLZDR0ywpzn5qvC5dD282Y5?usp=sharing" target="_blank" class="cs-embed-cta">
           Mở trong Google Colab
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -134,29 +134,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+      <div class="cs-section-num">04 — Kỹ năng nổi bật</div>
+      <h2 class="cs-section-title">Những điểm sáng trong dự án.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Stack ML Python</div>
-        <h4>End-to-end với scikit-learn</h4>
-        <p>Chuẩn bị dữ liệu bằng pandas, feature scaling, K-Means kèm chọn k đúng cách (elbow + silhouette), và diễn giải cluster — toàn bộ pipeline unsupervised learning.</p>
+        <div class="cs-insight-label">Thành thạo Python ML Stack</div>
+        <h4>Quy trình End-to-end với scikit-learn</h4>
+        <p>Từ bước tiền xử lý dữ liệu bằng pandas, chuẩn hóa đặc trưng (feature scaling), chạy K-Means kết hợp chọn k chuẩn xác (Elbow + Silhouette), cho đến việc diễn giải các cụm — bao quát toàn bộ một pipeline học không giám sát (unsupervised learning).</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Tích hợp đa nguồn</div>
+        <div class="cs-insight-label">Tích hợp dữ liệu đa nguồn</div>
         <h4>WHO + World Bank + Hofstede</h4>
-        <p>Mỗi nguồn có danh sách quốc gia, khoảng thời gian, và định danh khác nhau. Tích hợp thành công là phần "không hấp dẫn" nhưng thiết yếu.</p>
+        <p>Mỗi nguồn dữ liệu lại có một danh sách quốc gia, khoảng thời gian và mã định danh khác nhau. Việc làm sạch và gộp nối thành công tuy "khô khan" nhưng lại là bước quan trọng nhất của bài toán.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Nhạy cảm với lĩnh vực</div>
-        <h4>Đóng khung cẩn thận trên chủ đề nhạy cảm</h4>
-        <p>Tương quan thống kê trong lĩnh vực sức khỏe cộng đồng đòi hỏi diễn giải cẩn thận — phân biệt rõ điều dữ liệu cho thấy với điều sẽ là một tuyên bố chính sách.</p>
+        <div class="cs-insight-label">Sự nhạy bén với lĩnh vực (Domain knowledge)</div>
+        <h4>Góc nhìn cẩn trọng với chủ đề nhạy cảm</h4>
+        <p>Phân tích tương quan thống kê trong y tế cộng đồng đòi hỏi khả năng diễn giải thấu đáo — phân biệt rạch ròi giữa "những gì dữ liệu đang thể hiện" và "những tuyên bố mang tính định hướng chính sách".</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Tính tái lập</div>
-        <h4>Host trên Colab</h4>
-        <p>Notebook chạy mở. Người review không phải cài đặt gì — họ chỉ cần click và execute.</p>
+        <div class="cs-insight-label">Khả năng tái lập (Reproducibility)</div>
+        <h4>Lưu trữ mở trên Colab</h4>
+        <p>Notebook được thiết kế để ai cũng có thể chạy thử. Nhà tuyển dụng hay người đánh giá không cần phải cài đặt bất kỳ môi trường nào — họ chỉ cần click và chạy (execute).</p>
       </div>
     </div>
   </div>

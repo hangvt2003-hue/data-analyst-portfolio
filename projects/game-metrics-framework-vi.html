@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Game Metrics Framework — Hang Nguyen</title>
-<meta name="description" content="Tài liệu tham chiếu thực hành về các KPI của game mobile F2P — DAU, ARPU, eCPM, LTV, ROAS — và cách chúng kết nối với nhau.">
+<meta name="description" content="Tài liệu hướng dẫn thực tế về các chỉ số KPI trong game mobile F2P — DAU, ARPU, eCPM, LTV, ROAS — và mối liên hệ giữa chúng.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -31,9 +31,9 @@
 <header class="cs-hero">
   <div class="cs-hero-bg" aria-hidden="true"></div>
   <div class="container">
-    <div class="cs-tag">Framework · Reference Doc</div>
+    <div class="cs-tag">Framework · Cẩm nang hướng dẫn</div>
     <h1 class="cs-title">Game Metrics Framework — <em>Từ DAU đến LTV</em></h1>
-    <p class="cs-subtitle">Tài liệu tham chiếu thực hành về các chỉ số dẫn dắt game mobile F2P — và cách chúng kết nối thành một hệ thống duy nhất từ user acquisition đến revenue.</p>
+    <p class="cs-subtitle">Tài liệu đúc kết thực tế về các chỉ số cốt lõi quyết định sự thành bại của game mobile F2P — và cách chúng liên kết thành một hệ thống xuyên suốt từ khâu thu hút người dùng (UA) đến tạo ra doanh thu.</p>
     <div class="cs-meta">
       <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Đào tạo nội bộ</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2026</div></div>
@@ -46,15 +46,15 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">01 — Vì sao có tài liệu này</div>
-      <h2 class="cs-section-title">Phần lớn rối rắm về analytics không nằm ở toán.</h2>
+      <div class="cs-section-num">01 — Nguồn gốc tài liệu</div>
+      <h2 class="cs-section-title">Sự bối rối lớn nhất trong phân tích dữ liệu không nằm ở những phép toán.</h2>
     </div>
     <div class="cs-prose">
-      <p>Nó nằm ở chuyện chỉ vào chỉ số nào. Analyst mới và Game Designer bước vào dashboard với hai mươi KPI mà không có bản đồ về cách chúng kết nối. <strong>"Engagement có lên không?"</strong> là câu hỏi sai nếu engagement và monetization có thể đi ngược chiều nhau trong cùng một ngày.</p>
-      <p>Tôi viết tài liệu này trong giai đoạn training như một cách <strong>nén hai tháng học hỏi nội bộ vào một tài liệu tham chiếu</strong>. Thành viên mới giờ dùng nó để tự onboard mà không phải hỏi đi hỏi lại cùng một câu về phân rã ROAS, eCPM decay, hay vì sao chỉ số engagement phải tách theo loại user.</p>
+      <p>Mà nó nằm ở việc không biết nên nhìn vào chỉ số nào. Các Data Analyst hay Game Designer mới thường đối mặt với một dashboard có đến hàng chục KPI nhưng lại thiếu đi "tấm bản đồ" để kết nối chúng. Câu hỏi <strong>"Chỉ số tương tác (engagement) có đang tăng không?"</strong> là một câu hỏi sai, nếu như lượng tương tác và doanh thu đi theo hai hướng hoàn toàn trái ngược nhau trong cùng một ngày.</p>
+      <p>Tôi viết tài liệu này trong quá trình thử việc như một cách <strong>đúc kết hai tháng học hỏi nội bộ thành một cẩm nang có thể dùng lâu dài</strong>. Giờ đây, các thành viên mới có thể dùng nó để tự định hướng (onboard) mà không cần phải hỏi đi hỏi lại những câu quen thuộc về bóc tách ROAS, sự suy giảm eCPM, hay vì sao phải chia nhỏ chỉ số tương tác theo từng tệp người dùng.</p>
       <div class="cs-callout">
-        <div class="cs-callout-label">Tóm trong một dòng</div>
-        <p>Mỗi game mobile F2P sống chết bằng <strong>ROAS</strong>. ROAS = Revenue ÷ Ad Spend. Mọi thứ khác chỉ là một cách hữu ích hơn để nhìn vào một trong hai con số đó.</p>
+        <div class="cs-callout-label">Tóm tắt trong một câu</div>
+        <p>Mọi game mobile F2P đều sống còn dựa vào <strong>ROAS</strong> (Tỷ suất lợi nhuận trên chi phí quảng cáo). ROAS = Doanh thu ÷ Chi phí quảng cáo. Tất cả các chỉ số khác thực chất chỉ là những góc nhìn chi tiết hơn để mổ xẻ một trong hai con số này.</p>
       </div>
     </div>
   </div>
@@ -64,38 +64,38 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Xây cây metric, từ trên xuống.</h2>
+      <h2 class="cs-section-title">Xây dựng hệ thống chỉ số theo mô hình nhánh (từ trên xuống).</h2>
     </div>
     <div class="cs-prose">
-      <p>Thay vì liệt kê định nghĩa theo bảng chữ cái, tài liệu được cấu trúc thành <strong>cây nhân quả</strong> với gốc là ROAS — mỗi lá là một chỉ số stakeholder có thể hỏi tới, và mỗi nút bên trong là quan hệ liên kết các lá lại với nhau.</p>
+      <p>Thay vì liệt kê định nghĩa của từng chỉ số theo bảng chữ cái, tài liệu này được cấu trúc theo <strong>mô hình cây nhân quả</strong> với "rễ" là ROAS. Mỗi "chiếc lá" là một chỉ số mà các stakeholder có thể quan tâm, và mỗi "nhánh" bên trong thể hiện mối quan hệ liên kết các chỉ số đó lại với nhau.</p>
     </div>
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div>
-          <div class="cs-step-title">Cây metric tổng quan</div>
-          <div class="cs-step-body">ROAS ở gốc, phân nhánh thành Revenue (LTV → engagement, retention, ARPU) và Ad Spend (CPI → install, conversion, ASO/chất lượng creative).</div>
+          <div class="cs-step-title">Cây chỉ số tổng quan</div>
+          <div class="cs-step-body">Đặt ROAS ở gốc, sau đó rẽ nhánh thành Doanh thu (LTV → tương tác, tỷ lệ giữ chân, ARPU) và Chi phí quảng cáo (CPI → lượt tải, tỷ lệ chuyển đổi, ASO/chất lượng creative).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Đào sâu monetization</div>
-          <div class="cs-step-body">Cách mediation, ad network, và logic waterfall thực sự vận hành — và chỉ số nào surface vấn đề thật vs nhiễu bề mặt. Bao gồm mô hình tư duy <strong>eCPM decay</strong>.</div>
+          <div class="cs-step-title">Đi sâu vào Monetization</div>
+          <div class="cs-step-body">Cách hệ thống trung gian (mediation), mạng quảng cáo và thuật toán waterfall thực sự vận hành — cũng như chỉ số nào phản ánh đúng bản chất vấn đề thay vì chỉ là bề nổi. Bao gồm cả tư duy về <strong>sự suy giảm eCPM (eCPM decay)</strong>.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">Phân khúc user</div>
-          <div class="cs-step-body">Vì sao nhìn vào "average user" che giấu gần như mọi thứ. Phân khúc theo mức engagement, hành vi xem quảng cáo, và xu hướng IAP — mỗi phân khúc có profile monetization riêng.</div>
+          <div class="cs-step-title">Phân khúc người dùng</div>
+          <div class="cs-step-body">Lý do vì sao việc chỉ nhìn vào "người dùng trung bình" sẽ che lấp đi bức tranh thực tế. Cần phân khúc theo mức độ tương tác, thói quen xem quảng cáo và xu hướng nạp tiền — bởi mỗi nhóm đều mang lại doanh thu theo một cách khác nhau.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Action handle</div>
-          <div class="cs-step-body">Với mỗi chỉ số, tài liệu trả lời rõ: <em>đội có thể tác động trực tiếp lên nó, hay nó chỉ là triệu chứng downstream?</em> Điều này tách "monitor" khỏi "intervene".</div>
+          <div class="cs-step-title">Khả năng tác động (Actionable metrics)</div>
+          <div class="cs-step-body">Với mỗi chỉ số, tài liệu trả lời rõ ràng: <em>đội ngũ có thể trực tiếp can thiệp vào nó, hay nó chỉ là hệ quả kéo theo?</em> Điều này giúp phân định rạch ròi giữa việc "chỉ theo dõi" và "cần hành động".</div>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">03 — Đọc bản đầy đủ</div>
-      <h2 class="cs-section-title">Toàn bộ framework, được embed.</h2>
+      <h2 class="cs-section-title">Toàn bộ framework.</h2>
     </div>
     <div class="cs-embed">
       <div class="cs-embed-head">
@@ -115,8 +115,8 @@
       </div>
       <iframe class="cs-embed-iframe" src="../Game_Metrics_Brief.html" title="Game Metrics Framework Document"></iframe>
       <div class="cs-embed-link">
-        <span style="color: var(--ink-soft);">Mở trong tab mới để có trải nghiệm đọc đầy đủ</span>
-        <a href="../Game_Metrics_Brief.html" target="_blank">Mở standalone →</a>
+        <span style="color: var(--ink-soft);">Mở trong tab mới để có trải nghiệm đọc tốt nhất</span>
+        <a href="../Game_Metrics_Brief.html" target="_blank">Mở file độc lập →</a>
       </div>
     </div>
   </div>
@@ -125,29 +125,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện qua dự án này.</h2>
+      <div class="cs-section-num">04 — Điểm nhấn dự án</div>
+      <h2 class="cs-section-title">Những kỹ năng được đúc kết và thể hiện.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Kiến thức lĩnh vực</div>
-        <h4>Kinh tế game mobile F2P</h4>
-        <p>Hiểu toàn bộ stack doanh thu — quảng cáo (mediation, network, eCPM) và IAP (whale, conversion, pricing) — và cách mỗi đòn bẩy lan ngược lên trên.</p>
+        <div class="cs-insight-label">Kiến thức chuyên môn</div>
+        <h4>Kinh tế học trong game F2P</h4>
+        <p>Nắm vững toàn bộ bức tranh doanh thu — từ quảng cáo (mediation, network, eCPM) đến IAP (whale, tỷ lệ chuyển đổi, chiến lược giá) — và cách mỗi đòn bẩy tác động ngược lên tổng thể.</p>
       </div>
       <div class="cs-insight">
         <div class="cs-insight-label">Tư duy hệ thống</div>
-        <h4>Cây nhân quả thay cho danh sách phẳng</h4>
-        <p>Các chỉ số được tổ chức theo cách chúng tác động lẫn nhau, không theo bảng chữ cái. Stakeholder học được cấu trúc, không chỉ học từ ngữ.</p>
+        <h4>Sơ đồ nhân quả thay cho danh sách phẳng</h4>
+        <p>Các chỉ số được sắp xếp dựa trên mức độ tác động lẫn nhau chứ không theo thứ tự chữ cái. Giúp các stakeholder hiểu được cấu trúc vận hành thay vì chỉ học vẹt khái niệm.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Truyền đạt</div>
-        <h4>Viết kỹ thuật cho người đọc không chuyên</h4>
-        <p>Game Designer và Project Owner — không phải analyst — là đối tượng chính. Tone, ví dụ, và visual design phản ánh điều đó.</p>
+        <div class="cs-insight-label">Kỹ năng truyền đạt</div>
+        <h4>Viết tài liệu kỹ thuật cho người không chuyên</h4>
+        <p>Đối tượng đọc chính là Game Designer và Project Owner chứ không phải Analyst. Văn phong, ví dụ minh họa và thiết kế hình ảnh đều được tinh chỉnh để phù hợp với họ.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Tự chủ trong công việc</div>
-        <h4>Hợp nhất tri thức</h4>
-        <p>Viết tài liệu này mà không ai yêu cầu, như một cách biến quá trình học thành một artifact tái sử dụng được cho cả đội. Analyst mới dùng nó trong onboarding.</p>
+        <div class="cs-insight-label">Tính chủ động</div>
+        <h4>Khả năng đúc kết kiến thức</h4>
+        <p>Tự tay soạn thảo tài liệu này (mà không cần ai yêu cầu) như một cách biến quá trình học hỏi của bản thân thành một tài sản chung cho cả đội. Các Analyst mới giờ đây đều dùng nó trong quá trình onboarding.</p>
       </div>
     </div>
   </div>

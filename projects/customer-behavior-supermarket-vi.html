@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hành vi khách hàng tại siêu thị — Hang Nguyen</title>
-<meta name="description" content="Phân tích dữ liệu cảm biến về hành vi khách hàng tại siêu thị — heatmap, conversion funnel, và phân khúc nhân khẩu học để tối ưu layout cửa hàng.">
+<meta name="description" content="Phân tích dữ liệu cảm biến về hành vi khách hàng tại siêu thị — bản đồ nhiệt (heatmap), phễu chuyển đổi (conversion funnel), và phân khúc nhân khẩu học để tối ưu không gian cửa hàng.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,12 +33,12 @@
   <div class="container">
     <div class="cs-tag">EDA · Behavioral Analytics</div>
     <h1 class="cs-title">Hành vi khách hàng tại <em>siêu thị</em></h1>
-    <p class="cs-subtitle">Một bài EDA dựa trên dữ liệu cảm biến của siêu thị để hỗ trợ quyết định layout. Heatmap luồng người, conversion funnel cấp kệ, phân khúc nhân khẩu học, và nghịch lý dwell-time–purchase.</p>
+    <p class="cs-subtitle">Phân tích khám phá (EDA) dữ liệu cảm biến tại siêu thị nhằm tối ưu hóa không gian bài trí (layout) cửa hàng. Ứng dụng bản đồ nhiệt về lưu lượng khách, phễu chuyển đổi tại từng kệ hàng, phân khúc nhân khẩu học và giải mã nghịch lý giữa thời gian lưu lại (dwell-time) & tỷ lệ mua hàng.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Đồ án học thuật · NEU</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Dự án học thuật · NEU</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2024</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Lead Analyst</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">Power BI · Excel · Statistics</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Trưởng nhóm Phân tích</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Công cụ</div><div class="cs-meta-value">Power BI · Excel · Statistics</div></div>
     </div>
   </div>
 </header>
@@ -46,15 +46,15 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">01 — Đề bài</div>
+      <div class="cs-section-num">01 — Bài toán</div>
       <h2 class="cs-section-title">Vì sao quầy bánh mì đông người nhưng không bán được hàng?</h2>
     </div>
     <div class="cs-prose">
-      <p>Bộ dữ liệu ghi nhận trajectory đi lại đã ẩn danh của khách hàng — lối vào, dwell time theo từng zone, và đơn hàng cuối — của một siêu thị tầm trung trong 8 tuần. Quản lý cửa hàng muốn biết: <strong>zone nào đang làm tốt vai trò của nó, và zone nào chỉ đang gom người?</strong></p>
-      <p>"Foot traffic" là một chỉ số hấp dẫn vì dễ trực quan hóa, nhưng đứng một mình thì là vanity metric. Cái quan trọng là foot traffic chuyển đổi thành mua hàng — và mối quan hệ này không hề tuyến tính.</p>
+      <p>Bộ dữ liệu ghi lại ẩn danh quỹ đạo di chuyển của khách hàng — từ lối vào, thời gian dừng chân (dwell time) tại từng khu vực, cho đến đơn hàng cuối cùng — tại một siêu thị tầm trung trong suốt 8 tuần. Ban quản lý cửa hàng đặt ra câu hỏi: <strong>Khu vực (zone) nào đang thực sự mang lại doanh thu, và khu vực nào chỉ "đông lấy tụ" mà không sinh lời?</strong></p>
+      <p>"Lưu lượng khách" (Foot traffic) là một chỉ số hấp dẫn vì dễ trực quan hóa, nhưng nếu đứng độc lập thì nó chỉ là một chỉ số ảo (vanity metric). Điều thực sự quan trọng là lưu lượng đó có chuyển đổi thành hành vi mua hàng hay không — và mối quan hệ này hiếm khi tỷ lệ thuận với nhau.</p>
       <div class="cs-callout">
         <div class="cs-callout-label">Phát hiện thú vị nhất</div>
-        <p>Một số zone đông nhất lại có conversion thấp nhất. Quầy bánh mì cụ thể có dwell time gấp 2× quầy rau củ nhưng conversion chỉ bằng 1/2. Câu trả lời nằm ở quyết định layout — và là điều có thể hành động được.</p>
+        <p>Vài khu vực đông đúc nhất lại có tỷ lệ chuyển đổi thấp nhất. Điển hình như quầy bánh mì: khách hàng dừng chân tại đây lâu gấp 2 lần so với quầy rau củ, nhưng tỷ lệ mua hàng lại chỉ bằng một nửa. Câu trả lời nằm ở cách bố trí không gian (layout) — và đây là vấn đề hoàn toàn có thể tối ưu được.</p>
       </div>
     </div>
   </div>
@@ -64,42 +64,42 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Từ dữ liệu cảm biến đến đề xuất layout.</h2>
+      <h2 class="cs-section-title">Từ dữ liệu thô đến giải pháp bài trí cửa hàng.</h2>
     </div>
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div>
-          <div class="cs-step-title">Làm sạch dữ liệu và định nghĩa zone</div>
-          <div class="cs-step-body">Làm sạch trajectory data — timestamp trùng lặp, lỗ hổng cảm biến, dwell time outlier — và định nghĩa các zone logic (rau củ, bánh mì, sữa, đông lạnh, quầy thanh toán, v.v.) trên grid layout của siêu thị.</div>
+          <div class="cs-step-title">Làm sạch dữ liệu và định nghĩa khu vực</div>
+          <div class="cs-step-body">Xử lý dữ liệu cảm biến — loại bỏ các mốc thời gian trùng lặp, khoảng trống tín hiệu, các ngoại lệ (outlier) về thời gian dừng chân — đồng thời phân chia bản đồ siêu thị thành các khu vực logic (rau củ, bánh mì, bơ sữa, đồ đông lạnh, quầy thu ngân, v.v.).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Heatmap và pattern luồng người</div>
-          <div class="cs-step-body">Xây heatmap không gian thể hiện mật độ luồng người theo từng giờ trong ngày. Surface những pattern dễ đoán (xếp hàng deli giờ trưa) và những pattern bất ngờ (một góc chết gần khu đông lạnh mà khách chủ động tránh).</div>
+          <div class="cs-step-title">Lập bản đồ nhiệt (Heatmap) về luồng di chuyển</div>
+          <div class="cs-step-body">Dựng bản đồ không gian thể hiện mật độ khách hàng theo từng khung giờ trong ngày. Qua đó, làm nổi bật những thói quen dễ đoán (như xếp hàng mua đồ ăn nhanh vào giờ trưa) và cả những điểm mù bất ngờ (một góc "chết" gần khu đông lạnh mà khách hàng thường chủ động né tránh).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">Conversion funnel ở mức zone</div>
-          <div class="cs-step-body">Với mỗi zone: khách vào → khách đứng lại &gt;30 giây → khách lấy hàng → khách trả tiền cho hàng từ zone đó. Funnel phơi bày nghịch lý quầy bánh mì (dwell cao, conversion thấp) và thành công của quầy rau củ (dwell vừa phải, conversion cao).</div>
+          <div class="cs-step-title">Thiết lập phễu chuyển đổi cho từng khu vực</div>
+          <div class="cs-step-body">Xây dựng phễu hành vi: Khách bước vào → Dừng lại &gt;30 giây → Cầm sản phẩm lên → Thanh toán cho sản phẩm đó. Phễu này đã phơi bày nghịch lý tại quầy bánh mì (khách đứng lâu nhưng ít mua) và sự hiệu quả của quầy rau củ (thời gian dừng vừa phải nhưng tỷ lệ mua rất cao).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Phân khúc nhân khẩu học</div>
-          <div class="cs-step-body">Cross-tab pattern luồng người theo nhân khẩu suy luận (giờ ghé thăm, thành phần giỏ hàng). Các phân khúc khác nhau di chuyển trong siêu thị theo cách khác nhau — nghĩa là mọi thay đổi layout đều có tác động khác nhau lên từng phân khúc.</div>
+          <div class="cs-step-title">Phân khúc khách hàng theo hành vi</div>
+          <div class="cs-step-body">Phân tích chéo (cross-tab) luồng di chuyển với tệp khách hàng được suy luận (dựa trên giờ ghé thăm và thành phần giỏ hàng). Các nhóm khách hàng khác nhau sẽ có lộ trình di chuyển khác nhau — đồng nghĩa với việc mọi thay đổi về không gian đều sẽ tác động đến từng nhóm theo những cách riêng biệt.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">5</div>
         <div>
-          <div class="cs-step-title">Đề xuất layout kèm lý lẽ</div>
-          <div class="cs-step-body">Các đề xuất cụ thể, được ưu tiên hóa: di dời quầy trưng bày bánh mì, thêm lối tắt có biển báo từ khu đông lạnh đến quầy thanh toán, và sắp xếp lại kệ impulse-purchase tại quầy thanh toán dựa trên pattern xếp hàng thực tế.</div>
+          <div class="cs-step-title">Đề xuất Layout dựa trên dữ liệu</div>
+          <div class="cs-step-body">Đưa ra các giải pháp thực tiễn theo mức độ ưu tiên: dời vị trí tủ trưng bày bánh mì, mở thêm một lối đi tắt có biển chỉ dẫn từ khu đông lạnh ra quầy thanh toán, và sắp xếp lại kệ hàng mua ngẫu hứng (impulse-purchase) tại quầy thu ngân dựa trên thói quen xếp hàng thực tế.</div>
         </div>
       </div>
     </div>
@@ -118,11 +118,11 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">03 — Báo cáo đầy đủ</div>
-      <h2 class="cs-section-title">Đọc bản deliverable.</h2>
+      <div class="cs-section-num">03 — Báo cáo chi tiết</div>
+      <h2 class="cs-section-title">Xem kết quả dự án.</h2>
     </div>
     <div class="cs-prose">
-      <p>Báo cáo đầy đủ — bao gồm toàn bộ heatmap, conversion funnel, và đề xuất thay đổi layout — được embed bên dưới dưới dạng PDF.</p>
+      <p>Toàn bộ báo cáo — bao gồm các bản đồ nhiệt, phễu chuyển đổi và đề xuất cải thiện không gian cửa hàng — được đính kèm dưới định dạng PDF.</p>
     </div>
     <div class="cs-embed">
       <div class="cs-embed-head">
@@ -146,29 +146,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
+      <div class="cs-section-num">04 — Điểm nhấn của dự án</div>
       <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Tư duy không gian</div>
-        <h4>Phân tích dữ liệu có nhận thức về layout</h4>
-        <p>Phần lớn analytics bán lẻ thuần túy giao dịch. Thêm chiều không gian sẽ phơi bày phần "vì sao" thượng nguồn đứng sau pattern giao dịch.</p>
+        <div class="cs-insight-label">Tư duy không gian (Spatial Reasoning)</div>
+        <h4>Phân tích dữ liệu gắn liền với mặt bằng thực tế</h4>
+        <p>Đa phần các phân tích bán lẻ chỉ xoay quanh dữ liệu giao dịch. Việc bổ sung thêm chiều không gian giúp giải thích được nguyên nhân sâu xa đằng sau những con số doanh thu.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Kỷ luật funnel</div>
-        <h4>Vượt khỏi việc đếm lưu lượng</h4>
-        <p>Lưu lượng đứng một mình là vanity metric. Đơn vị phân tích đúng là conversion ở từng zone — và cấu trúc funnel làm điều đó tường minh.</p>
+        <div class="cs-insight-label">Tư duy phễu chuyển đổi</div>
+        <h4>Vượt xa việc đếm số lượng người qua lại</h4>
+        <p>Lượng khách đi ngang qua chỉ là một con số ảo. Đơn vị phân tích cốt lõi phải là tỷ lệ chuyển đổi tại từng khu vực — và mô hình phễu giúp làm rõ điều này một cách trực quan nhất.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Chuyển giao tri thức liên lĩnh vực</div>
-        <h4>Cùng một pattern, lĩnh vực khác</h4>
-        <p>Bài toán conversion ở quầy bánh mì phản chiếu chính xác bài toán "level dwell cao conversion thấp" trong game mobile — cùng một logic chẩn đoán, lĩnh vực khác nhau.</p>
+        <div class="cs-insight-label">Áp dụng chéo mô hình phân tích</div>
+        <h4>Cùng một vấn đề, khác biệt về lĩnh vực</h4>
+        <p>Vấn đề chuyển đổi kém ở quầy bánh mì phản ánh chính xác bài toán "thời gian online lâu nhưng nạp tiền ít" trong game mobile. Cùng một logic chẩn đoán, áp dụng linh hoạt cho các ngành nghề khác nhau.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Output có thể hành động</div>
-        <h4>Đề xuất, không chỉ phát hiện</h4>
-        <p>Deliverable kết thúc bằng các thay đổi layout cụ thể được xếp hạng theo tác động kỳ vọng và công sức — chứ không phải một danh sách biểu đồ để người đọc tự diễn giải.</p>
+        <div class="cs-insight-label">Tính thực tiễn cao</div>
+        <h4>Giải pháp cụ thể, không chỉ là con số</h4>
+        <p>Báo cáo kết thúc bằng các đề xuất thay đổi không gian cụ thể, được xếp hạng dựa trên mức độ hiệu quả và chi phí thực hiện — thay vì chỉ ném cho người đọc một mớ biểu đồ để họ tự diễn giải.</p>
       </div>
     </div>
   </div>

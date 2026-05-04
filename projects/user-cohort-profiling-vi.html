@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phân tích Cohort người dùng — Hang Nguyen</title>
-<meta name="description" content="Phân khúc hành vi tách biệt loyal whale, casual churner, và dormant returnee trên một game mobile đang vận hành.">
+<meta name="description" content="Phân khúc hành vi giúp phân loại nhóm loyal whale, casual churner và dormant returnee trong một tựa game mobile đang hoạt động.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,9 +33,9 @@
   <div class="container">
     <div class="cs-tag">Segmentation · Cohort Analysis</div>
     <h1 class="cs-title">Phân tích <em>Cohort người dùng</em></h1>
-    <p class="cs-subtitle">"Average user" là một sự hư cấu. Phân khúc hành vi giúp tách biệt nhóm loyal whale có retention phải bảo vệ bằng mọi giá, khỏi nhóm casual churner cần một loại can thiệp khác, và khỏi nhóm dormant returnee đã được "cứu" một nửa.</p>
+    <p class="cs-subtitle">Khái niệm "average user" (người dùng trung bình) vốn không tồn tại. Việc phân khúc hành vi giúp ta nhận diện rõ đâu là nhóm loyal whale cần bảo vệ tỷ lệ giữ chân bằng mọi giá, đâu là nhóm casual churner cần các biện pháp can thiệp khác biệt, và đâu là nhóm dormant returnee vốn đã được "cứu" một nửa.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Game đang vận hành</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Game đang hoạt động</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2026</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Lead Analyst</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">SQL · Tableau · Statistics</div></div>
@@ -46,15 +46,15 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">01 — Vì sao trung bình gây hiểu lầm</div>
-      <h2 class="cs-section-title">Hai game, ARPDAU giống nhau. Tương lai hoàn toàn khác.</h2>
+      <div class="cs-section-num">01 — Vì sao con số trung bình gây hiểu lầm</div>
+      <h2 class="cs-section-title">Hai tựa game có cùng ARPDAU, nhưng tương lai lại hoàn toàn khác biệt.</h2>
     </div>
     <div class="cs-prose">
-      <p>Hãy hình dung hai game có cùng ARPDAU hằng ngày. Doanh thu của Game A đến từ một đuôi dài người chơi casual. Doanh thu của Game B đến từ một cụm nhỏ whale có LTV cao. Cùng một chỉ số bề mặt — nhưng doanh thu của Game này sụp đổ nếu 10 user churn, trong khi Game kia có thể mất hàng trăm user mà không suy chuyển.</p>
-      <p>Không có phân khúc, studio sẽ phản ứng với cùng một KPI theo cùng một cách. Có phân khúc, studio sẽ học được <strong>nhóm user nào thực sự dẫn dắt chỉ số bề mặt</strong>, và việc can thiệp ở đâu sẽ tạo đòn bẩy lớn nhất.</p>
+      <p>Hãy hình dung hai tựa game có cùng chỉ số ARPDAU (Doanh thu trung bình trên người dùng hoạt động hằng ngày). Doanh thu của Game A đến từ một tệp lớn những người chơi casual. Trong khi đó, doanh thu của Game B lại phụ thuộc vào một nhóm nhỏ whale có LTV (Giá trị trọn đời) cao. Nhìn bề ngoài thì chỉ số tương đương nhau — nhưng doanh thu của Game B có thể sụp đổ chỉ vì 10 user rời bỏ, trong khi Game A có thể mất hàng trăm user mà chẳng hề hấn gì.</p>
+      <p>Nếu không phân khúc người dùng, studio sẽ phản ứng với các KPI theo những cách giống hệt nhau. Ngược lại, khi có phân khúc, studio sẽ biết được <strong>nhóm user nào mới thực sự là nhân tố chi phối các chỉ số tổng</strong>, và nên tập trung can thiệp vào đâu để tạo ra đòn bẩy lớn nhất.</p>
       <div class="cs-callout">
         <div class="cs-callout-label">Mục tiêu của dự án</div>
-        <p>Xây dựng profile cohort hành vi mà Project Owner và Game Designer có thể dùng làm <strong>phân khúc tiêu chuẩn</strong> cho mọi phân tích kế tiếp — để mỗi cuộc trao đổi về retention hay monetization đều ngay lập tức kèm câu hỏi "ở phân khúc nào?".</p>
+        <p>Xây dựng hồ sơ hành vi (behavioral cohort profile) làm <strong>tiêu chuẩn phân khúc</strong> cho Project Owner và Game Designer trong mọi phân tích sau này — để mỗi khi bàn về retention hay monetization, câu hỏi đầu tiên bật ra luôn là: "Đang nói đến phân khúc nào?".</p>
       </div>
     </div>
   </div>
@@ -64,11 +64,11 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Phân khúc hai trục: engagement × monetization.</h2>
+      <h2 class="cs-section-title">Phân khúc theo hai trục: Tương tác (Engagement) × Doanh thu (Monetization).</h2>
     </div>
     <div class="cs-prose">
-      <p>Tôi tránh dùng unsupervised clustering cho phân khúc chính. Lý do: cluster sinh ra bởi k-means hay DBSCAN sạch về toán nhưng khó đọc với stakeholder. Game Designer có thể hành động dựa trên "loyal whale" — họ không thể hành động dựa trên "Cluster 3, cái có silhouette score cao trên PC2".</p>
-      <p>Thay vào đó, tôi dùng một <strong>lưới hành vi hai trục</strong> với ngưỡng tường minh và có cơ sở, được kiểm chứng chéo bằng k-means như một sanity check.</p>
+      <p>Tôi quyết định không dùng thuật toán phân cụm không giám sát (unsupervised clustering) cho bước phân khúc chính. Lý do: các cụm tạo ra từ k-means hay DBSCAN tuy hoàn hảo về mặt toán học nhưng lại rất khó hiểu với các stakeholder. Game Designer có thể đưa ra action với nhóm "loyal whale" — chứ họ không thể làm gì với "Cụm 3, nhóm có điểm silhouette cao trên trục PC2".</p>
+      <p>Thay vào đó, tôi sử dụng một <strong>lưới hành vi hai trục</strong> với các ngưỡng (threshold) rõ ràng, có cơ sở vững chắc, và chỉ dùng k-means để kiểm chứng chéo (sanity check).</p>
     </div>
 
     <div class="cs-steps">
@@ -76,28 +76,28 @@
         <div class="cs-step-num">1</div>
         <div>
           <div class="cs-step-title">Định nghĩa hai trục</div>
-          <div class="cs-step-body"><strong>Trục engagement:</strong> số ngày active trong 30 ngày qua × average session length. <strong>Trục monetization:</strong> spend 30 ngày (IAP) + số rewarded-ad view 30 ngày (proxy cho phần đóng góp doanh thu quảng cáo).</div>
+          <div class="cs-step-body"><strong>Trục Engagement:</strong> số ngày active trong 30 ngày qua × độ dài phiên chơi (session length) trung bình. <strong>Trục Monetization:</strong> tổng tiền nạp IAP trong 30 ngày + số lần xem quảng cáo nhận thưởng (rewarded-ad) trong 30 ngày (đại diện cho phần đóng góp doanh thu quảng cáo).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Đặt ngưỡng tại điểm gãy tự nhiên của phân phối</div>
-          <div class="cs-step-body">Dùng percentile (P50, P90) trên mỗi trục thay vì con số tùy tiện. Mỗi phân khúc khi đó có định nghĩa rõ ràng: "top 10% theo engagement và top 10% theo monetization" = whale.</div>
+          <div class="cs-step-title">Thiết lập ngưỡng tại điểm gãy tự nhiên của phân phối</div>
+          <div class="cs-step-body">Sử dụng các điểm bách phân vị (P50, P90) cho mỗi trục thay vì những con số cảm tính. Nhờ đó, mỗi phân khúc đều có định nghĩa rõ ràng: "top 10% engagement và top 10% monetization" chính là whale.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">Profile từng phân khúc theo hành vi</div>
-          <div class="cs-step-body">Với mỗi phân khúc, tính D30 retention, content reach (level cao nhất đạt được), feature usage (event đã fire), và những tín hiệu báo trước churn phổ biến nhất.</div>
+          <div class="cs-step-title">Khắc họa chân dung hành vi cho từng phân khúc</div>
+          <div class="cs-step-body">Với mỗi phân khúc, tôi tính toán D30 retention, tiến độ trong game (level cao nhất đạt được), mức độ sử dụng tính năng (các event đã trigger), và những dấu hiệu phổ biến nhất báo trước việc người chơi sắp rời bỏ game (churn).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Validate bằng unsupervised k-means</div>
-          <div class="cs-step-body">Chạy k-means trên cùng feature set như một sanity check. Xác nhận các phân khúc dựa trên rule và các cluster thuật toán có overlap đáng kể — cho thấy ranh giới phản ánh cấu trúc hành vi thật.</div>
+          <div class="cs-step-title">Kiểm chứng bằng thuật toán k-means</div>
+          <div class="cs-step-body">Chạy k-means trên cùng một tập feature như một bước sanity check. Kết quả cho thấy các phân khúc dựa trên rule và các cụm thuật toán có sự trùng khớp đáng kể — chứng tỏ các ranh giới này phản ánh đúng cấu trúc hành vi thực tế.</div>
         </div>
       </div>
     </div>
@@ -116,21 +116,21 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">03 — Sản phẩm</div>
-      <h2 class="cs-section-title">Một segment dictionary mà cả đội thực sự dùng.</h2>
+      <div class="cs-section-num">03 — Sản phẩm bàn giao</div>
+      <h2 class="cs-section-title">Một "từ điển phân khúc" mang tính ứng dụng cao cho cả team.</h2>
     </div>
     <div class="cs-prose">
-      <p>Deliverable là một Tableau dashboard kèm segment dictionary viết tay. Mỗi phân khúc có:</p>
+      <p>Sản phẩm cuối cùng là một Tableau dashboard kèm theo bản từ điển phân khúc (segment dictionary) chi tiết. Mỗi phân khúc bao gồm:</p>
       <ul>
-        <li><strong>Một định danh có tên</strong> — Loyal Whale, Casual Churner, Dormant Returnee, Steady Mid, v.v.</li>
-        <li><strong>Một profile hành vi gói gọn trong một câu</strong> — họ làm gì, họ không làm gì.</li>
-        <li><strong>Tỷ trọng DAU và doanh thu của họ</strong> — để rõ ngay lập tức phân khúc nào đáng ưu tiên hơn.</li>
-        <li><strong>Tín hiệu báo trước phổ biến</strong> — hành vi của họ thay đổi như thế nào 7 ngày trước khi churn.</li>
-        <li><strong>Đề xuất can thiệp</strong> — content, pricing, hoặc chiến lược notification phù hợp với hành vi của phân khúc.</li>
+        <li><strong>Một cái tên gợi hình</strong> — Loyal Whale, Casual Churner, Dormant Returnee, Steady Mid, v.v.</li>
+        <li><strong>Tóm tắt profile hành vi trong một câu</strong> — những gì họ thường làm và không làm.</li>
+        <li><strong>Tỷ trọng DAU và doanh thu</strong> — để thấy ngay phân khúc nào cần được dồn nguồn lực ưu tiên.</li>
+        <li><strong>Dấu hiệu nhận biết sớm (precursor signals)</strong> — hành vi của họ thay đổi ra sao trong vòng 7 ngày trước khi churn.</li>
+        <li><strong>Đề xuất can thiệp</strong> — các chiến lược về nội dung, định giá (pricing) hoặc thông báo (notification) phù hợp với hành vi của từng phân khúc.</li>
       </ul>
       <div class="cs-callout">
         <div class="cs-callout-label">Kết quả</div>
-        <p>Các phân khúc trở thành lăng kính mặc định cho các cuộc trao đổi sau đó. Phân tích mới giờ đến đã phân khúc sẵn. Game Designer tham chiếu chúng trong feature brief. Cách nói "average user" đã rút lui rõ rệt khỏi các cuộc họp.</p>
+        <p>Các phân khúc này đã trở thành lăng kính mặc định cho mọi cuộc thảo luận về sau. Các báo cáo phân tích mới giờ đây đều được chia sẵn theo các phân khúc này. Game Designer cũng lấy đó làm hệ quy chiếu khi viết feature brief. Cụm từ "average user" gần như biến mất hoàn toàn trong các buổi họp của team.</p>
       </div>
     </div>
   </div>
@@ -139,29 +139,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+      <div class="cs-section-num">04 — Bài học &amp; Điểm nhấn kỹ năng</div>
+      <h2 class="cs-section-title">Những chuyên môn được thể hiện.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
         <div class="cs-insight-label">Lựa chọn phương pháp</div>
-        <h4>Rule hơn cluster — khi stakeholder mới là quan trọng</h4>
-        <p>Chọn phân khúc theo rule thay vì unsupervised clustering là một quyết định thiết kế có chủ đích: tính dễ đọc với stakeholder &gt; tính thanh lịch về toán học.</p>
+        <h4>Rule thay vì cluster — khi người dùng (stakeholder) mới là trọng tâm</h4>
+        <p>Quyết định chọn rule-based thay vì unsupervised clustering là một sự lựa chọn thiết kế có chủ đích: tính dễ hiểu, dễ áp dụng đối với stakeholder luôn quan trọng hơn sự thanh lịch về mặt toán học.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Kỷ luật xác thực</div>
-        <h4>Cross-check bằng k-means</h4>
-        <p>Ngay cả khi không dùng clustering làm công cụ chính, tôi vẫn dùng nó như một sanity check — để chắc chắn ranh giới rule không hoàn toàn vuông góc với cấu trúc dữ liệu thật.</p>
+        <div class="cs-insight-label">Kỷ luật kiểm chứng</div>
+        <h4>Kiểm chứng chéo bằng k-means</h4>
+        <p>Dù không dùng clustering làm công cụ chính, tôi vẫn dùng nó như một bước sanity check — để đảm bảo các ranh giới tự đặt ra không bị lệch pha hoàn toàn so với cấu trúc thực sự của dữ liệu.</p>
       </div>
       <div class="cs-insight">
         <div class="cs-insight-label">Kỹ năng làm việc với stakeholder</div>
-        <h4>Đặt tên là chuyện hệ trọng</h4>
-        <p>"Loyal Whale" so với "Segment 4" là khác biệt giữa một framework người ta nội hóa được và một framework bị quên đi. Đặt tên là một phần có chủ đích của deliverable.</p>
+        <h4>Nghệ thuật đặt tên</h4>
+        <p>"Loyal Whale" và "Segment 4" là ranh giới giữa một framework khiến người ta ghi nhớ và một framework bị lãng quên. Việc đặt tên có chủ đích là một phần quan trọng của sản phẩm bàn giao.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Hiểu lĩnh vực</div>
-        <h4>Tập trung doanh thu trong F2P</h4>
-        <p>Hiểu rằng doanh thu game mobile rất tập trung vào nhóm cohort nhỏ có LTV cao đã định hình việc chọn trọng số trục monetization và sự ưu tiên cho retention của whale.</p>
+        <div class="cs-insight-label">Am hiểu đặc thù ngành</div>
+        <h4>Sự tập trung doanh thu trong game F2P</h4>
+        <p>Hiểu được đặc thù doanh thu game mobile thường đổ dồn vào một nhóm rất nhỏ có LTV cao, tôi đã định hình được cách tính trọng số cho trục monetization và đặt ưu tiên hàng đầu vào việc giữ chân tập whale.</p>
       </div>
     </div>
   </div>

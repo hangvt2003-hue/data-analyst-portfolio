@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hệ thống giám sát chất lượng quảng cáo — Hang Nguyen</title>
-<meta name="description" content="Một hệ thống giám sát phát hiện và chặn các creative quảng cáo độc hại trên mobile ở quy mô lớn — bảo vệ trải nghiệm người dùng và retention.">
+<meta name="description" content="Hệ thống giám sát tự động phát hiện và ngăn chặn các mẫu quảng cáo độc hại trên mobile game ở quy mô lớn, giúp bảo vệ trải nghiệm người dùng và tỷ lệ giữ chân (retention).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,12 +33,12 @@
   <div class="container">
     <div class="cs-tag">System Design · Mobile Game</div>
     <h1 class="cs-title">Hệ thống <em>giám sát</em> chất lượng quảng cáo</h1>
-    <p class="cs-subtitle">Các creative quảng cáo độc hại — nút close không bấm được, nội dung gây hiểu lầm, audio quá to — là sát thủ thầm lặng đối với retention. Tôi thiết kế một hệ thống giám sát giúp lọc ra những advertiser xấu trong hàng triệu impression trước khi chúng làm tổn hại lòng tin của người dùng.</p>
+    <p class="cs-subtitle">Những mẫu quảng cáo (creative) độc hại — nút 'close' giả mạo, nội dung lừa đảo, hay âm thanh bùng nổ — chính là tác nhân thầm lặng tàn phá retention của game. Để giải quyết vấn đề này, tôi đã thiết kế một hệ thống giám sát tự động, giúp phát hiện và lọc ra các nhà quảng cáo (advertiser) kém chất lượng từ hàng triệu lượt hiển thị trước khi chúng kịp làm hỏng trải nghiệm người chơi.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Liên game</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Đa dự án</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2026</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Designer · Analyst</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">SQL · Tableau · Mediation API</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Công nghệ</div><div class="cs-meta-value">SQL · Tableau · Mediation API</div></div>
     </div>
   </div>
 </header>
@@ -46,15 +46,15 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">01 — Tại sao việc này quan trọng</div>
-      <h2 class="cs-section-title">Quảng cáo xấu gây tổn hại nhiều hơn doanh thu chúng tạo ra.</h2>
+      <div class="cs-section-num">01 — Tại sao bài toán này quan trọng</div>
+      <h2 class="cs-section-title">Thiệt hại từ quảng cáo "rác" còn lớn hơn doanh thu chúng mang lại.</h2>
     </div>
     <div class="cs-prose">
-      <p>Game mobile F2P phụ thuộc khá nhiều vào rewarded video và interstitial ad. Lớp mediation chuyển việc chọn creative cho các ad network — nghĩa là studio không trực tiếp kiểm soát người chơi sẽ thấy creative nào. <strong>Phần lớn là ổn. Một phần nhỏ là độc hại:</strong> nút close không hoạt động, lời tuyên bố "you won!" gây hiểu lầm, audio bật max volume, redirect malware, hoặc nội dung phản cảm.</p>
-      <p>Một impression xấu sẽ không làm dịch chuyển KPI ngày. Nhưng tiếp xúc lặp lại sẽ làm tăng churn, giảm tỷ lệ ad opt-in, và bào mòn nền kinh tế rewarded ad. Thách thức đặt ra: <strong>làm sao tìm ra advertiser xấu khi mỗi tuần có hàng trăm nghìn creative khác nhau?</strong></p>
+      <p>Các tựa game mobile F2P phụ thuộc rất lớn vào quảng cáo video nhận thưởng (rewarded video) và quảng cáo xen kẽ (interstitial ad). Tuy nhiên, thông qua các nền tảng mediation, quyền chọn hiển thị creative nào lại thuộc về các ad network — đồng nghĩa với việc studio không có quyền kiểm soát trực tiếp nội dung người chơi sẽ xem. <strong>Phần lớn quảng cáo đều bình thường, nhưng một tỷ lệ nhỏ lại cực kỳ độc hại:</strong> nút close bị liệt, thông báo "bạn đã trúng thưởng!" lừa đảo, âm thanh chói tai, tự động chuyển hướng đến trang chứa mã độc, hoặc nội dung phản cảm.</p>
+      <p>Một lượt hiển thị (impression) tồi tệ có thể không làm thay đổi KPI ngay trong ngày. Nhưng nếu người chơi liên tục phải chịu đựng chúng, tỷ lệ rời bỏ game (churn rate) sẽ tăng cao, số lượt tự nguyện xem quảng cáo giảm sút, kéo theo sự sụp đổ của toàn bộ nền kinh tế in-game. Thách thức lớn nhất ở đây là: <strong>Làm sao để chỉ mặt điểm tên những advertiser "xấu tính" khi mỗi tuần có đến hàng trăm nghìn mẫu creative khác nhau xuất hiện?</strong></p>
       <div class="cs-callout">
         <div class="cs-callout-label">Insight cốt lõi</div>
-        <p>Quảng cáo độc hại để lại một dấu vân tay hành vi. Người dùng skip sớm hơn, đóng app ngay sau đó, xem ít quảng cáo hơn ở session kế tiếp, hoặc giảm tổng số session. Tín hiệu này tồn tại — chỉ cần được tổng hợp ở mức advertiser-creative, không phải ở mức user.</p>
+        <p>Các quảng cáo độc hại luôn để lại "dấu vân tay" trong dữ liệu hành vi. Người dùng thường sẽ bấm bỏ qua (skip) rất sớm, thoát app ngay lập tức, xem ít quảng cáo hơn ở các lần chơi sau, hoặc thậm chí bỏ hẳn game. Tín hiệu này hoàn toàn tồn tại — chúng ta chỉ cần gom nhóm dữ liệu (aggregate) theo từng cấp độ advertiser-creative thay vì nhìn vào từng user đơn lẻ.</p>
       </div>
     </div>
   </div>
@@ -64,38 +64,38 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Cách tiếp cận</div>
-      <h2 class="cs-section-title">Từ raw mediation log đến watchlist.</h2>
+      <h2 class="cs-section-title">Từ dữ liệu thô (raw log) đến danh sách theo dõi (watchlist).</h2>
     </div>
     <div class="cs-prose">
-      <p>Pipeline của hệ thống chạy hằng ngày và xuất ra một danh sách xếp hạng <strong>"advertiser khả nghi"</strong> để đội operations review và đưa vào blocklist của mediation nếu cần.</p>
+      <p>Hệ thống được thiết kế dưới dạng một data pipeline chạy tự động mỗi ngày, trả về một bảng xếp hạng các <strong>"advertiser đáng ngờ"</strong>. Đội ngũ vận hành (Operations) sẽ dựa vào đây để xem xét và đưa chúng vào danh sách chặn (blocklist) trên nền tảng mediation.</p>
     </div>
     <div class="cs-steps">
       <div class="cs-step">
         <div class="cs-step-num">1</div>
         <div>
-          <div class="cs-step-title">Tổng hợp impression theo advertiser × creative × placement</div>
-          <div class="cs-step-body">Lấy raw event từ Firebase + nền tảng mediation. Chuẩn hóa định danh advertiser giữa các network (một số report theo package, số khác theo creative ID). Lọc về các advertiser có đủ impression để thống kê ổn định.</div>
+          <div class="cs-step-title">Gom nhóm (Aggregate) theo Advertiser × Creative × Placement</div>
+          <div class="cs-step-body">Trích xuất dữ liệu raw từ Firebase và nền tảng mediation. Chuẩn hóa định danh của các advertiser giữa các ad network khác nhau (vì có network dùng package name, có bên lại dùng creative ID). Sau đó, lọc ra những advertiser có đủ số lượng impression để đảm bảo tính chính xác của thống kê.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">2</div>
         <div>
-          <div class="cs-step-title">Tính các chỉ số sức khỏe hành vi cho từng advertiser</div>
-          <div class="cs-step-body">Tỷ lệ tiếp tục session sau impression, thời gian từ impression đến lúc đóng app, tỷ lệ ad opt-in tiếp theo, và phân phối skip rate. Mỗi chỉ số đều có baseline tính từ toàn bộ ad universe.</div>
+          <div class="cs-step-title">Đo lường "sức khỏe" hành vi cho từng Advertiser</div>
+          <div class="cs-step-body">Tính toán các chỉ số: Tỷ lệ tiếp tục chơi game sau khi xem quảng cáo, khoảng thời gian từ lúc xem đến lúc tắt app, tỷ lệ tự nguyện xem quảng cáo ở các lần sau, và phân bổ tỷ lệ skip. Mỗi chỉ số này đều được đem so sánh với mức chuẩn (baseline) của toàn bộ hệ sinh thái quảng cáo trong game.</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">3</div>
         <div>
-          <div class="cs-step-title">Chấm điểm so với baseline — z-score &amp; ngưỡng</div>
-          <div class="cs-step-body">Một advertiser có hành vi sau impression lệch nhiều độ lệch chuẩn so với mức trung bình của network sẽ bị flag. Outlier ở một chỉ số là cảnh báo; outlier ở nhiều chỉ số là ứng viên blocklist.</div>
+          <div class="cs-step-title">Chấm điểm rủi ro bằng Z-score &amp; Ngưỡng giới hạn (Threshold)</div>
+          <div class="cs-step-body">Nếu dữ liệu hành vi sau impression của một advertiser lệch quá nhiều độ lệch chuẩn so với mức trung bình của network, chúng sẽ bị cắm cờ (flag). Bất thường ở một chỉ số là cảnh báo nhẹ; bất thường ở nhiều chỉ số cùng lúc chắc chắn là ứng viên cho "bảng phong thần" (blocklist).</div>
         </div>
       </div>
       <div class="cs-step">
         <div class="cs-step-num">4</div>
         <div>
-          <div class="cs-step-title">Hiển thị trên Tableau dashboard kèm action handle</div>
-          <div class="cs-step-body">Đội operations thấy bảng có thể sort theo điểm risk, kèm sample creative (nếu có), và link một-bấm đến blocklist của network mediation tương ứng.</div>
+          <div class="cs-step-title">Trực quan hóa trên Tableau kèm "Action Handle"</div>
+          <div class="cs-step-body">Đội Operations sẽ có một dashboard trực quan, có thể sắp xếp theo điểm rủi ro. Dashboard này hiển thị luôn ảnh mẫu của creative (nếu có) và quan trọng nhất là nút link trực tiếp đến giao diện chặn (blocklist) của ad network đó chỉ với một cú click.</div>
         </div>
       </div>
     </div>
@@ -113,22 +113,22 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">03 — Sản phẩm bàn giao</div>
-      <h2 class="cs-section-title">Những gì đã được giao.</h2>
+      <div class="cs-section-num">03 — Kết quả đầu ra</div>
+      <h2 class="cs-section-title">Những gì tôi đã bàn giao.</h2>
     </div>
     <div class="cs-prose">
-      <p>Hệ thống tạo ra một Tableau dashboard hằng tuần kèm một báo cáo HTML xếp hạng cho đội operations. Deliverable bao gồm:</p>
+      <p>Hệ thống tự động tạo ra một Tableau dashboard cập nhật hàng tuần, kèm theo một báo cáo HTML tóm tắt dành riêng cho đội Operations. Cụ thể bao gồm:</p>
       <ul>
-        <li>Một danh sách có thể sort các advertiser khả nghi nhất, theo điểm risk tổng hợp (kết hợp bounce rate, ad-escape rate, hành vi sau impression, và mức đóng góp doanh thu).</li>
-        <li>Drill-down theo từng advertiser: số impression, eCPM, sample creative, các chỉ số hành vi sau impression so với baseline ecosystem.</li>
-        <li>Cờ risk có màu (cảnh báo single-metric vs ứng viên blocklist multi-metric).</li>
-        <li>Link trực tiếp vào UI blocklist của nền tảng ad-mediation tương ứng để hành động một bấm.</li>
-        <li>Theo dõi xu hướng: advertiser nào tái phạm, advertiser nào đã được chặn thành công, và xu hướng risk chất lượng quảng cáo theo thời gian trên toàn studio.</li>
+        <li>Danh sách top các advertiser có rủi ro cao nhất, được tính toán dựa trên điểm rủi ro tổng hợp (kết hợp tỷ lệ thoát game, hành vi người dùng sau khi xem, và mức độ đóng góp doanh thu).</li>
+        <li>Báo cáo chi tiết (drill-down) cho từng advertiser: số lượng impression, eCPM, hình ảnh creative mẫu, đối chiếu các chỉ số hành vi với mức chuẩn (baseline) của game.</li>
+        <li>Hệ thống cắm cờ (flag) phân loại theo màu sắc (Cảnh báo một chỉ số vs. Ứng viên blocklist đa chỉ số).</li>
+        <li>Tích hợp link điều hướng thẳng đến giao diện chặn của nền tảng mediation tương ứng, giúp Operations hành động ngay lập tức chỉ với một click.</li>
+        <li>Theo dõi xu hướng: Đánh dấu các advertiser "ngựa quen đường cũ", thống kê số lượng bị chặn thành công, và biểu đồ thể hiện mức độ rủi ro quảng cáo của toàn studio theo thời gian.</li>
       </ul>
-      <p>Báo cáo thực tế chứa dữ liệu cấp advertiser và thuộc quyền sở hữu của công ty, nên không được công bố tại đây. Tôi sẵn sàng trao đổi về phương pháp luận và các quyết định thiết kế cụ thể trong buổi phỏng vấn dưới điều khoản bảo mật phù hợp.</p>
+      <p><em>Lưu ý: Báo cáo thực tế chứa dữ liệu nội bộ của công ty nên không được công khai tại đây. Tuy nhiên, tôi rất sẵn lòng trao đổi sâu hơn về phương pháp luận và các quyết định thiết kế hệ thống trong các buổi phỏng vấn (tuân thủ thỏa thuận bảo mật thông tin).</em></p>
       <div class="cs-callout">
         <div class="cs-callout-label">Vì sao tôi tự hào về dự án này</div>
-        <p>Bắt đầu từ những yêu cầu đột xuất "kiểm tra giùm advertiser xấu này" và biến nó thành một pipeline tự động lặp lại được. Hệ thống nay chạy mà không cần analyst can thiệp — biến một fire-drill định kỳ thành công việc bảo trì chạy nền.</p>
+        <p>Bắt đầu từ những yêu cầu xử lý sự vụ thủ công kiểu "check giùm xem advertiser này có vấn đề không", tôi đã biến nó thành một data pipeline tự động hóa hoàn toàn. Hệ thống hiện tại vận hành trơn tru mà không cần Data Analyst phải can thiệp rút dữ liệu — biến một công việc "chữa cháy" mệt mỏi định kỳ thành một quy trình chạy ngầm êm ái.</p>
       </div>
     </div>
   </div>
@@ -137,29 +137,29 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+      <div class="cs-section-num">04 — Giá trị mang lại</div>
+      <h2 class="cs-section-title">Những kỹ năng nổi bật được áp dụng.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Thiết kế hệ thống</div>
-        <h4>Từ ad-hoc đến monitoring</h4>
-        <p>Lấy một bài toán trước đây cần điều tra thủ công và biến nó thành một pipeline tự động lặp lại được, chạy mà không cần analyst can thiệp.</p>
+        <div class="cs-insight-label">Thiết kế hệ thống (System Design)</div>
+        <h4>Từ xử lý sự vụ đến tự động hóa</h4>
+        <p>Tái cấu trúc một bài toán điều tra thủ công tốn thời gian thành một hệ thống tự động theo dõi, đánh giá và báo cáo mà không cần sự can thiệp của con người.</p>
       </div>
       <div class="cs-insight">
         <div class="cs-insight-label">Tư duy thống kê</div>
-        <h4>Baseline hành vi</h4>
-        <p>Hành vi của một impression đơn lẻ quá nhiễu. Tổng hợp lên mức advertiser và so sánh với baseline ecosystem mới làm lộ ra outlier thật sự.</p>
+        <h4>Thiết lập Baseline chuẩn</h4>
+        <p>Hành vi từ một lượt hiển thị đơn lẻ chứa rất nhiều "nhiễu" (noise). Phải biết cách gom nhóm lên cấp độ advertiser và so sánh với baseline chuẩn mới có thể tìm ra các điểm bất thường (outlier) thực sự.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Dữ liệu đa nền tảng</div>
-        <h4>Chuẩn hóa mediation</h4>
-        <p>Mỗi ad network định danh khác nhau. Hệ thống chuẩn hóa giữa các nền tảng để một advertiser bị chặn ở network này không bị "lọt" sang network khác.</p>
+        <div class="cs-insight-label">Xử lý dữ liệu phức hợp</div>
+        <h4>Đồng nhất dữ liệu Mediation</h4>
+        <p>Mỗi ad network có một quy chuẩn định danh khác nhau. Hệ thống này giúp chuẩn hóa dữ liệu chéo nền tảng, đảm bảo một advertiser đã bị chặn ở network này sẽ không "lọt lưới" ở network khác.</p>
       </div>
       <div class="cs-insight">
-        <div class="cs-insight-label">Tác động vận hành</div>
-        <h4>Hành động hơn là insight</h4>
-        <p>Báo cáo không chỉ flag bad actor — nó cung cấp đường đi một bấm đến blocklist. Insight không kèm action handle thì vẫn chỉ là insight.</p>
+        <div class="cs-insight-label">Tối ưu hóa vận hành</div>
+        <h4>Từ Dữ liệu đến Hành động</h4>
+        <p>Một báo cáo tốt không chỉ dừng ở việc "chỉ ra lỗi sai" — nó cần cung cấp công cụ để giải quyết lỗi đó (như nút chặn 1-click). Insight mà không thể thực thi thì mãi chỉ là những con số vô hồn.</p>
       </div>
     </div>
   </div>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lựa chọn ngưỡng Force-Ad tối ưu hằng ngày — Hang Nguyen</title>
-<meta name="description" content="Hai phương pháp luận — percentile-based và LTV-curve — để chọn cap force-ad tối ưu hằng ngày cho game mobile F2P.">
+<title>Xác định giới hạn Force-Ad tối ưu mỗi ngày — Hang Nguyen</title>
+<meta name="description" content="Hai phương pháp tiếp cận — phân tích bách phân vị và đường cong LTV — giúp xác định giới hạn quảng cáo bắt buộc (force-ad) tối ưu mỗi ngày cho game mobile F2P.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,10 +32,10 @@
   <div class="cs-hero-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="cs-tag">Optimization · Monetization</div>
-    <h1 class="cs-title">Lựa chọn <em>ngưỡng force-ad</em> tối ưu hằng ngày</h1>
-    <p class="cs-subtitle">Khi nào thì thêm một force-ad bắt đầu gây hại nhiều hơn lợi? Hai phương pháp luận bổ trợ nhau — tiếp cận theo percentile hành vi và đường cong LTV — đi đến cùng một đáp số từ hai góc nhìn rất khác nhau.</p>
+    <h1 class="cs-title">Xác định <em>giới hạn force-ad</em> tối ưu mỗi ngày</h1>
+    <p class="cs-subtitle">Khi nào việc hiển thị thêm một quảng cáo bắt buộc (force-ad) bắt đầu lợi bất cập hại? Hai phương pháp tiếp cận mang tính bổ trợ — phân tích bách phân vị hành vi và đường cong LTV — đã cùng hội tụ về một đáp án từ hai góc nhìn hoàn toàn khác biệt.</p>
     <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Nhiều game</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Bối cảnh</div><div class="cs-meta-value">Mobile Gaming Studio · Nhiều tựa game</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Năm</div><div class="cs-meta-value">2026</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Vai trò</div><div class="cs-meta-value">Research · Recommendation</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Stack</div><div class="cs-meta-value">SQL · Python · Statistics</div></div>
@@ -47,14 +47,14 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">01 — Vấn đề</div>
-      <h2 class="cs-section-title">Force-ad là một con dao hai lưỡi.</h2>
+      <h2 class="cs-section-title">Force-ad: Con dao hai lưỡi.</h2>
     </div>
     <div class="cs-prose">
-      <p>Trong game mobile F2P, <strong>force-ad</strong> — interstitial và AOA (App Open Ad) — là lớp monetization không thể từ chối. Khác với rewarded video, người dùng không thể opt-out. Show quá ít thì bỏ tiền lại trên bàn. Show quá nhiều thì bào mòn chất lượng session, tăng churn ngày đầu, và phá vỡ đường cong lifetime value (LTV).</p>
-      <p>Project Owner đặt một câu hỏi tưởng đơn giản: <em>cap tối ưu hằng ngày là bao nhiêu?</em> Câu trả lời ngây thơ — "test một loạt cap qua A/B rồi chọn cái doanh thu cao nhất" — sẽ thất bại vì LTV thể hiện qua nhiều tuần chứ không phải nhiều ngày, và phần lớn A/B test chạy trên chỉ số ngày 7.</p>
+      <p>Trong các tựa game mobile F2P, <strong>force-ad</strong> (quảng cáo bắt buộc) — bao gồm Interstitial (quảng cáo toàn màn hình) và AOA (App Open Ad) — là nguồn doanh thu mà người chơi không thể chủ động bỏ qua. Tần suất xuất hiện quá thấp đồng nghĩa với việc bạn đang lãng phí doanh thu. Ngược lại, lạm dụng force-ad sẽ làm giảm trải nghiệm chơi (session quality), đẩy cao tỷ lệ rời bỏ (churn rate) trong ngày đầu, và phá vỡ hoàn toàn đường cong Giá trị Vòng đời Khách hàng (LTV).</p>
+      <p>Project Owner đã đặt ra một bài toán tưởng chừng đơn giản: <em>Giới hạn (cap) hiển thị tối ưu mỗi ngày là bao nhiêu?</em> Cách giải quyết ngây ngô nhất là "chạy A/B test một loạt các mức cap và chọn cái nào mang lại doanh thu cao nhất". Tuy nhiên, cách này chắc chắn sẽ thất bại, vì LTV là chỉ số cần nhiều tuần để hình thành, trong khi phần lớn các đợt A/B test chỉ được đánh giá dựa trên dữ liệu 7 ngày đầu.</p>
       <div class="cs-callout">
-        <div class="cs-callout-label">Cách tái phát biểu vấn đề</div>
-        <p>Thay vì hỏi <strong>"cap tối ưu là bao nhiêu?"</strong>, tôi tách câu hỏi thành hai: <em>(a) phân phối tự nhiên của ad-tolerance trên user là gì?</em> và <em>(b) ở cap nào, mỗi quảng cáo bổ sung bắt đầu phá hủy LTV nhiều hơn doanh thu nó tạo ra?</em></p>
+        <div class="cs-callout-label">Định hình lại bài toán</div>
+        <p>Thay vì hỏi trống không <strong>"Cap tối ưu là bao nhiêu?"</strong>, tôi chia bài toán thành hai câu hỏi gốc rễ hơn: <em>(a) Phân phối tự nhiên về 'sức chịu đựng quảng cáo' (ad-tolerance) của người dùng trông như thế nào?</em> và <em>(b) Ở mức cap nào, việc hiển thị thêm một quảng cáo sẽ phá hủy LTV nhiều hơn lượng doanh thu mà nó mang lại?</em></p>
       </div>
     </div>
   </div>
@@ -64,50 +64,50 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">02 — Hai phương pháp song song</div>
-      <h2 class="cs-section-title">Behavioral percentile vs. LTV-curve.</h2>
+      <h2 class="cs-section-title">Bách phân vị hành vi vs. Đường cong LTV.</h2>
     </div>
     <div class="cs-prose">
-      <p>Tôi nghiên cứu hai phương pháp luận và chạy cả hai. Chúng xuất phát từ những tiền đề hoàn toàn khác nhau nhưng cho ra cap chỉ chênh nhau 1–2 quảng cáo trên mọi game được nghiên cứu — đây chính là loại cross-validation khiến đề xuất trở nên vững chắc.</p>
+      <p>Tôi tiến hành nghiên cứu và chạy song song hai phương pháp này. Dù xuất phát từ những tiền đề hoàn toàn khác biệt, kết quả giới hạn thu được chỉ chênh lệch 1–2 quảng cáo trên tất cả các game được nghiên cứu. Sự đối chiếu chéo (cross-validation) tự nhiên này chính là mấu chốt giúp phương án đề xuất trở nên cực kỳ vững chắc.</p>
     </div>
 
     <div class="cs-method-pair">
       <div class="cs-method">
         <div class="cs-method-head">
           <div class="cs-method-num">Phương pháp 1</div>
-          <div class="cs-method-title">Behavioral Percentile</div>
+          <div class="cs-method-title">Phân tích Bách phân vị Hành vi (Behavioral Percentile)</div>
         </div>
         <div class="cs-method-body">
-          <p><strong>Tiền đề:</strong> chính tập user hiện hữu là một thí nghiệm. Nhìn vào phân phối số force-ad trên mỗi active day, sau đó chọn percentile để cân bằng giữa thu doanh thu và sự khó chịu của người dùng.</p>
+          <p><strong>Tiền đề:</strong> Bản thân tệp người dùng hiện tại đã là một môi trường thí nghiệm. Bằng cách quan sát phân phối số lượng force-ad hiển thị trên mỗi "ngày active", ta có thể chọn ra một bách phân vị giúp cân bằng giữa việc tối ưu doanh thu và hạn chế sự khó chịu của người chơi.</p>
           <ul>
-            <li>Tính phân phối <code>force_ads_served_per_active_day</code> trên active user trong 30 ngày gần nhất.</li>
-            <li>Xác định <strong>vùng P75–P85</strong> như trần mềm tự nhiên — cap mà phía trên đó chỉ còn user có ad-tolerance cao nhất.</li>
-            <li>Xác thực cap đề xuất không cắt cụt một cohort retention lành mạnh nào, bằng cách cross-tab với D7/D30 retention.</li>
+            <li>Tính toán phổ phân phối của <code>force_ads_served_per_active_day</code> (số quảng cáo hiển thị mỗi ngày hoạt động) trên tệp active user trong 30 ngày gần nhất.</li>
+            <li>Xác định <strong>vùng P75–P85</strong> làm mức trần mềm (soft ceiling) — mức cap mà vượt qua đó, ta chỉ còn nhắm đến những user "lì đòn" nhất (ad-tolerance cao nhất).</li>
+            <li>Kiểm chứng để đảm bảo mức cap đề xuất không vô tình "giết chết" một nhóm người dùng (cohort) có tỷ lệ giữ chân lành mạnh, bằng cách phân tích chéo (cross-tab) với chỉ số Retention D7/D30.</li>
           </ul>
-          <p><strong>Điểm mạnh:</strong> dễ truyền đạt, nhanh, không cần mô hình hóa quan hệ nhân quả. <strong>Hạn chế:</strong> không trực tiếp đo tác động lên LTV — chỉ phơi bày hình dạng tự nhiên.</p>
+          <p><strong>Điểm mạnh:</strong> Dễ truyền đạt, thực hiện nhanh, không đòi hỏi mô hình hóa nhân quả phức tạp. <strong>Hạn chế:</strong> Không trực tiếp đo lường được tác động lên LTV, chỉ phản ánh được xu hướng tự nhiên của hệ thống.</p>
         </div>
       </div>
 
       <div class="cs-method">
         <div class="cs-method-head">
           <div class="cs-method-num">Phương pháp 2</div>
-          <div class="cs-method-title">LTV-Curve Marginal Analysis</div>
+          <div class="cs-method-title">Phân tích Biên Đường cong LTV (LTV-Curve Marginal Analysis)</div>
         </div>
         <div class="cs-method-body">
-          <p><strong>Tiền đề:</strong> cap đúng là điểm mà doanh thu biên từ một force-ad bổ sung bằng phần LTV bị mất đi.</p>
+          <p><strong>Tiền đề:</strong> Mức cap chuẩn xác là điểm mà doanh thu biên (marginal revenue) thu được từ việc hiển thị thêm một quảng cáo cân bằng đúng với phần LTV bị thâm hụt.</p>
           <ul>
-            <li>Chia bucket user theo <code>avg_force_ads_per_day</code> thực tế trong 7 ngày đầu.</li>
-            <li>Vẽ D30 LTV (IAP + ad revenue) cho từng bucket. Đường cong thường tăng rồi đạt plateau hoặc đảo chiều.</li>
-            <li>Lấy điểm uốn — nơi mà mức tăng LTV biên ≤ 0 — làm khuyến nghị cận trên.</li>
-            <li>Quan trọng nhất, <strong>kiểm soát self-selection</strong> — user có ad-tolerance cao đương nhiên thấy nhiều quảng cáo hơn, nên cần điều chỉnh theo cohort khớp về retention.</li>
+            <li>Phân nhóm (bucket) người dùng dựa trên số <code>avg_force_ads_per_day</code> thực tế của họ trong 7 ngày đầu.</li>
+            <li>Vẽ biểu đồ D30 LTV (bao gồm cả IAP và doanh thu quảng cáo) cho từng nhóm. Thông thường, đường cong này sẽ đi lên, đi ngang (plateau), rồi cắm đầu đi xuống.</li>
+            <li>Xác định điểm uốn (inflection point) — nơi mà mức tăng trưởng biên của LTV bắt đầu ≤ 0 — và dùng nó làm ranh giới tối đa (upper-bound) cho đề xuất.</li>
+            <li>Khâu quan trọng nhất: <strong>Kiểm soát thiên lệch tự chọn (self-selection bias)</strong>. Những user chịu xem quảng cáo giỏi đương nhiên sẽ hiển thị nhiều số liệu quảng cáo hơn, do đó cần phải hiệu chỉnh dữ liệu bằng cách so sánh các cohort có cùng mức retention.</li>
           </ul>
-          <p><strong>Điểm mạnh:</strong> trả lời trực tiếp câu hỏi LTV. <strong>Hạn chế:</strong> cần vài tuần dữ liệu và phải xử lý quan hệ nhân quả thật cẩn thận.</p>
+          <p><strong>Điểm mạnh:</strong> Giải quyết trực tiếp bài toán về LTV. <strong>Hạn chế:</strong> Cần thời gian gom dữ liệu (nhiều tuần) và đòi hỏi sự tỉ mỉ tối đa khi xử lý các mối quan hệ nhân quả.</p>
         </div>
       </div>
     </div>
 
     <div class="cs-prose">
-      <h3>Sự hội tụ như một bằng chứng xác thực</h3>
-      <p>Hai phương pháp không chia sẻ giả định, nên khi chúng đồng ý là một tín hiệu mạnh. Trên các game được nghiên cứu, đề xuất từ phương pháp percentile chỉ chênh ±1 quảng cáo so với điểm uốn của LTV-curve. Sự hội tụ đó cho phép tôi đưa ra đề xuất với độ tin cậy cao — và một câu chuyện rõ ràng cho những người hoài nghi từ cả hai phía.</p>
+      <h3>Sự hội tụ là minh chứng rõ ràng nhất</h3>
+      <p>Vì hai phương pháp này không dùng chung các giả định ban đầu, nên khi chúng cho ra cùng một kết quả, đó là một tín hiệu cực kỳ đáng tin cậy. Trên các tựa game được đưa vào nghiên cứu, mức cap đề xuất từ phương pháp Percentile chỉ chênh lệch ±1 quảng cáo so với điểm uốn của Đường cong LTV. Sự hội tụ này cho phép tôi tự tin chốt phương án đề xuất — đồng thời tạo ra một luận điểm thuyết phục để giải đáp hoài nghi từ stakeholder của cả hai trường phái.</p>
     </div>
 
     <div class="cs-pills">
@@ -124,18 +124,18 @@
   <div class="container">
     <div class="cs-section-head">
       <div class="cs-section-num">03 — Đề xuất cuối cùng</div>
-      <h2 class="cs-section-title">Một cap vừa thực nghiệm vừa có cơ sở.</h2>
+      <h2 class="cs-section-title">Một con số dựa trên thực nghiệm và có cơ sở vững chắc.</h2>
     </div>
     <div class="cs-prose">
-      <p>Đề xuất cuối được giao dưới dạng memo một trang cho Project Owner với ba phần:</p>
+      <p>Đề xuất cuối cùng được trình bày dưới dạng một bản memo tinh gọn (1 trang) gửi đến Project Owner, bao gồm 3 phần trọng tâm:</p>
       <ol>
-        <li><strong>Con số chính</strong> — cap hằng ngày được khuyến nghị, kèm khoảng tin cậy hẹp.</li>
-        <li><strong>Cả hai phương pháp luận, ngắn gọn</strong> — để đề xuất có thể tái lập và phản biện được.</li>
-        <li><strong>Kế hoạch monitor</strong> — những chỉ số downstream (D7 retention, ARPDAU, ad opt-in) cần theo dõi trong hai tuần đầu sau khi thay đổi, và điều kiện gì sẽ kích hoạt rollback.</li>
+        <li><strong>Con số chốt (Headline number)</strong> — Mức cap hằng ngày được khuyến nghị, đi kèm với một khoảng sai số an toàn (confidence range).</li>
+        <li><strong>Tóm tắt phương pháp</strong> — Trình bày ngắn gọn cả hai cách tiếp cận để đảm bảo tính minh bạch, dễ dàng tái lập lại kết quả hoặc phản biện.</li>
+        <li><strong>Kế hoạch theo dõi (Monitoring plan)</strong> — Chỉ định rõ các chỉ số hệ quả (downstream metrics) như D7 Retention, ARPDAU, tỷ lệ tự nguyện xem ad (ad opt-in) cần được theo dõi sát sao trong 2 tuần đầu sau khi update. Đồng thời thiết lập rõ điều kiện nào sẽ kích hoạt việc roll-back (hoàn tác).</li>
       </ol>
       <div class="cs-callout">
-        <div class="cs-callout-label">Vì sao điều này quan trọng</div>
-        <p>Một câu trả lời từ một phương pháp duy nhất cho một câu hỏi monetization quan trọng là rất mong manh. Hai phương pháp đồng ý là một tín hiệu mạnh. Hai phương pháp bất đồng còn là tín hiệu hữu ích hơn — chúng cho thấy giả định nào đang gánh gánh nặng.</p>
+        <div class="cs-callout-label">Vì sao điều này lại quan trọng?</div>
+        <p>Đối với một bài toán sống còn về monetization, nếu chỉ dựa vào một phương pháp duy nhất để ra quyết định thì sẽ rất rủi ro. Việc hai phương pháp độc lập cùng đồng thuận là một sự bảo chứng mạnh mẽ. Thậm chí, nếu chúng cho ra kết quả trái ngược, đó cũng là một tín hiệu vô giá — nó chỉ ra cho ta thấy lỗ hổng đang nằm ở giả định nào.</p>
       </div>
     </div>
   </div>
@@ -144,41 +144,11 @@
 <section class="cs-section">
   <div class="container">
     <div class="cs-section-head">
-      <div class="cs-section-num">04 — Bài học &amp; kỹ năng</div>
-      <h2 class="cs-section-title">Những kỹ năng được thể hiện.</h2>
+      <div class="cs-section-num">04 — Bài học &amp; Kỹ năng</div>
+      <h2 class="cs-section-title">Những kỹ năng cốt lõi được thể hiện.</h2>
     </div>
     <div class="cs-grid-2">
       <div class="cs-insight">
-        <div class="cs-insight-label">Tính chặt chẽ về phương pháp</div>
-        <h4>Cross-validation theo thiết kế</h4>
-        <p>Chạy hai phương pháp luận độc lập không phải là dư thừa — đó là cách tách "đáp số đúng" khỏi "điều mà một phương pháp tình cờ nói".</p>
-      </div>
-      <div class="cs-insight">
-        <div class="cs-insight-label">Tư duy nhân quả</div>
-        <h4>Nhận thức về self-selection</h4>
-        <p>User có ad-tolerance cao đương nhiên thấy nhiều quảng cáo hơn. So sánh cohort ngây thơ sẽ đánh đồng "willingness-to-tolerate" với "willingness-to-spend". Phương pháp luận đã hiệu chỉnh điều này.</p>
-      </div>
-      <div class="cs-insight">
-        <div class="cs-insight-label">Truyền đạt</div>
-        <h4>Memo, không phải slide</h4>
-        <p>Stakeholder đọc tốt hơn nghe. Một memo một trang với câu trả lời ở trên cùng, phương pháp ở dưới, và kế hoạch monitor đính kèm là format giúp ra quyết định.</p>
-      </div>
-      <div class="cs-insight">
-        <div class="cs-insight-label">Tư duy vận hành</div>
-        <h4>Tích hợp tiêu chí rollback</h4>
-        <p>Mỗi đề xuất đi kèm điều khoản "cái gì sẽ làm tôi đổi ý" — kế hoạch monitor và các ngưỡng chỉ số kích hoạt việc xem xét lại.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="cs-footer">
-  <a href="../index.html" class="cs-footer-back">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Quay lại portfolio
-  </a>
-  <div>© 2026 Nguyễn Ngọc Thanh Hằng · <a href="mailto:hangvt2003@gmail.com">hangvt2003@gmail.com</a></div>
-</footer>
-
-</body>
-</html>
+        <div class="cs-insight-label">Sự chặt chẽ về phương pháp</div>
+        <h4>Thiết kế đối chiếu chéo (Cross-validation)</h4>
+        <p>Việc chạy hai phương pháp phân tích độc lập không hề thừa thãi. Đó là cách duy nhất giúp ta phân định rạch ròi giữa "đáp án thực chất" và "sự trùng hợp ngẫu nhiên của số liệu"
