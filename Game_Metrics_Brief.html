@@ -245,9 +245,10 @@
       <div class="branch ua">
         <div class="branch-head"><span class="icon">📣</span> UA</div>
         <div class="branch-items">
-          <span class="branch-item">CPI</span>
+          <span class="branch-item">Cost: CPI · CPC · CPM</span>
           <span class="branch-item">CTR</span>
-          <span class="branch-item">CVR (Install rate)</span>
+          <span class="branch-item">CVR: CCR · ICR</span>
+          <span class="branch-item">IPM</span>
           <span class="branch-item">Organic Rate</span>
         </div>
       </div>
@@ -266,7 +267,7 @@
           <span class="branch-item">Retention → LTV</span>
           <span class="branch-item">Engagement → Imp/DAU → Revenue</span>
           <span class="branch-item">Difficulty → Retention</span>
-          <span class="branch-item">CTR × CVR → CPI</span>
+          <span class="branch-item">CTR × CCR → CPI</span>
         </div>
       </div>
     </div>
@@ -533,7 +534,7 @@
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;padding:0 6px;min-width:80px;">
         <div style="font-size:18px;color:var(--blue);">→</div>
-        <div style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;">CVR</div>
+        <div style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;">CVR (CCR)</div>
         <div style="font-size:10px;color:var(--text-light);font-style:italic;">Installs / Clicks</div>
       </div>
       <div style="background:var(--blue-pale);border:1.5px solid #c0d4e8;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px;">
@@ -541,6 +542,9 @@
         <div style="font-size:13px;font-weight:600;color:var(--text-dark);">Install</div>
         <div style="font-size:11px;color:var(--text-light);font-style:italic;">Ad Spend / Installs = CPI</div>
       </div>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--text-light);font-style:italic;">
+      💡 Đo xuyên suốt cả phễu (Impression → Install): <strong style="color:var(--blue);font-style:normal;">ICR</strong> = Installs / Impressions và <strong style="color:var(--blue);font-style:normal;">IPM</strong> = Installs / Impressions × 1000. Về chi phí: trả theo impression → <strong style="color:var(--blue);font-style:normal;">CPM</strong>, theo click → <strong style="color:var(--blue);font-style:normal;">CPC</strong>, theo install → <strong style="color:var(--blue);font-style:normal;">CPI</strong>.
     </div>
   </div>
   <div class="metric-grid">
@@ -550,22 +554,49 @@
       <div class="metric-full">Cost Per Install</div>
       <div class="metric-formula">Ad Spend / Number of Installs</div>
       <div class="metric-desc">Chi phí để có được 1 người cài game. CPI phụ thuộc vào geo, network, và chất lượng creative. CPI thấp tốt nhưng cần đi kèm user quality cao.</div>
-      <div class="metric-note">💡 CPI mục tiêu = LTV × (1 − target margin)</div>
+    </div>
+    <div class="metric-card ua reveal">
+      <div class="metric-tag">Chi phí click</div>
+      <div class="metric-name">CPC</div>
+      <div class="metric-full">Cost Per Click</div>
+      <div class="metric-formula">Ad Spend / Clicks</div>
+      <div class="metric-desc">Chi phí cho mỗi lượt click vào quảng cáo. Dùng khi network tính tiền theo click (bidding CPC). CPC = CPM / (CTR × 1000) — creative có CTR cao sẽ kéo CPC xuống.</div>
+    </div>
+    <div class="metric-card ua reveal">
+      <div class="metric-tag">Chi phí hiển thị</div>
+      <div class="metric-name">CPM</div>
+      <div class="metric-full">Cost Per Mille</div>
+      <div class="metric-formula">Ad Spend / Impressions × 1000</div>
+      <div class="metric-desc">Chi phí cho 1000 lần hiển thị quảng cáo — góc nhìn advertiser (bên mua). Đối xứng với eCPM bên publisher (bên bán). CPM phụ thuộc geo, network, và mức độ cạnh tranh bidding.</div>
     </div>
     <div class="metric-card ua reveal">
       <div class="metric-tag">Hiệu quả creative</div>
       <div class="metric-name">CTR</div>
       <div class="metric-full">Click-Through Rate</div>
       <div class="metric-formula">Clicks / Impressions</div>
-      <div class="metric-desc">Tỷ lệ người xem quảng cáo rồi nhấn vào. Phản ánh sức hút của creative (video, image). CTR cao → creative đang chạm đúng target audience.</div>
+      <div class="metric-desc">Tỷ lệ người xem quảng cáo rồi nhấn vào. Phản ánh sức hút của creative (video, image).</div>
     </div>
     <div class="metric-card ua reveal">
       <div class="metric-tag">Hiệu quả store page</div>
-      <div class="metric-name">CVR</div>
-      <div class="metric-full">Install Conversion Rate</div>
-      <div class="metric-formula">Installs / Clicks (Store visits)</div>
-      <div class="metric-desc">Tỷ lệ người vào store page rồi cài game. Tối ưu qua: icon, screenshot, video preview, rating, và mô tả store listing hấp dẫn.</div>
-      <div class="metric-note">💡 CTR × CVR = funnel efficiency từ impression đến install</div>
+      <div class="metric-name">CVR — CCR</div>
+      <div class="metric-full">Click Conversion Rate</div>
+      <div class="metric-formula">Installs / Clicks</div>
+      <div class="metric-desc">Tỷ lệ người click quảng cáo (vào store page) rồi cài game. Tối ưu qua: icon, screenshot, video preview, rating, và mô tả store listing hấp dẫn.</div>
+      <div class="metric-note">💡 CTR × CCR = funnel efficiency từ impression đến install</div>
+    </div>
+    <div class="metric-card ua reveal">
+      <div class="metric-tag">Hiệu quả toàn phễu</div>
+      <div class="metric-name">CVR — ICR</div>
+      <div class="metric-full">Impression Conversion Rate</div>
+      <div class="metric-formula">Installs / Impressions</div>
+      <div class="metric-desc">Tỷ lệ chuyển đổi từ lần hiển thị quảng cáo sang install — gộp cả CTR lẫn CCR (ICR = CTR × CCR). Nhìn nhanh hiệu quả end-to-end của cặp creative + store page.</div>
+    </div>
+    <div class="metric-card ua reveal">
+      <div class="metric-tag">Hiệu quả creative → install</div>
+      <div class="metric-name">IPM</div>
+      <div class="metric-full">Installs Per Mille</div>
+      <div class="metric-formula">Installs / Impressions × 1000</div>
+      <div class="metric-desc">Số install trên 1000 impressions — chính là ICR × 1000, cách biểu diễn phổ biến khi so sánh creative. IPM cao → network ưu tiên phân phối creative đó nhiều hơn, gián tiếp giảm CPI.</div>
     </div>
     <div class="metric-card ua reveal">
       <div class="metric-tag">Tỷ lệ tự nhiên</div>
@@ -574,6 +605,18 @@
       <div class="metric-formula">Organic installs / Total installs</div>
       <div class="metric-desc">Bao nhiêu % install đến tự nhiên, không qua paid ads. Organic rate cao → brand awareness tốt hoặc App Store ranking tốt. Paid volume lớn thường kéo Organic tăng theo.</div>
 
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#e8f0f8 0%,#f5ede0 100%);border:1.5px solid #c0d4e8;border-radius:12px;padding:28px 32px;margin-top:32px;" class="reveal">
+    <div style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--blue);text-align:center;letter-spacing:1px;margin-bottom:18px;">
+      CPI = CPM / IPM
+    </div>
+    <div style="font-size:14px;color:var(--text-mid);line-height:1.7;max-width:760px;margin:0 auto;text-align:center;">
+      Chi phí để có 1 install = chi phí của 1000 lượt impression / số installs thu được trên 1000 lượt impression đó. Vậy nên để giảm CPI thì có thể <strong style="color:var(--blue);">giảm chi phí hiển thị</strong> hoặc <strong style="color:var(--blue);">tăng tỷ lệ install của 1 lượt hiển thị</strong> (hoàn toàn có thể chủ động dựa trên việc tối ưu creative hoặc store page).
+    </div>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--text-light);font-style:italic;text-align:center;">
+      💡 Nối chuỗi đầy đủ: IPM = ICR × 1000 = (CTR × CCR) × 1000 → creative tốt & store page tốt cùng kéo IPM lên → CPI xuống mà không cần đổi budget.
     </div>
   </div>
 </div>
@@ -604,7 +647,7 @@
       <p class="sub-desc">Phân theo kênh thu hút người dùng</p>
       <ul>
         <li><strong>Paid:</strong> User đến từ các chiến dịch quảng cáo có trả tiền — Unity, AppLovin, Meta, Google UAC… Dễ kiểm soát volume nhưng tốn Ad Spend và phụ thuộc CPI</li>
-        <li><strong>Organic:</strong> User đến tự nhiên, không qua paid ads — từ App Store search, word-of-mouth, hoặc brand awareness. Không tốn UA cost, LTV thường cao hơn paid</li>
+        <li><strong>Organic:</strong> User đến tự nhiên, không qua paid ads — từ App Store search, word-of-mouth, hoặc brand awareness. Không tốn UA cost</li>
       </ul>
     </div>
     <div class="segment-card reveal">
@@ -654,10 +697,10 @@
     </div>
 
     <div class="relation-item reveal">
-      <div class="rel-from">CTR × CVR</div>
+      <div class="rel-from">CTR × CCR (= ICR / IPM)</div>
       <div class="rel-arrow"><span class="arr">→</span><span class="lbl">quyết định</span></div>
       <div class="rel-to">CPI</div>
-      <div class="rel-desc">Creative tốt tăng CTR → giảm CPI. Store page tốt tăng CVR → giảm CPI. Hai đòn bẩy song song để tối ưu UA efficiency mà không cần tăng budget.</div>
+      <div class="rel-desc">Creative tốt tăng CTR → giảm CPI. Store page tốt tăng CCR → giảm CPI. Hai đòn bẩy song song để tối ưu UA efficiency mà không cần tăng budget. Gộp lại: CPI = CPM / IPM.</div>
     </div>
 
 
