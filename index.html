@@ -68,6 +68,12 @@
   html[lang="vi"] kbd,
   html[lang="vi"] pre { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
+  /* Stacked Vietnamese diacritics rise higher than Latin caps, so the tight
+     display line-heights below leave only ~1px between lines. Loosen them. */
+  html[lang="vi"] .display,
+  html[lang="vi"] .hero-title,
+  html[lang="vi"] .contact-heading { line-height: 1.25; }
+
   .display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
   .display-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; letter-spacing: -0.015em; }
   .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: 'tnum'; }
@@ -1775,18 +1781,11 @@ function Footer() {
 }
 
 function App() {
+  // Always open in English; the toggle only applies for the current visit.
   const [lang, setLangState] = useState('en');
-
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem('portfolio-lang');
-      if (saved === 'vi' || saved === 'en') setLangState(saved);
-    } catch (e) { /* localStorage unavailable */ }
-  }, []);
 
   const setLang = (newLang) => {
     setLangState(newLang);
-    try { window.localStorage.setItem('portfolio-lang', newLang); } catch (e) {}
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('lang', newLang);
     }
